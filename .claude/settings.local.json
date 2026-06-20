@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nslookup -type=SRV _mongodb._tcp.cluster0.01ttpxa.mongodb.net)",
+      "Bash(curl -s --connect-timeout 5 -o /dev/null -w \"%{http_code}\" \"https://ac-ssa59da-shard-00-00.01ttpxa.mongodb.net:27017\")",
+      "Bash(curl -s http://localhost:3000/api/products -o /dev/null -w \"%{http_code}\")",
+      "Bash(curl -s -c /tmp/carve_cookies.txt -b /tmp/carve_cookies.txt -X POST http://localhost:3000/api/auth/callback/credentials -H 'Content-Type: application/x-www-form-urlencoded' -d 'email=admin%40carve.pk&password=admin123&csrfToken=&callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&json=true' -w '\\\\nHTTP STATUS: %{http_code}')",
+      "Bash(curl *)",
+      "Bash(node *)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}
