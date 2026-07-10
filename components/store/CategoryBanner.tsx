@@ -9,15 +9,22 @@ const categories = [
     label: 'Perfumes',
     tagline: 'Scents that linger in memory',
     href: '/shop/perfumes',
-    image: '/images/perfume-1.jpg',
+    image: '/images/banner-perfume.jpg',
     overlay: 'from-carve-charcoal/70',
   },
   {
-    label: 'Jewellery',
+    label: 'Jewelry',
     tagline: 'Adorn yourself in gold',
     href: '/shop/jewellery',
-    image: '/images/jewelry.jpg',
-    overlay: 'from-carve-forest/70',
+    image: '/images/banner-jewelry.jpg',
+    overlay: 'from-carve-forest/80',
+  },
+  {
+    label: 'Gift Sets',
+    tagline: 'Give something unforgettable',
+    href: '/collections',
+    image: '/images/banner-gifts.jpg',
+    overlay: 'from-carve-charcoal/65',
   },
 ]
 
@@ -32,9 +39,9 @@ function CategoryCard({ cat, index }: { cat: typeof categories[0]; index: number
       initial={{ opacity: 0, y: 48 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.85, delay: index * 0.18, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.85, delay: index * 0.14, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
-      <Link href={cat.href} className="group relative block aspect-[4/3] overflow-hidden rounded-sm">
+      <Link href={cat.href} className="group relative block aspect-4/3 overflow-hidden rounded-sm">
         {/* Parallax image */}
         <motion.div className="absolute inset-0 scale-110" style={{ y: imageY }}>
           <Image
@@ -42,24 +49,22 @@ function CategoryCard({ cat, index }: { cat: typeof categories[0]; index: number
             alt={cat.label}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
         </motion.div>
 
-        <div className={`absolute inset-0 bg-gradient-to-t ${cat.overlay} to-transparent`} />
-
-        {/* Hover overlay shimmer */}
+        <div className={`absolute inset-0 bg-linear-to-t ${cat.overlay} to-transparent`} />
         <div className="absolute inset-0 bg-carve-gold/0 group-hover:bg-carve-gold/5 transition-colors duration-500" />
 
-        {/* Text content */}
-        <div className="absolute bottom-0 left-0 right-0 p-8">
+        {/* Text */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
           <p className="font-body text-xs tracking-[0.3em] uppercase text-carve-gold mb-2 translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
             {cat.tagline}
           </p>
-          <h3 className="font-display text-4xl md:text-5xl text-carve-champagne font-light translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
+          <h3 className="font-display text-3xl md:text-4xl lg:text-5xl text-carve-champagne font-light translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
             {cat.label}
           </h3>
-          <div className="mt-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 translate-x-0 transition-all duration-300">
+          <div className="mt-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
             <span className="font-body text-xs tracking-widest uppercase text-carve-gold">
               Shop Now
             </span>
@@ -90,7 +95,8 @@ export default function CategoryBanner() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* 2 large + 1 wide below on mobile; 3-col on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {categories.map((cat, i) => (
             <CategoryCard key={cat.label} cat={cat} index={i} />
           ))}

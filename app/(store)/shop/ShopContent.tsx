@@ -59,11 +59,11 @@ export default function ShopContent() {
 
   useEffect(() => {
     const sub = searchParams.get('subcategory')
-    if (sub) filters.setSubcategory(sub)
+    filters.setSubcategory(sub ?? '')
     const q = searchParams.get('search')
     if (q) filters.setSearch(q)
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [searchParams])
 
   useEffect(() => {
     setPage(1)

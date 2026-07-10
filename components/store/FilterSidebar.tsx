@@ -1,13 +1,15 @@
 'use client'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, SlidersHorizontal } from 'lucide-react'
+import { X } from 'lucide-react'
 import { useFilterStore } from '@/store/filterStore'
 import Button from '@/components/ui/Button'
-import { useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 
 const scentFamilies = ['Floral', 'Woody', 'Oriental', 'Fresh', 'Gourmand', 'Citrus', 'Aquatic']
-const materials = ['Gold Plated', 'Silver', 'Rose Gold']
+const perfumeSubcategories = ['For Him', 'For Her', 'Unisex', 'Bestsellers']
+const jewellerySubcategories = ['Earrings', 'Necklaces', 'Rings', 'Bracelets', 'Sets']
+const finishOptions = ['Gold Tone', 'Silver Tone', 'Rose Gold Tone']
+
 const sortOptions = [
   { value: 'newest', label: 'Newest' },
   { value: 'price_asc', label: 'Price: Low to High' },
@@ -35,7 +37,6 @@ function FilterContent({ onClose }: { onClose?: () => void }) {
   const router = useRouter()
   const pathname = usePathname()
 
-  // Always derive active category from URL so the sidebar stays in sync
   const activeCategory =
     pathname.includes('/shop/perfumes') ? 'perfume' :
     pathname.includes('/shop/jewellery') ? 'jewellery' :
@@ -43,9 +44,22 @@ function FilterContent({ onClose }: { onClose?: () => void }) {
 
   const handleCategoryClick = (cat: string) => {
     store.setCategory(cat)
+    store.setSubcategory('')
     router.push(CATEGORY_ROUTES[cat])
     onClose?.()
   }
+
+  const toggleSubcategory = (sub: string) => {
+    store.setSubcategory(store.subcategory === sub ? '' : sub)
+  }
+
+  const toggleFinish = (fin: string) => {
+    store.setMaterial(store.material === fin ? '' : fin)
+  }
+
+  const isPerfume = activeCategory === 'perfume'
+  const isJewellery = activeCategory === 'jewellery'
+  const isAll = activeCategory === 'all'
 
   return (
     <div className="h-full flex flex-col">
@@ -59,24 +73,67 @@ function FilterContent({ onClose }: { onClose?: () => void }) {
       </div>
 
       <div className="flex-1 overflow-y-auto px-5">
-        <FilterSection title="Category">
-          {['all', 'perfume', 'jewellery'].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => handleCategoryClick(cat)}
-              className={`block w-full text-left py-1.5 font-body text-sm transition-colors ${
-                activeCategory === cat
-                  ? 'text-carve-forest font-medium'
-                  : 'text-carve-mink hover:text-carve-charcoal'
-              }`}
-            >
-              {cat === 'all' ? 'All Products' : cat.charAt(0).toUpperCase() + cat.slice(1)}
-              {activeCategory === cat && (
-                <span className="ml-2 text-carve-gold">—</span>
-              )}
-            </button>
-          ))}
-        </FilterSection>
+        {/* Category — only on /shop (all) page */}
+        {isAll && (
+          <FilterSection title="Category">
+            {(['all', 'perfume', 'jewellery'] as const).map((cat) => (
+              <button
+                key={cat}
+                onClick={() => handleCategoryClick(cat)}
+                className={`block w-full text-left py-1.5 font-body text-sm transition-colors ${
+                  activeCategory === cat
+                    ? 'text-carve-forest font-medium'
+                    : 'text-carve-mink hover:text-carve-charcoal'
+                }`}
+              >
+                {cat === 'all' ? 'All Products' : cat.charAt(0).toUpperCase() + cat.slice(1)}
+                {activeCategory === cat && <span className="ml-2 text-carve-gold">—</span>}
+              </button>
+            ))}
+          </FilterSection>
+        )}
+
+        {/* Perfume subcategories */}
+        {(isPerfume || isAll) && (
+          <FilterSection title={isPerfume ? 'Category' : 'Perfume Type'}>
+            <div className="flex flex-wrap gap-2">
+              {perfumeSubcategories.map((sub) => (
+                <button
+                  key={sub}
+                  onClick={() => toggleSubcategory(sub)}
+                  className={`px-3 py-1 text-xs font-body border rounded-sm transition-all ${
+                    store.subcategory === sub
+                      ? 'bg-carve-forest text-carve-ivory border-carve-forest'
+                      : 'border-carve-champagne text-carve-mink hover:border-carve-gold hover:text-carve-gold'
+                  }`}
+                >
+                  {sub}
+                </button>
+              ))}
+            </div>
+          </FilterSection>
+        )}
+
+        {/* Jewellery subcategories */}
+        {(isJewellery || isAll) && (
+          <FilterSection title={isJewellery ? 'Category' : 'Jewelry Type'}>
+            <div className="flex flex-wrap gap-2">
+              {jewellerySubcategories.map((sub) => (
+                <button
+                  key={sub}
+                  onClick={() => toggleSubcategory(sub)}
+                  className={`px-3 py-1 text-xs font-body border rounded-sm transition-all ${
+                    store.subcategory === sub
+                      ? 'bg-carve-forest text-carve-ivory border-carve-forest'
+                      : 'border-carve-champagne text-carve-mink hover:border-carve-gold hover:text-carve-gold'
+                  }`}
+                >
+                  {sub}
+                </button>
+              ))}
+            </div>
+          </FilterSection>
+        )}
 
         <FilterSection title="Sort By">
           <select
@@ -90,7 +147,7 @@ function FilterContent({ onClose }: { onClose?: () => void }) {
           </select>
         </FilterSection>
 
-        {(activeCategory === 'all' || activeCategory === 'perfume') && (
+        {(isPerfume || isAll) && (
           <FilterSection title="Scent Family">
             <div className="flex flex-wrap gap-2">
               {scentFamilies.map((family) => (
@@ -110,20 +167,20 @@ function FilterContent({ onClose }: { onClose?: () => void }) {
           </FilterSection>
         )}
 
-        {(activeCategory === 'all' || activeCategory === 'jewellery') && (
-          <FilterSection title="Material">
+        {(isJewellery || isAll) && (
+          <FilterSection title="Finish">
             <div className="flex flex-wrap gap-2">
-              {materials.map((mat) => (
+              {finishOptions.map((fin) => (
                 <button
-                  key={mat}
-                  onClick={() => store.setMaterial(store.material === mat ? '' : mat)}
+                  key={fin}
+                  onClick={() => toggleFinish(fin)}
                   className={`px-3 py-1 text-xs font-body border rounded-sm transition-all ${
-                    store.material === mat
+                    store.material === fin
                       ? 'bg-carve-forest text-carve-ivory border-carve-forest'
                       : 'border-carve-champagne text-carve-mink hover:border-carve-gold hover:text-carve-gold'
                   }`}
                 >
-                  {mat}
+                  {fin}
                 </button>
               ))}
             </div>
@@ -132,12 +189,7 @@ function FilterContent({ onClose }: { onClose?: () => void }) {
       </div>
 
       <div className="px-5 pb-5 pt-3 border-t border-carve-champagne">
-        <Button
-          variant="outline"
-          size="sm"
-          className="w-full"
-          onClick={store.reset}
-        >
+        <Button variant="outline" size="sm" className="w-full" onClick={store.reset}>
           Clear Filters
         </Button>
       </div>
@@ -160,7 +212,7 @@ export default function FilterSidebar({ mobileOpen, onMobileClose }: FilterSideb
         </div>
       </div>
 
-      {/* Mobile drawer — controlled by parent */}
+      {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <>
