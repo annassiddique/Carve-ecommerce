@@ -105,6 +105,7 @@ export default function ImageUploader({ images, onChange, maxImages = 8 }: Image
               <div className="absolute top-1 right-1 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                 {i > 0 && (
                   <button
+                    type="button"
                     onClick={() => moveUp(i)}
                     className="bg-carve-ivory text-carve-mink text-xs w-5 h-5 rounded-sm flex items-center justify-center shadow-sm hover:bg-carve-champagne"
                     title="Move to cover"
@@ -113,6 +114,7 @@ export default function ImageUploader({ images, onChange, maxImages = 8 }: Image
                   </button>
                 )}
                 <button
+                  type="button"
                   onClick={() => removeImage(i)}
                   className="bg-red-100 text-red-600 w-5 h-5 rounded-sm flex items-center justify-center shadow-sm hover:bg-red-200"
                 >
