@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "seed": "tsx scripts/seed.ts"
+    "seed": "tsx scripts/seed.ts",
+    "seed:products": "tsx scripts/seed-products.ts"
   },
   "dependencies": {
     "cloudinary": "^2.10.0",
