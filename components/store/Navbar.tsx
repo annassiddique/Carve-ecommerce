@@ -68,7 +68,7 @@ function DropdownMenu({ items }: { items: DropdownItem[] }) {
       transition={{ duration: 0.18, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="absolute top-full left-1/2 -translate-x-1/2 mt-3 min-w-[160px] rounded-2xl border border-carve-gold/20 shadow-2xl overflow-hidden z-50"
       style={{
-        background: 'rgba(15, 13, 9, 0.72)',
+        background: 'rgba(26, 61, 43, 0.72)',
         backdropFilter: 'blur(20px) saturate(1.6)',
         WebkitBackdropFilter: 'blur(20px) saturate(1.6)',
         boxShadow: '0 12px 40px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(200,169,110,0.12)',
@@ -136,8 +136,8 @@ export default function Navbar() {
                   paddingLeft: 28,
                   paddingRight: 28,
                   borderRadius: 9999,
-                  backgroundColor: 'rgba(15, 13, 9, 0.9)',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.38), inset 0 0 0 1px rgba(200,169,110,0.18)',
+                  backgroundColor: 'rgba(27, 43, 38, 0.88)',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.28), inset 0 0 0 1px rgba(184,153,86,0.2)',
                 }
               : {
                   marginTop: 0,
@@ -148,7 +148,7 @@ export default function Navbar() {
                   paddingLeft: 24,
                   paddingRight: 24,
                   borderRadius: 0,
-                  backgroundColor: 'rgba(15, 13, 9, 0)',
+                  backgroundColor: 'rgba(27, 43, 38, 0)',
                   boxShadow: '0 0px 0px rgba(0,0,0,0)',
                 }
           }

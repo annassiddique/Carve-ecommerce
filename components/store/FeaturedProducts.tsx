@@ -3,52 +3,64 @@ import { connectDB } from '@/lib/mongodb'
 import Product from '@/models/Product'
 import ProductCard from './ProductCard'
 import Link from 'next/link'
-import Button from '@/components/ui/Button'
 
-async function getFeaturedProducts(): Promise<IProduct[]> {
+async function getHomeProducts(): Promise<IProduct[]> {
   try {
     await connectDB()
-    const products = await Product.find({ featured: true, inStock: true })
+    // Featured products first, then fill up to 5 with newest
+    const featured = await Product.find({ featured: true, inStock: true })
       .sort({ createdAt: -1 })
-      .limit(4)
+      .limit(5)
       .lean()
-    return JSON.parse(JSON.stringify(products))
+
+    if (featured.length >= 5) return JSON.parse(JSON.stringify(featured.slice(0, 5)))
+
+    const featuredIds = featured.map((p) => p._id)
+    const rest = await Product.find({ _id: { $nin: featuredIds }, inStock: true })
+      .sort({ createdAt: -1 })
+      .limit(5 - featured.length)
+      .lean()
+
+    return JSON.parse(JSON.stringify([...featured, ...rest]))
   } catch {
     return []
   }
 }
 
 export default async function FeaturedProducts() {
-  const products = await getFeaturedProducts()
+  const products = await getHomeProducts()
 
   return (
-    <section className="py-20 bg-carve-ivory">
+    <section className="py-16 bg-carve-ivory">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+
+        {/* Heading */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
           <div>
-            <p className="font-body text-xs tracking-[0.3em] uppercase text-carve-mink mb-3">
-              Handpicked
+            <p className="font-body text-[10px] tracking-[0.4em] uppercase text-carve-mink mb-2">
+              Handpicked for you
             </p>
-            <h2 className="font-display text-4xl md:text-5xl text-carve-charcoal">
-              Our Signatures
+            <h2 className="font-display text-3xl md:text-4xl text-carve-charcoal tracking-wide">
+              OUR FAVOURITES
             </h2>
           </div>
-          <Link href="/shop">
-            <Button variant="outline" size="sm">View All</Button>
+          <Link
+            href="/shop"
+            className="font-body text-xs tracking-widest uppercase text-carve-mink border-b border-carve-champagne hover:text-carve-gold hover:border-carve-gold transition-colors pb-0.5 self-start md:self-auto"
+          >
+            View All →
           </Link>
         </div>
 
         {products.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
             {products.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <p className="font-display text-xl text-carve-mink">
-              Featured products coming soon.
-            </p>
+          <div className="text-center py-16">
+            <p className="font-display text-xl text-carve-mink">Products coming soon.</p>
           </div>
         )}
       </div>
