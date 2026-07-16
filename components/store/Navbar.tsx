@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ShoppingBag, Menu, X, Search, ChevronDown } from 'lucide-react'
 import { useCartStore } from '@/store/cartStore'
@@ -95,6 +96,10 @@ export default function Navbar() {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const { itemCount, openCart } = useCartStore()
+  const pathname = usePathname()
+
+  const isProductPage = pathname.startsWith('/product/')
+  const hasBg = scrolled || isProductPage
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
@@ -126,7 +131,7 @@ export default function Navbar() {
         <motion.nav
           className="flex items-center justify-between pointer-events-auto"
           animate={
-            scrolled
+            hasBg
               ? {
                   marginTop: 14,
                   marginLeft: 24,
@@ -154,8 +159,8 @@ export default function Navbar() {
           }
           transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
           style={{
-            backdropFilter: scrolled ? 'blur(18px)' : 'blur(0px)',
-            WebkitBackdropFilter: scrolled ? 'blur(18px)' : 'blur(0px)',
+            backdropFilter: hasBg ? 'blur(18px)' : 'blur(0px)',
+            WebkitBackdropFilter: hasBg ? 'blur(18px)' : 'blur(0px)',
           }}
         >
           {/* Logo */}
