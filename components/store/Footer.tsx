@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-carve-charcoal text-carve-champagne/70">
+    <footer className="bg-carve-forest text-carve-champagne/70">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
@@ -65,7 +65,7 @@ export default function Footer() {
               {[
                 { label: 'Our Story', href: '/about' },
                 { label: 'CARVE Promise', href: '/about#promise' },
-                { label: 'Jewellery Care Guide', href: '/about#jewellery-care' },
+                { label: 'Jewellery Care Guide', href: '/jewellery-care' },
               ].map((link) => (
                 <li key={link.label}>
                   <Link

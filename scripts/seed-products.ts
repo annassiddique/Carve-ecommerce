@@ -11,12 +11,10 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET!,
 })
 
-const IMAGES_BASE = 'D:\\Project 101\\Projects\\carveimages'
-
-// ─── Product definitions ────────────────────────────────────────────────────
+const IMAGES_BASE = 'D:\\Project 101\\Projects\\carve\\public\\images\\carve-product-images'
 
 interface ProductDef {
-  folderPath: string   // relative to IMAGES_BASE
+  folderPath: string
   name: string
   subcategory: string
   price: number
@@ -25,172 +23,394 @@ interface ProductDef {
   shortDescription: string
   tags: string[]
   featured: boolean
+  inStock: boolean
+  stock: number
   attributes: Record<string, string | string[]>
 }
 
 const PRODUCT_DEFS: ProductDef[] = [
   // ── Bracelets ──────────────────────────────────────────────────────────────
   {
-    folderPath: 'Bracelets\\Luna Bracelet',
-    name: 'Luna Bracelet',
+    folderPath: 'Celeste Crystal Link Bracelet',
+    name: 'Celeste Crystal Link Bracelet',
     subcategory: 'Bracelets',
-    price: 2800,
-    comparePrice: 3500,
+    price: 1750,
+    comparePrice: 1950,
     description:
-      'The Luna Bracelet is a celestial piece inspired by the quiet glow of moonlight. Delicate stones set in a refined silhouette that captures the essence of evening elegance. Lightweight enough for all-day wear, luminous enough for every special occasion.',
-    shortDescription: 'Celestial bracelet with moonlit radiance — elegant for every occasion.',
-    tags: ['bracelet', 'jewellery', 'elegant', 'celestial', 'everyday'],
+      'A statement bracelet combining luminous crystal links, a delicate gold-toned chain, and an elegant interlocking centre motif. Celeste adds a refined touch of sparkle to both formal looks and elevated everyday outfits.',
+    shortDescription: 'Crystal link bracelet with an interlocking gold-toned centre motif.',
+    tags: ['bracelet', 'jewellery', 'crystal', 'gold', 'everyday', 'statement'],
     featured: true,
-    attributes: { finish: 'Silver Tone', gemstone: 'Cubic Zirconia' },
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Gold-toned alloy',
+    },
   },
   {
-    folderPath: 'Bracelets\\The Chandelier',
-    name: 'The Chandelier Bracelet',
+    folderPath: 'Noir Clover Station Bracelet',
+    name: 'Noir Clover Station Bracelet – Rose Gold',
     subcategory: 'Bracelets',
-    price: 3200,
-    comparePrice: 4000,
+    price: 1950,
+    comparePrice: 2150,
     description:
-      'The Chandelier Bracelet commands attention with its dramatic layered design. Inspired by grand ballroom chandeliers, each element drapes and catches the light beautifully. A statement piece for those who dress with intention and leave a lasting impression.',
-    shortDescription: 'Dramatic layered bracelet inspired by ballroom chandeliers.',
-    tags: ['bracelet', 'jewellery', 'statement', 'chandelier', 'dramatic'],
+      'A bold yet refined bracelet featuring five polished black clover motifs set against a warm rose-gold-toned chain. Noir adds contrast and character to both minimal outfits and evening looks.',
+    shortDescription: 'Five black clover motifs on a warm rose-gold chain.',
+    tags: ['bracelet', 'jewellery', 'clover', 'rose gold', 'noir', 'statement'],
     featured: true,
-    attributes: { finish: 'Gold Tone', gemstone: 'Crystal' },
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Rose Gold Tone',
+      material: 'Rose-gold-toned alloy',
+    },
   },
   {
-    folderPath: 'Bracelets\\The Elegant Heart',
+    folderPath: 'Ivory Clover Station Bracelet',
+    name: 'Ivory Clover Station Bracelet',
+    subcategory: 'Bracelets',
+    price: 1950,
+    comparePrice: 2150,
+    description:
+      'Five luminous ivory clover motifs are set along a delicate gold-toned chain to create an elegant everyday bracelet. Wear it individually for a refined finish or pair it with the matching Ivory Clover Station Necklace.',
+    shortDescription: 'Delicate gold-toned bracelet with five ivory pearlescent clover motifs.',
+    tags: ['bracelet', 'jewellery', 'clover', 'ivory', 'pearl', 'everyday', 'matching set'],
+    featured: false,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Ivory Pearl Clover',
+      material: 'Gold-toned alloy',
+    },
+  },
+  {
+    folderPath: 'Classic Tennis Bracelet (Thick)',
+    name: 'Classic Tennis Bracelet',
+    subcategory: 'Bracelets',
+    price: 2400,
+    comparePrice: 2800,
+    description:
+      'Timeless and beautifully balanced, the Classic Tennis Bracelet features medium-sized round stones that offer the perfect amount of brilliance. Versatile enough for everyday elegance yet sparkling enough for special occasions, it is the ideal choice for a polished, classic look.',
+    shortDescription: 'Timeless continuous-stone tennis bracelet with perfectly balanced brilliance.',
+    tags: ['bracelet', 'jewellery', 'tennis', 'classic', 'elegant', 'statement'],
+    featured: true,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Gold-toned alloy',
+    },
+  },
+  {
+    folderPath: 'Classic Tennis Bracelet (Slim)',
+    name: 'Slim Tennis Bracelet',
+    subcategory: 'Bracelets',
+    price: 2400,
+    comparePrice: 2800,
+    description:
+      'Refined and delicate, the Slim Tennis Bracelet offers the same continuous brilliance as the classic but in a sleeker, more understated silhouette. Ideal for everyday wear and for stacking with other bracelets for a curated wrist.',
+    shortDescription: 'Sleek, understated tennis bracelet perfect for stacking.',
+    tags: ['bracelet', 'jewellery', 'tennis', 'slim', 'minimal', 'stackable'],
+    featured: false,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Gold-toned alloy',
+    },
+  },
+  {
+    folderPath: 'Classic Tennis Bracelet (Bold)',
+    name: 'Bold Tennis Bracelet',
+    subcategory: 'Bracelets',
+    price: 2400,
+    comparePrice: 2800,
+    description:
+      'Bold and commanding, the Bold Tennis Bracelet features larger, more prominent stones for a dramatic statement. The same continuous setting as the classic — amplified for special occasions and evenings that call for maximum sparkle.',
+    shortDescription: 'Larger-stone tennis bracelet for a bold, commanding statement.',
+    tags: ['bracelet', 'jewellery', 'tennis', 'bold', 'statement', 'occasion'],
+    featured: false,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Gold-toned alloy',
+    },
+  },
+  {
+    folderPath: 'The Elegant Heart',
     name: 'The Elegant Heart',
     subcategory: 'Bracelets',
-    price: 2500,
-    comparePrice: 3200,
+    price: 1750,
+    comparePrice: 1950,
     description:
-      'The Elegant Heart is a romantic bracelet that speaks the language of love without saying a word. A delicate heart motif set in sparkling stones — timeless in form, effortlessly wearable. Gift it, or wear it for yourself.',
-    shortDescription: 'Romantic heart bracelet — timeless, delicate, and utterly wearable.',
-    tags: ['bracelet', 'jewellery', 'heart', 'romantic', 'gift'],
-    featured: false,
-    attributes: { finish: 'Rose Gold Tone', gemstone: 'Cubic Zirconia' },
-  },
-  {
-    folderPath: 'Bracelets\\The Tennis Bracelet',
-    name: 'The Tennis Bracelet',
-    subcategory: 'Bracelets',
-    price: 3500,
-    comparePrice: 4500,
-    description:
-      'A classic reimagined. The Tennis Bracelet features a continuous line of individually set stones that catch every angle of light. Refined, versatile, and undeniably elegant — the piece every jewellery collection deserves.',
-    shortDescription: 'Classic continuous-stone bracelet — refined elegance that catches every light.',
-    tags: ['bracelet', 'jewellery', 'tennis', 'classic', 'elegant', 'diamonds'],
+      'Timeless sparkle meets romantic detail in the Elegant Heart Tennis Bracelet. A continuous row of clear stones is finished with a delicate open-heart centrepiece, creating a refined design that feels feminine without being overly ornate. Elegant enough for celebrations yet versatile enough for everyday styling, it can be worn alone as a statement or layered with slimmer bracelets for added brilliance.',
+    shortDescription: 'Tennis bracelet with a sparkling open-heart centrepiece.',
+    tags: ['bracelet', 'jewellery', 'heart', 'romantic', 'elegant', 'gift', 'tennis'],
     featured: true,
-    attributes: { finish: 'Silver Tone', gemstone: 'Cubic Zirconia' },
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Gold-toned alloy',
+    },
   },
   {
-    folderPath: 'Bracelets\\The Tennis Bracelet (2)',
-    name: 'The Tennis Bracelet II',
+    folderPath: 'The Chandelier Bracelet',
+    name: 'Chandelier Crystal Bracelet',
     subcategory: 'Bracelets',
     price: 3500,
-    comparePrice: 4500,
+    comparePrice: 3700,
     description:
-      'The second edition of our iconic Tennis Bracelet, featuring a subtly different stone arrangement for a fresh take on a timeless silhouette. The same continuous brilliance — a distinct new character.',
-    shortDescription: 'Second edition tennis bracelet — the same brilliance, a fresh perspective.',
-    tags: ['bracelet', 'jewellery', 'tennis', 'classic', 'elegant'],
-    featured: false,
-    attributes: { finish: 'Gold Tone', gemstone: 'Cubic Zirconia' },
+      'Designed for maximum brilliance, the Chandelier Crystal Bracelet features a continuous arrangement of oval clear stones, each framed by a delicate halo of smaller sparkling accents. Its bold, symmetrical design creates an elegant statement that is especially suited to celebrations, formal events and evening wear. Wear it alone as the centrepiece of your look or pair it with minimal jewellery to let its sparkle stand out.',
+    shortDescription: 'Oval halo-set stones in a continuous, occasion-ready statement bracelet.',
+    tags: ['bracelet', 'jewellery', 'chandelier', 'halo', 'statement', 'occasion', 'formal'],
+    featured: true,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Gold-toned alloy',
+    },
   },
   {
-    folderPath: 'Bracelets\\The Tennis Bracelet (3)',
-    name: 'The Tennis Bracelet III',
+    folderPath: 'Luna Bracelet',
+    name: 'Luna Bracelet',
     subcategory: 'Bracelets',
     price: 3500,
-    comparePrice: 4500,
+    comparePrice: 3700,
     description:
-      'The third edition of the Tennis Bracelet pushes the design further — a bolder setting, a richer gleam. Each variation in this series stands on its own while sharing the unmistakable CARVE standard of brilliance.',
-    shortDescription: 'Third edition tennis bracelet — bolder setting, richer gleam.',
-    tags: ['bracelet', 'jewellery', 'tennis', 'bold', 'statement'],
-    featured: false,
-    attributes: { finish: 'Silver & Gold Tone', gemstone: 'Cubic Zirconia' },
+      'Elegant contrast defines the Luna Halo Bracelet. Warm champagne-toned round stones are framed by sparkling clear halos and alternated with delicate floral crystal links, creating a graceful statement design with a refined vintage-inspired feel. Finished with an adjustable silver-toned chain and a heart charm, Luna is ideal for evening wear, celebrations, and occasions that call for distinctive sparkle.',
+    shortDescription: 'Champagne halo stones with floral crystal links and a heart charm.',
+    tags: ['bracelet', 'jewellery', 'luna', 'halo', 'champagne', 'vintage', 'occasion'],
+    featured: true,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Silver Tone',
+      gemstone: 'Champagne Crystal',
+      material: 'Silver-toned alloy',
+    },
   },
   {
-    folderPath: 'Bracelets\\The Tulip Bracelet (Multi)',
-    name: 'The Tulip Bracelet – Multi Color',
+    folderPath: 'Tulip Bracelet (White)',
+    name: 'Tulip Bracelet – Crystal White',
     subcategory: 'Bracelets',
     price: 2200,
-    comparePrice: 2800,
+    comparePrice: 2600,
     description:
-      'Inspired by a field of tulips in full bloom, this bracelet brings together a vivid array of coloured stones in a playful yet refined composition. Light, joyful, and utterly wearable — it is spring on your wrist.',
-    shortDescription: 'Floral-inspired bracelet with vivid multi-color stones — spring on your wrist.',
-    tags: ['bracelet', 'jewellery', 'floral', 'colorful', 'tulip', 'spring'],
+      'Delicate and graceful, the Tulip Vine Bracelet features a flowing gold-toned vine design adorned with luminous oval stones and smaller leaf-shaped accents. The clear stones create a refined, versatile sparkle that complements both everyday outfits and formal occasion wear.',
+    shortDescription: 'Botanical vine bracelet with luminous clear oval stones.',
+    tags: ['bracelet', 'jewellery', 'tulip', 'vine', 'floral', 'white', 'crystal'],
     featured: false,
-    attributes: { finish: 'Gold Tone', gemstone: 'Multi-color Crystals' },
+    inStock: false,
+    stock: 0,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Gold-toned alloy',
+    },
   },
   {
-    folderPath: 'Bracelets\\The Tulip Bracelet (White)',
-    name: 'The Tulip Bracelet – White',
+    folderPath: 'Tulip Bracelet (Multi)',
+    name: 'Tulip Bracelet – Blush Multi',
     subcategory: 'Bracelets',
     price: 2200,
-    comparePrice: 2800,
+    comparePrice: 2600,
     description:
-      'The white edition of the Tulip Bracelet strips back colour to let the form speak. Pure, clean stones set in a floral-inspired silhouette — an understated piece that pairs effortlessly with everything from silk blouses to casual ensembles.',
-    shortDescription: 'White edition floral bracelet — pure, clean, and effortlessly versatile.',
-    tags: ['bracelet', 'jewellery', 'floral', 'white', 'tulip', 'minimal'],
+      'Romantic and distinctive, the Tulip Vine Bracelet features a flowing gold-toned vine decorated with oval stones in soft blush, rose and deeper mauve tones. Smaller leaf-shaped accents complete the botanical design, adding warmth and subtle colour to both day and evening looks.',
+    shortDescription: 'Botanical vine bracelet in soft blush, rose and mauve tones.',
+    tags: ['bracelet', 'jewellery', 'tulip', 'vine', 'floral', 'blush', 'multicolor'],
     featured: false,
-    attributes: { finish: 'Silver Tone', gemstone: 'White Crystal' },
+    inStock: false,
+    stock: 0,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Blush & Rose Crystal',
+      material: 'Gold-toned alloy',
+    },
   },
 
   // ── Earrings ───────────────────────────────────────────────────────────────
   {
-    folderPath: 'Earings\\Frost Studs',
-    name: 'Frost Studs',
+    folderPath: 'Elara Crystal Leaf Drop Earrings',
+    name: 'Elara Silver Crystal Leaf Drop Earrings',
     subcategory: 'Earrings',
-    price: 1800,
-    comparePrice: 2200,
+    price: 1600,
+    comparePrice: undefined,
     description:
-      'Frost Studs are the quiet confidence of a winter morning — cool, composed, and brilliant. Precisely cut stones set close to the ear in a clean, minimal silhouette. The kind of earrings you reach for without thinking, because they always work.',
-    shortDescription: 'Cool, minimal stud earrings with crisp-cut stones — effortlessly classic.',
-    tags: ['earrings', 'jewellery', 'studs', 'minimal', 'everyday', 'cool'],
-    featured: true,
-    attributes: { finish: 'Silver Tone', gemstone: 'Cubic Zirconia' },
-  },
-  {
-    folderPath: 'Earings\\Stella Earings',
-    name: 'Stella Earrings',
-    subcategory: 'Earrings',
-    price: 2000,
-    comparePrice: 2500,
-    description:
-      'Named after the stars, Stella Earrings radiate a quiet luminosity. A compact starburst of hand-set stones catches light from every direction, creating a subtle sparkle that elevates any look. From morning coffee to evening out — Stella goes everywhere.',
-    shortDescription: 'Star-inspired earrings with all-direction sparkle — for every hour of your day.',
-    tags: ['earrings', 'jewellery', 'stellar', 'star', 'sparkle', 'elegant'],
+      'Elegant drop earrings featuring layered leaf-shaped curves illuminated with fine crystal detailing. Elara offers graceful movement and sophisticated sparkle, making it ideal for formal occasions and evening wear.',
+    shortDescription: 'Layered silver crystal leaf drop earrings for formal occasions.',
+    tags: ['earrings', 'jewellery', 'drop', 'leaf', 'crystal', 'silver', 'formal'],
     featured: false,
-    attributes: { finish: 'Gold Tone', gemstone: 'Cubic Zirconia' },
+    inStock: false,
+    stock: 0,
+    attributes: {
+      finish: 'Silver Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Silver-toned alloy',
+    },
   },
 
   // ── Necklaces ──────────────────────────────────────────────────────────────
   {
-    folderPath: 'Necklace\\Valera V Necklace',
+    folderPath: 'Noir Black Clover Pendant',
+    name: 'Noir Black Clover Pendant',
+    subcategory: 'Necklaces',
+    price: 1750,
+    comparePrice: 2000,
+    description:
+      'A delicate gold-toned necklace finished with a polished black clover pendant. Minimal yet distinctive, Noir is designed for effortless everyday styling and looks especially elegant when layered with finer chains.',
+    shortDescription: 'Minimal gold-toned necklace with a polished black clover pendant.',
+    tags: ['necklace', 'jewellery', 'clover', 'noir', 'black', 'minimal', 'pendant'],
+    featured: true,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      material: 'Gold-toned alloy',
+    },
+  },
+  {
+    folderPath: 'Ivory Clover Station Necklace',
+    name: 'Ivory Clover Station Necklace',
+    subcategory: 'Necklaces',
+    price: 2050,
+    comparePrice: 2400,
+    description:
+      'A delicate gold-toned chain adorned with five luminous ivory clover motifs. Feminine and timeless, this necklace can be worn alone for understated elegance or paired with the matching bracelet for a coordinated look.',
+    shortDescription: 'Gold-toned station necklace with five ivory pearlescent clover motifs.',
+    tags: ['necklace', 'jewellery', 'clover', 'ivory', 'pearl', 'station', 'matching set'],
+    featured: true,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Ivory Pearl Clover',
+      material: 'Gold-toned alloy',
+    },
+  },
+  {
+    folderPath: 'Rosé Halo Pendant',
+    name: 'Rosé Halo Pendant',
+    subcategory: 'Necklaces',
+    price: 1999,
+    comparePrice: 2400,
+    description:
+      'A radiant round pendant featuring soft pink stones surrounded by a sparkling clear halo. Rosé brings a feminine touch of colour to occasion wear while remaining delicate enough for everyday styling.',
+    shortDescription: 'Round pink-stone pendant with a sparkling clear halo.',
+    tags: ['necklace', 'jewellery', 'pendant', 'rose', 'pink', 'halo', 'feminine'],
+    featured: true,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Pink & Clear Crystal',
+      material: 'Gold-toned alloy',
+    },
+  },
+  {
+    folderPath: 'Four-Petal Flower Pendant',
+    name: 'Four-Petal Flower Pendant',
+    subcategory: 'Necklaces',
+    price: 1999,
+    comparePrice: 2400,
+    description:
+      'Inspired by the delicate symmetry of a flower, Fleur features an openwork four-petal pendant accented with shimmering stones. An elegant piece that brings soft sparkle to both eastern and western outfits.',
+    shortDescription: 'Openwork four-petal floral pendant with shimmering stone accents.',
+    tags: ['necklace', 'jewellery', 'pendant', 'floral', 'flower', 'elegant', 'versatile'],
+    featured: false,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Gold-toned alloy',
+    },
+  },
+  {
+    folderPath: 'Blooming Heart Pendant',
+    name: 'Blooming Heart Pendant',
+    subcategory: 'Necklaces',
+    price: 1999,
+    comparePrice: 2400,
+    description:
+      'A romantic pendant combining a graceful heart outline with a sparkling floral centre. Amour is a feminine statement piece made for celebrations, thoughtful gifting, and elegant evening styling.',
+    shortDescription: 'Romantic heart pendant with a sparkling floral crystal centre.',
+    tags: ['necklace', 'jewellery', 'pendant', 'heart', 'floral', 'romantic', 'gift'],
+    featured: true,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Gold-toned alloy',
+    },
+  },
+  {
+    folderPath: 'Fortuna Crystal Clover Necklace',
+    name: 'Fortuna Silver Crystal Four-Leaf Clover Necklace',
+    subcategory: 'Necklaces',
+    price: 1899,
+    comparePrice: 2300,
+    description:
+      'A sparkling four-leaf clover formed from four crystal-covered heart shapes. Finished in a cool silver tone, Fortuna adds a polished touch of brilliance while carrying the symbolic charm of luck and positivity.',
+    shortDescription: 'Silver crystal four-leaf clover necklace — a symbol of luck and brilliance.',
+    tags: ['necklace', 'jewellery', 'clover', 'silver', 'crystal', 'four-leaf', 'luck'],
+    featured: false,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Silver Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Silver-toned alloy',
+    },
+  },
+  {
+    folderPath: 'Aurelia Crystal Cluster Necklace',
+    name: 'Aurelia Crystal Cluster Necklace',
+    subcategory: 'Necklaces',
+    price: 1999,
+    comparePrice: 2400,
+    description:
+      'A delicate round pendant created from a brilliant arrangement of clustered stones. Aurelia offers refined sparkle in a compact silhouette, making it ideal for everyday elegance, dinners, and gifting.',
+    shortDescription: 'Round crystal cluster pendant with refined, compact sparkle.',
+    tags: ['necklace', 'jewellery', 'pendant', 'cluster', 'crystal', 'everyday', 'gift'],
+    featured: false,
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Gold-toned alloy',
+    },
+  },
+  {
+    folderPath: 'Valera V Necklace',
     name: 'Valera V Necklace',
     subcategory: 'Necklaces',
-    price: 3000,
-    comparePrice: 3800,
+    price: 1999,
+    comparePrice: 2400,
     description:
-      'The Valera V Necklace is architectural elegance at its finest. A precisely formed V-shaped pendant of stone-set metal rests at the décolletage, framing the neckline with intention. Minimal in form, maximal in impact — the kind of necklace that changes an outfit.',
-    shortDescription: 'Stone-set V-pendant necklace — architectural elegance that frames the neckline.',
-    tags: ['necklace', 'jewellery', 'pendant', 'V-shape', 'elegant', 'statement'],
+      'Bold in form yet refined in detail, the Valera V Necklace features a sculptural gold-toned V pendant accented with an asymmetrical arrangement of clear stones. Suspended from a polished chain, its modern silhouette adds a confident statement to both minimal everyday looks and elevated evening styling. Wear it alone as a focal piece or layer it with a shorter, delicate chain for a contemporary finish.',
+    shortDescription: 'Sculptural gold V-pendant with asymmetrical clear-stone detailing.',
+    tags: ['necklace', 'jewellery', 'pendant', 'V-shape', 'statement', 'modern', 'elegant'],
     featured: true,
-    attributes: { finish: 'Gold Tone', gemstone: 'Cubic Zirconia', length: '45 cm chain' },
-  },
-
-  // ── Rings ──────────────────────────────────────────────────────────────────
-  {
-    folderPath: 'Rings\\Product 9',
-    name: 'Carve Ring No. 9',
-    subcategory: 'Rings',
-    price: 2500,
-    comparePrice: undefined,
-    description:
-      'A statement ring with unmistakable presence. Precisely set stones arranged in a bold, wearable composition that sits beautifully on the hand. CARVE Ring No. 9 is for those who believe accessories should make a point.',
-    shortDescription: 'Bold statement ring with precisely set stones — made to be noticed.',
-    tags: ['ring', 'jewellery', 'statement', 'bold'],
-    featured: false,
-    attributes: { finish: 'Gold Tone', gemstone: 'Cubic Zirconia' },
+    inStock: true,
+    stock: 20,
+    attributes: {
+      finish: 'Gold Tone',
+      gemstone: 'Clear Crystal',
+      material: 'Gold-toned alloy',
+    },
   },
 ]
 
@@ -212,9 +432,12 @@ async function uploadProductImages(def: ProductDef): Promise<string[]> {
     files = readdirSync(folderPath)
       .filter(f => /\.(png|jpg|jpeg|webp)$/i.test(f))
       .sort((a, b) => {
-        const numA = parseInt(a)
-        const numB = parseInt(b)
-        return numA - numB
+        // Cover image (4x5) always first
+        const aIs4x5 = a.toLowerCase().includes('4x5')
+        const bIs4x5 = b.toLowerCase().includes('4x5')
+        if (aIs4x5) return -1
+        if (bIs4x5) return 1
+        return parseInt(a) - parseInt(b)
       })
   } catch {
     console.warn(`  ⚠ Could not read folder: ${folderPath}`)
@@ -224,10 +447,10 @@ async function uploadProductImages(def: ProductDef): Promise<string[]> {
   const productSlug = slugify(def.name)
   const urls: string[] = []
 
-  for (const file of files) {
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i]
     const localPath = resolve(folderPath, file)
-    const imageIndex = files.indexOf(file) + 1
-    const publicId = `carve/products/${productSlug}-${imageIndex}`
+    const publicId = `carve/products/${productSlug}-${i + 1}`
     try {
       const result = await cloudinary.uploader.upload(localPath, {
         public_id: publicId,
@@ -249,7 +472,7 @@ async function uploadProductImages(def: ProductDef): Promise<string[]> {
 
 async function main() {
   console.log('\n═══════════════════════════════════════════')
-  console.log('  CARVE — Product Seed Script')
+  console.log('  CARVE — Product Seed Script (Full Reset)')
   console.log('═══════════════════════════════════════════\n')
 
   const { connectDB } = await import('../lib/mongodb')
@@ -260,13 +483,16 @@ async function main() {
   await connectDB()
   console.log('Connected.\n')
 
+  // Hard reset — delete all existing products
+  const deleted = await Product.deleteMany({})
+  console.log(`Deleted ${deleted.deletedCount} existing products.\n`)
+
   let created = 0
   let skipped = 0
 
   for (const def of PRODUCT_DEFS) {
     console.log(`\nProcessing: ${def.name}`)
 
-    // Upload images
     const images = await uploadProductImages(def)
     if (images.length === 0) {
       console.warn(`  ⚠ No images uploaded — skipping product.`)
@@ -274,13 +500,7 @@ async function main() {
       continue
     }
 
-    // Build slug
-    let baseSlug = makeSlug(def.name)
-    let slug = baseSlug
-    let count = 1
-    while (await Product.findOne({ slug })) {
-      slug = `${baseSlug}-${count++}`
-    }
+    const slug = makeSlug(def.name)
 
     const productData = {
       name: def.name,
@@ -292,8 +512,8 @@ async function main() {
       description: def.description,
       shortDescription: def.shortDescription,
       images,
-      stock: 20,
-      inStock: true,
+      stock: def.stock,
+      inStock: def.inStock,
       featured: def.featured,
       tags: def.tags,
       attributes: def.attributes,
