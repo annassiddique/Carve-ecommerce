@@ -18,13 +18,29 @@ async function getProduct(slug: string): Promise<IProduct | null> {
 }
 
 async function getPairedProducts(product: IProduct): Promise<PairedProduct[]> {
-  if (!product.pairsWith?.length) return []
-  const slugs = product.pairsWith.map((p) => p.slug)
-  const products = await Product.find({ slug: { $in: slugs } }).lean()
-  return products.map((p) => {
-    const pw = product.pairsWith!.find((x) => x.slug === (p as IProduct).slug)!
-    return { ...(JSON.parse(JSON.stringify(p)) as IProduct), bundlePrice: pw.bundlePrice }
-  })
+  const results: PairedProduct[] = []
+  const seenSlugs = new Set<string>()
+
+  // Direct pairings — this product explicitly lists pairs
+  if (product.pairsWith?.length) {
+    const slugs = product.pairsWith.map((p) => p.slug)
+    const direct = await Product.find({ slug: { $in: slugs } }).lean() as IProduct[]
+    for (const p of direct) {
+      const pw = product.pairsWith.find((x) => x.slug === p.slug)!
+      results.push({ ...(JSON.parse(JSON.stringify(p)) as IProduct), bundlePrice: pw.bundlePrice })
+      seenSlugs.add(p.slug)
+    }
+  }
+
+  // Reverse pairings — other products that list this product as their pair
+  const reverse = await Product.find({ 'pairsWith.slug': product.slug }).lean() as IProduct[]
+  for (const p of reverse) {
+    if (seenSlugs.has(p.slug)) continue
+    const pw = p.pairsWith!.find((x) => x.slug === product.slug)!
+    results.push({ ...(JSON.parse(JSON.stringify(p)) as IProduct), bundlePrice: pw.bundlePrice })
+  }
+
+  return results
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {

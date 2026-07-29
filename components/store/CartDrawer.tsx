@@ -8,7 +8,8 @@ import { formatPrice } from '@/lib/utils'
 import Button from '@/components/ui/Button'
 
 export default function CartDrawer() {
-  const { isOpen, closeCart, items, updateQuantity, removeItem, subtotal } = useCartStore()
+  const { isOpen, closeCart, items, updateQuantity, removeItem, subtotal, activeBundleSavings } = useCartStore()
+  const bundleSavings = activeBundleSavings()
 
   return (
     <AnimatePresence>
@@ -118,6 +119,12 @@ export default function CartDrawer() {
             {/* Footer */}
             {items.length > 0 && (
               <div className="px-6 py-5 border-t border-carve-champagne bg-carve-smoke">
+                {bundleSavings > 0 && (
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-body text-xs text-carve-gold tracking-wide">Bundle Savings</span>
+                    <span className="font-body text-sm text-carve-gold font-medium">-{formatPrice(bundleSavings)}</span>
+                  </div>
+                )}
                 <div className="flex justify-between items-center mb-4">
                   <span className="font-body text-sm text-carve-mink uppercase tracking-wider">Subtotal</span>
                   <span className="font-display text-xl text-carve-charcoal font-medium">

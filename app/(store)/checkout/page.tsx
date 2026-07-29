@@ -19,7 +19,7 @@ interface CustomerForm {
 }
 
 export default function CheckoutPage() {
-  const { items, subtotal, clearCart } = useCartStore()
+  const { items, subtotal, activeBundleSavings, clearCart } = useCartStore()
   const [step, setStep] = useState<Step>('form')
   const [paymentMethod, setPaymentMethod] = useState<'cod' | 'easypaisa'>('cod')
   const [form, setForm] = useState<CustomerForm>({ name: '', email: '', phone: '', address: '', city: '' })
@@ -28,6 +28,7 @@ export default function CheckoutPage() {
   const [screenshotUploading, setScreenshotUploading] = useState(false)
   const [screenshotUrl, setScreenshotUrl] = useState('')
 
+  const bundleSavings = activeBundleSavings()
   const shippingFee = subtotal() >= 3000 ? 0 : 200
   const total = subtotal() + shippingFee
 
@@ -170,7 +171,7 @@ export default function CheckoutPage() {
 
             {/* Order summary */}
             <div className="lg:col-span-2">
-              <OrderSummary items={items} subtotal={subtotal()} shippingFee={shippingFee} total={total} />
+              <OrderSummary items={items} subtotal={subtotal()} bundleSavings={bundleSavings} shippingFee={shippingFee} total={total} />
             </div>
           </div>
         )}
@@ -290,7 +291,7 @@ export default function CheckoutPage() {
             </motion.div>
 
             <div className="lg:col-span-2">
-              <OrderSummary items={items} subtotal={subtotal()} shippingFee={shippingFee} total={total} />
+              <OrderSummary items={items} subtotal={subtotal()} bundleSavings={bundleSavings} shippingFee={shippingFee} total={total} />
             </div>
           </div>
         )}
@@ -334,37 +335,56 @@ export default function CheckoutPage() {
 function OrderSummary({
   items,
   subtotal,
+  bundleSavings = 0,
   shippingFee,
   total,
 }: {
   items: { name: string; image: string; price: number; quantity: number }[]
   subtotal: number
+  bundleSavings?: number
   shippingFee: number
   total: number
 }) {
+  const itemsTotal = items.reduce((sum, i) => sum + i.price * i.quantity, 0)
+
   return (
     <div className="bg-carve-smoke border border-carve-champagne rounded-sm p-5">
       <h2 className="font-display text-xl text-carve-charcoal mb-5">Order Summary</h2>
       <div className="space-y-3 mb-5">
         {items.map((item, i) => (
           <div key={i} className="flex items-center gap-3">
-            <div className="relative w-12 h-12 rounded-sm overflow-hidden bg-carve-champagne flex-shrink-0">
+            <div className="relative w-12 h-12 rounded-sm overflow-hidden bg-carve-champagne shrink-0">
               <Image src={item.image} alt={item.name} fill className="object-cover" sizes="48px" />
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-body text-xs text-carve-charcoal line-clamp-2">{item.name}</p>
               <p className="font-body text-xs text-carve-mink">x{item.quantity}</p>
             </div>
-            <span className="font-body text-xs font-medium text-carve-charcoal flex-shrink-0">
+            <span className="font-body text-xs font-medium text-carve-charcoal shrink-0">
               {formatPrice(item.price * item.quantity)}
             </span>
           </div>
         ))}
       </div>
       <div className="border-t border-carve-champagne pt-4 space-y-2">
-        <div className="flex justify-between font-body text-xs text-carve-mink">
-          <span>Subtotal</span><span>{formatPrice(subtotal)}</span>
-        </div>
+        {bundleSavings > 0 && (
+          <>
+            <div className="flex justify-between font-body text-xs text-carve-mink">
+              <span>Items Total</span><span>{formatPrice(itemsTotal)}</span>
+            </div>
+            <div className="flex justify-between font-body text-xs text-carve-gold">
+              <span>Bundle Savings</span><span>-{formatPrice(bundleSavings)}</span>
+            </div>
+            <div className="flex justify-between font-body text-xs text-carve-mink">
+              <span>Subtotal</span><span>{formatPrice(subtotal)}</span>
+            </div>
+          </>
+        )}
+        {bundleSavings === 0 && (
+          <div className="flex justify-between font-body text-xs text-carve-mink">
+            <span>Subtotal</span><span>{formatPrice(subtotal)}</span>
+          </div>
+        )}
         <div className="flex justify-between font-body text-xs text-carve-mink">
           <span>Shipping</span><span>{shippingFee === 0 ? 'Free' : formatPrice(shippingFee)}</span>
         </div>

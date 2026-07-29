@@ -125,7 +125,7 @@ export default function ProductDetailClient({
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [qty, setQty] = useState(1)
   const [added, setAdded] = useState(false)
-  const { addToCart } = useCart()
+  const { addToCart, addBundleDiscount } = useCart()
   const router = useRouter()
 
   const VISIBLE_THUMBS = 5
@@ -150,6 +150,8 @@ export default function ProductDetailClient({
   const handleAddBoth = (paired: PairedProduct) => {
     addToCart({ productId: product._id, name: product.name, image: images[0] || '', price: product.price, quantity: 1, slug: product.slug })
     addToCart({ productId: paired._id, name: paired.name, image: paired.images[0] || '', price: paired.price, quantity: 1, slug: paired.slug })
+    const discount = (product.price + paired.price) - paired.bundlePrice
+    addBundleDiscount(product.slug, paired.slug, discount)
   }
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '923000000000'

@@ -79,6 +79,12 @@ export interface CartItem {
   slug: string
 }
 
+export interface BundleDiscount {
+  slugA: string
+  slugB: string
+  discount: number
+}
+
 export type ScentFamily = 'Floral' | 'Woody' | 'Oriental' | 'Fresh' | 'Gourmand' | 'Citrus' | 'Aquatic'
 export type Material = 'Gold Plated' | 'Silver' | 'Rose Gold'
 export type JewelleryFinish = 'Matte' | 'Shiny' | 'Textured'
