@@ -92,6 +92,7 @@ const defaultForm: ProductFormData = {
   tags: [],
   attributes: {},
   moodboard: { theme: '', description: '', images: [], keywords: [] },
+  pairsWith: [],
 }
 
 interface ProductFormProps {
@@ -118,6 +119,7 @@ export default function ProductForm({ initialData }: ProductFormProps) {
           tags: initialData.tags || [],
           attributes: initialData.attributes || {},
           moodboard: initialData.moodboard || defaultForm.moodboard,
+          pairsWith: initialData.pairsWith || [],
         }
       : defaultForm
   )
@@ -446,6 +448,67 @@ export default function ProductForm({ initialData }: ProductFormProps) {
           />
         </FormField>
       </Section>
+
+      {/* Section 6: Pairs With (jewellery only) */}
+      {form.category === 'jewellery' && (
+        <Section title="Pairs With (Bundle Pricing)">
+          <p className="font-body text-xs text-carve-mink -mt-2">
+            Link a complementary jewellery piece and set a discounted bundle price shown on the product page.
+          </p>
+
+          {(form.pairsWith || []).map((pair, idx) => (
+            <div key={idx} className="flex gap-3 items-end">
+              <div className="flex-1">
+                <label className="block font-body text-xs tracking-widest uppercase text-carve-mink mb-2">
+                  Paired Product Slug
+                </label>
+                <input
+                  value={pair.slug}
+                  onChange={(e) => {
+                    const updated = [...(form.pairsWith || [])]
+                    updated[idx] = { ...updated[idx], slug: e.target.value }
+                    set('pairsWith', updated)
+                  }}
+                  placeholder="e.g. ivory-clover-station-bracelet"
+                  className={inputClass}
+                />
+              </div>
+              <div className="w-36">
+                <label className="block font-body text-xs tracking-widest uppercase text-carve-mink mb-2">
+                  Bundle Price (PKR)
+                </label>
+                <input
+                  type="number"
+                  value={pair.bundlePrice || ''}
+                  onChange={(e) => {
+                    const updated = [...(form.pairsWith || [])]
+                    updated[idx] = { ...updated[idx], bundlePrice: Number(e.target.value) }
+                    set('pairsWith', updated)
+                  }}
+                  placeholder="3699"
+                  className={inputClass}
+                />
+              </div>
+              <button
+                type="button"
+                onClick={() => set('pairsWith', (form.pairsWith || []).filter((_, i) => i !== idx))}
+                className="shrink-0 px-3 py-2.5 text-xs font-body text-red-500 border border-red-200 rounded-sm hover:bg-red-50 transition-colors"
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => set('pairsWith', [...(form.pairsWith || []), { slug: '', bundlePrice: 0 }])}
+          >
+            + Add Pairing
+          </Button>
+        </Section>
+      )}
 
       {/* Save */}
       <div className="flex gap-3 pb-8">

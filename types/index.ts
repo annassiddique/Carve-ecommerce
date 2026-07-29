@@ -34,6 +34,7 @@ export interface IProduct {
   tags: string[]
   attributes: ProductAttributes
   moodboard: ProductMoodboard
+  pairsWith?: { slug: string; bundlePrice: number }[]
   createdAt: string
   updatedAt: string
 }

@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   title: 'CARVE — Scent. Shine. Presence.',
   description: 'Luxury perfumes and artificial jewellery. Carve your presence.',
   keywords: ['perfume', 'jewellery', 'luxury', 'Pakistan', 'affordable luxury'],
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
 }
 
 export default function RootLayout({

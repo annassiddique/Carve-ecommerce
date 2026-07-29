@@ -20,7 +20,7 @@ export default function Footer() {
             </p>
             {/* Instagram */}
             <a
-              href="https://www.instagram.com/carve.pk"
+              href="https://www.instagram.com/wecarveit"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-body text-xs tracking-widest uppercase text-carve-gold hover:text-carve-champagne transition-colors duration-200"
@@ -107,9 +107,9 @@ export default function Footer() {
           <p className="font-body text-xs text-carve-champagne/30 tracking-wide">
             © {new Date().getFullYear()} CARVE. All rights reserved. Pakistan.
           </p>
-          <p className="font-body text-xs text-carve-champagne/30">
+          {/* <p className="font-body text-xs text-carve-champagne/30">
             Cash on Delivery · EasyPaisa
-          </p>
+          </p> */}
         </div>
       </div>
     </footer>

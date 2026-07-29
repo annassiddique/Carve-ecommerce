@@ -9,6 +9,7 @@ import {
   MessageCircle, ShieldCheck, RotateCcw, BadgeCheck, Sparkles,
 } from 'lucide-react'
 import { IProduct } from '@/types'
+import { PairedProduct } from './page'
 import { formatPrice } from '@/lib/utils'
 import MoodBoard from '@/components/store/MoodBoard'
 import RelatedProducts from '@/components/store/RelatedProducts'
@@ -111,7 +112,13 @@ function TrustBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
 }
 
 // ─── Main component ────────────────────────────────────────────────────────────
-export default function ProductDetailClient({ product }: { product: IProduct }) {
+export default function ProductDetailClient({
+  product,
+  pairedProducts = [],
+}: {
+  product: IProduct
+  pairedProducts?: PairedProduct[]
+}) {
   const images = product.images.filter(Boolean)
   const [activeImg, setActiveImg] = useState(0)
   const [thumbOffset, setThumbOffset] = useState(0)
@@ -138,6 +145,11 @@ export default function ProductDetailClient({ product }: { product: IProduct }) 
   const handleBuyNow = () => {
     addToCart({ productId: product._id, name: product.name, image: images[0] || '', price: product.price, quantity: qty, slug: product.slug })
     router.push('/checkout')
+  }
+
+  const handleAddBoth = (paired: PairedProduct) => {
+    addToCart({ productId: product._id, name: product.name, image: images[0] || '', price: product.price, quantity: 1, slug: product.slug })
+    addToCart({ productId: paired._id, name: paired.name, image: paired.images[0] || '', price: paired.price, quantity: 1, slug: paired.slug })
   }
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '923000000000'
@@ -382,7 +394,7 @@ export default function ProductDetailClient({ product }: { product: IProduct }) 
               The Details
             </h2>
 
-            <div className="grid md:grid-cols-[1fr_300px] gap-10">
+            <div className="max-w-2xl">
               {/* Left — full description + attributes */}
               <div>
                 <p className="font-body text-sm text-carve-mink leading-relaxed mb-6">
@@ -453,8 +465,8 @@ export default function ProductDetailClient({ product }: { product: IProduct }) 
                 )}
               </div>
 
-              {/* Right — Gift packaging card */}
-              <div className="bg-carve-smoke rounded-xl p-6 flex flex-col items-center text-center border border-carve-champagne/60 self-start">
+              {/* Gift packaging card — hidden for now */}
+              {/* <div className="bg-carve-smoke rounded-xl p-6 flex flex-col items-center text-center border border-carve-champagne/60 self-start">
                 <div className="w-16 h-16 bg-carve-forest rounded-full flex items-center justify-center mb-4">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M20 12v10H4V12" />
@@ -468,10 +480,95 @@ export default function ProductDetailClient({ product }: { product: IProduct }) 
                 <p className="font-body text-xs text-carve-mink leading-relaxed">
                   Every CARVE order arrives in our signature gift packaging — ready to impress from the moment it's unwrapped. Perfect for gifting or treating yourself.
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
+
+        {/* Complete the Look */}
+        {pairedProducts.length > 0 && (
+          <div className="border-t border-carve-champagne bg-carve-ivory">
+            <div className="max-w-7xl mx-auto px-4 md:px-6 py-12">
+              <p className="font-body text-xs tracking-[0.3em] uppercase text-carve-mink mb-1">Curated for you</p>
+              <h2 className="font-display text-2xl md:text-3xl text-carve-charcoal font-light mb-8">
+                Complete the Look
+              </h2>
+
+              {pairedProducts.map((paired) => {
+                const separateTotal = product.price + paired.price
+                const savings = separateTotal - paired.bundlePrice
+                const pairedImage = paired.images[0] || ''
+
+                return (
+                  <div key={paired.slug}>
+                    {/* Product cards */}
+                    <div className="flex items-center gap-3 md:gap-6 mb-6">
+                      {/* This product */}
+                      <div className="flex-1 border border-carve-champagne rounded-xl p-4 text-center bg-white">
+                        <div className="relative aspect-square w-20 md:w-28 mx-auto mb-3 rounded-lg overflow-hidden">
+                          <Image
+                            src={images[0] || ''}
+                            alt={product.name}
+                            fill
+                            className="object-cover"
+                            sizes="112px"
+                          />
+                        </div>
+                        <p className="font-display text-xs md:text-sm text-carve-charcoal leading-tight mb-1 line-clamp-2">
+                          {product.name}
+                        </p>
+                        <p className="font-body text-xs text-carve-mink">{formatPrice(product.price)}</p>
+                      </div>
+
+                      {/* Plus */}
+                      <div className="shrink-0 w-7 h-7 rounded-full border border-carve-gold flex items-center justify-center">
+                        <span className="text-carve-gold text-base leading-none">+</span>
+                      </div>
+
+                      {/* Paired product */}
+                      <Link href={`/product/${paired.slug}`} className="flex-1 border border-carve-champagne rounded-xl p-4 text-center bg-white hover:border-carve-gold transition-colors group">
+                        <div className="relative aspect-square w-20 md:w-28 mx-auto mb-3 rounded-lg overflow-hidden">
+                          <Image
+                            src={pairedImage}
+                            alt={paired.name}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            sizes="112px"
+                          />
+                        </div>
+                        <p className="font-display text-xs md:text-sm text-carve-charcoal leading-tight mb-1 line-clamp-2 group-hover:text-carve-forest transition-colors">
+                          {paired.name}
+                        </p>
+                        <p className="font-body text-xs text-carve-mink">{formatPrice(paired.price)}</p>
+                      </Link>
+                    </div>
+
+                    {/* Bundle pricing */}
+                    <div className="border border-carve-gold/30 bg-carve-gold/5 rounded-xl p-5 mb-4 text-center">
+                      <p className="font-body text-xs text-carve-mink mb-1">
+                        Individually: <span className="line-through">{formatPrice(separateTotal)}</span>
+                      </p>
+                      <p className="font-display text-xl md:text-2xl text-carve-forest mb-1">
+                        Bundle: {formatPrice(paired.bundlePrice)}
+                      </p>
+                      <p className="font-body text-xs tracking-widest uppercase text-carve-gold">
+                        Save {formatPrice(savings)} when bought together
+                      </p>
+                    </div>
+
+                    {/* Add Both CTA */}
+                    <button
+                      onClick={() => handleAddBoth(paired)}
+                      className="w-full py-3.5 font-body text-xs tracking-widest uppercase font-medium bg-carve-forest text-carve-ivory hover:bg-carve-charcoal transition-colors duration-200 rounded-lg"
+                    >
+                      Add Both to Cart
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Moodboard */}
         <MoodBoard product={product} />

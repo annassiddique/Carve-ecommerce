@@ -31,6 +31,7 @@ export interface IProduct extends Document {
     images: string[]
     keywords: string[]
   }
+  pairsWith?: { slug: string; bundlePrice: number }[]
   createdAt: Date
   updatedAt: Date
 }
@@ -67,6 +68,10 @@ const ProductSchema = new Schema<IProduct>(
       images: [{ type: String }],
       keywords: [{ type: String }],
     },
+    pairsWith: [{
+      slug: { type: String },
+      bundlePrice: { type: Number },
+    }],
   },
   { timestamps: true }
 )

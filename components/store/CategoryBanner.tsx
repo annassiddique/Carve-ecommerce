@@ -9,22 +9,25 @@ const categories = [
     label: 'Perfumes',
     tagline: 'Scents that linger in memory',
     href: '/shop/perfumes',
-    image: '/images/perfume-1.jpg',
+    image: '/images/banner/without%20Text%20perfume%20Banner%20main.png',
     overlay: 'from-carve-charcoal/70',
+    objectPosition: '75% center',
   },
   {
-    label: 'Jewelry',
+    label: 'Jewellery',
     tagline: 'Adorn yourself in gold',
     href: '/shop/jewellery',
-    image: '/images/jewelry.jpg',
+    image: '/images/banner/without%20Text%20Jewelry%20Banner%20main.png',
     overlay: 'from-carve-forest/80',
+    objectPosition: 'right center',
   },
   {
     label: 'Gift Sets',
     tagline: 'Give something unforgettable',
     href: '/collections',
-    image: '/images/img6.jpg',
+    image: '/images/banner/without%20text%20gift%20set%20category%20banner.png',
     overlay: 'from-carve-charcoal/65',
+    objectPosition: '30% center',
   },
 ]
 
@@ -49,6 +52,7 @@ function CategoryCard({ cat, index }: { cat: typeof categories[0]; index: number
             alt={cat.label}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+            style={{ objectPosition: cat.objectPosition }}
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </motion.div>
@@ -95,7 +99,6 @@ export default function CategoryBanner() {
           </h2>
         </motion.div>
 
-        {/* 2 large + 1 wide below on mobile; 3-col on desktop */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {categories.map((cat, i) => (
             <CategoryCard key={cat.label} cat={cat} index={i} />
