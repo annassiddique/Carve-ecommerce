@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { useFilterStore } from '@/store/filterStore'
 import Button from '@/components/ui/Button'
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
 const scentFamilies = ['Floral', 'Woody', 'Oriental', 'Fresh', 'Gourmand', 'Citrus', 'Aquatic']
-const perfumeSubcategories = ['For Him', 'For Her', 'Unisex', 'Bestsellers']
+const perfumeSubcategories = ['For Him', 'For Her', 'Unisex', 'Oud Collection']
 const jewellerySubcategories = ['Earrings', 'Necklaces', 'Rings', 'Bracelets', 'Sets']
 const finishOptions = ['Gold Tone', 'Silver Tone', 'Rose Gold Tone']
 
@@ -36,25 +36,41 @@ function FilterContent({ onClose }: { onClose?: () => void }) {
   const store = useFilterStore()
   const router = useRouter()
   const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   const activeCategory =
     pathname.includes('/shop/perfumes') ? 'perfume' :
     pathname.includes('/shop/jewellery') ? 'jewellery' :
     'all'
 
+  // Subcategory truth comes from the URL — not the store
+  const activeSubcategory = searchParams.get('subcategory') ?? ''
+
   const handleCategoryClick = (cat: string) => {
     store.setCategory(cat)
-    store.setSubcategory('')
+    // Navigate to the category route, clearing any subcategory
     router.push(CATEGORY_ROUTES[cat])
     onClose?.()
   }
 
+  // Subcategory clicks update the URL (router.replace so no extra history entry)
   const toggleSubcategory = (sub: string) => {
-    store.setSubcategory(store.subcategory === sub ? '' : sub)
+    const next = activeSubcategory === sub ? '' : sub
+    const params = new URLSearchParams(searchParams.toString())
+    if (next) {
+      params.set('subcategory', next)
+    } else {
+      params.delete('subcategory')
+    }
+    const query = params.toString()
+    router.replace(`${pathname}${query ? `?${query}` : ''}`)
+    onClose?.()
   }
 
-  const toggleFinish = (fin: string) => {
-    store.setMaterial(store.material === fin ? '' : fin)
+  const handleClearAll = () => {
+    store.reset()
+    // Also clear subcategory from URL
+    router.replace(pathname)
   }
 
   const isPerfume = activeCategory === 'perfume'
@@ -102,7 +118,7 @@ function FilterContent({ onClose }: { onClose?: () => void }) {
                   key={sub}
                   onClick={() => toggleSubcategory(sub)}
                   className={`px-3 py-1 text-xs font-body border rounded-sm transition-all ${
-                    store.subcategory === sub
+                    activeSubcategory === sub
                       ? 'bg-carve-forest text-carve-ivory border-carve-forest'
                       : 'border-carve-champagne text-carve-mink hover:border-carve-gold hover:text-carve-gold'
                   }`}
@@ -116,14 +132,14 @@ function FilterContent({ onClose }: { onClose?: () => void }) {
 
         {/* Jewellery subcategories */}
         {(isJewellery || isAll) && (
-          <FilterSection title={isJewellery ? 'Category' : 'Jewelry Type'}>
+          <FilterSection title={isJewellery ? 'Category' : 'Jewellery Type'}>
             <div className="flex flex-wrap gap-2">
               {jewellerySubcategories.map((sub) => (
                 <button
                   key={sub}
                   onClick={() => toggleSubcategory(sub)}
                   className={`px-3 py-1 text-xs font-body border rounded-sm transition-all ${
-                    store.subcategory === sub
+                    activeSubcategory === sub
                       ? 'bg-carve-forest text-carve-ivory border-carve-forest'
                       : 'border-carve-champagne text-carve-mink hover:border-carve-gold hover:text-carve-gold'
                   }`}
@@ -173,7 +189,7 @@ function FilterContent({ onClose }: { onClose?: () => void }) {
               {finishOptions.map((fin) => (
                 <button
                   key={fin}
-                  onClick={() => toggleFinish(fin)}
+                  onClick={() => store.setMaterial(store.material === fin ? '' : fin)}
                   className={`px-3 py-1 text-xs font-body border rounded-sm transition-all ${
                     store.material === fin
                       ? 'bg-carve-forest text-carve-ivory border-carve-forest'
@@ -189,7 +205,7 @@ function FilterContent({ onClose }: { onClose?: () => void }) {
       </div>
 
       <div className="px-5 pb-5 pt-3 border-t border-carve-champagne">
-        <Button variant="outline" size="sm" className="w-full" onClick={store.reset}>
+        <Button variant="outline" size="sm" className="w-full" onClick={handleClearAll}>
           Clear Filters
         </Button>
       </div>

@@ -257,6 +257,155 @@ function adminNotificationHtml(data: OrderEmailData): string {
 </html>`
 }
 
+// ─── Status update email (customer only) ─────────────────────────────────────
+
+interface StatusEmailData {
+  orderNumber: string
+  customerName: string
+  customerEmail: string
+  total: number
+  orderStatus?: string
+  paymentStatus?: string
+  paymentMethod?: 'cod' | 'easypaisa'
+}
+
+const STATUS_COPY: Record<string, { subject: string; heading: string; body: string; emoji: string }> = {
+  confirmed: {
+    emoji: '✓',
+    subject: 'Order Confirmed',
+    heading: 'Your order is confirmed.',
+    body: 'Great news — your order has been confirmed and our team is preparing it for dispatch. You\'ll hear from us again once it\'s on its way.',
+  },
+  processing: {
+    emoji: '📦',
+    subject: 'Order Being Packed',
+    heading: 'We\'re packing your order.',
+    body: 'Your order is currently being packed with care. We\'ll notify you as soon as it\'s handed over to the courier.',
+  },
+  shipped: {
+    emoji: '🚚',
+    subject: 'Order Shipped',
+    heading: 'Your order is on its way.',
+    body: 'Your CARVE order has been dispatched and is on its way to you. Expect delivery within 2–4 working days depending on your location.',
+  },
+  delivered: {
+    emoji: '🎁',
+    subject: 'Order Delivered',
+    heading: 'Your order has been delivered.',
+    body: 'We hope you love what you\'ve chosen. If you have any questions or concerns, please don\'t hesitate to reach out. Thank you for choosing CARVE.',
+  },
+  cancelled: {
+    emoji: '✕',
+    subject: 'Order Cancelled',
+    heading: 'Your order has been cancelled.',
+    body: 'Your order has been cancelled. If you believe this is a mistake or have any questions, please contact us immediately and we\'ll be happy to help.',
+  },
+  payment_approved: {
+    emoji: '✓',
+    subject: 'Payment Verified',
+    heading: 'Payment verified.',
+    body: 'Your EasyPaisa payment has been verified and your order is now confirmed. We\'ll get it packed and on its way shortly.',
+  },
+  payment_rejected: {
+    emoji: '✕',
+    subject: 'Payment Could Not Be Verified',
+    heading: 'We couldn\'t verify your payment.',
+    body: 'Unfortunately we were unable to verify your EasyPaisa payment. Please contact us on WhatsApp with your payment screenshot and order number and we\'ll resolve this as quickly as possible.',
+  },
+}
+
+function statusUpdateHtml(data: StatusEmailData, key: string): string {
+  const copy = STATUS_COPY[key]
+  if (!copy) return ''
+
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${copy.subject}</title></head>
+<body style="margin:0;padding:0;background:#f5f0eb;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f0eb;padding:40px 0;">
+    <tr><td align="center">
+      <table width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:4px;overflow:hidden;max-width:560px;">
+
+        <!-- Header -->
+        <tr>
+          <td style="background:#1a2e1a;padding:32px 40px;text-align:center;">
+            <p style="margin:0 0 4px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#b89956;">Carve Your Presence</p>
+            <h1 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:26px;font-weight:300;color:#e8dfd4;letter-spacing:0.05em;">CARVE</h1>
+          </td>
+        </tr>
+        <tr><td style="height:3px;background:linear-gradient(90deg,#1a2e1a,#b89956,#1a2e1a);"></td></tr>
+
+        <!-- Body -->
+        <tr>
+          <td style="padding:40px;">
+
+            <!-- Status badge -->
+            <div style="text-align:center;margin-bottom:32px;">
+              <div style="display:inline-block;background:#f5f0eb;border:1px solid #e8dfd4;border-radius:50%;width:56px;height:56px;line-height:56px;font-size:22px;text-align:center;">
+                ${copy.emoji}
+              </div>
+            </div>
+
+            <p style="margin:0 0 6px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#b89956;text-align:center;">${copy.subject}</p>
+            <h2 style="margin:0 0 20px;font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:400;color:#1a2e1a;text-align:center;">${copy.heading}</h2>
+
+            <p style="margin:0 0 28px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.75;color:#8b7355;">
+              Hi ${data.customerName},<br/><br/>
+              ${copy.body}
+            </p>
+
+            <!-- Order ref box -->
+            <div style="background:#f5f0eb;border-left:3px solid #b89956;padding:14px 20px;margin-bottom:32px;">
+              <p style="margin:0 0 2px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#8b7355;">Order Reference</p>
+              <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:17px;color:#1a2e1a;">${data.orderNumber} &nbsp;·&nbsp; ${formatPrice(data.total)}</p>
+            </div>
+
+            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.7;color:#8b7355;">
+              Questions? Reply to this email or reach us on WhatsApp.
+            </p>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background:#1a2e1a;padding:22px 40px;text-align:center;">
+            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#b89956;">CARVE · Affordable Luxury · Pakistan</p>
+          </td>
+        </tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+}
+
+export async function sendStatusEmail(data: StatusEmailData) {
+  const key = data.paymentStatus === 'approved'
+    ? 'payment_approved'
+    : data.paymentStatus === 'rejected'
+    ? 'payment_rejected'
+    : data.orderStatus ?? ''
+
+  const copy = STATUS_COPY[key]
+  if (!copy) return // no email for statuses we don't cover (e.g. 'pending')
+
+  const html = statusUpdateHtml(data, key)
+  if (!html) return
+
+  try {
+    await transporter.sendMail({
+      from: `CARVE <${process.env.EMAIL_FROM}>`,
+      to: data.customerEmail,
+      subject: `${copy.subject} · ${data.orderNumber} · CARVE`,
+      html,
+    })
+  } catch (err) {
+    console.error('[email] status update email failed:', err)
+  }
+}
+
 export async function sendOrderEmails(data: OrderEmailData) {
   const from = `CARVE <${process.env.EMAIL_FROM}>`
 

@@ -1,7 +1,6 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ShoppingBag, Menu, X, Search, ChevronDown } from 'lucide-react'
 import { useCartStore } from '@/store/cartStore'
@@ -31,7 +30,7 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    label: 'Jewelry',
+    label: 'Jewellery',
     href: '/shop/jewellery',
     dropdown: [
       { label: 'Earrings', href: '/shop/jewellery?subcategory=Earrings' },
@@ -46,7 +45,7 @@ const navItems: NavItem[] = [
     label: 'New Arrivals',
     href: '/shop?sort=newest',
     dropdown: [
-      { label: 'Jewelry', href: '/shop/jewellery?sort=newest' },
+      { label: 'Jewellery', href: '/shop/jewellery?sort=newest' },
       { label: 'Perfumes', href: '/shop/perfumes?sort=newest' },
     ],
   },
@@ -89,23 +88,15 @@ function DropdownMenu({ items }: { items: DropdownItem[] }) {
 }
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const { itemCount, openCart } = useCartStore()
-  const pathname = usePathname()
 
-  const isProductPage = pathname.startsWith('/product/')
-  const hasBg = scrolled || isProductPage
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  // Always show capsule — avoids blending into light banner images
+  const hasBg = true
 
   const handleMouseEnter = (label: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
