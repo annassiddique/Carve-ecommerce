@@ -66,8 +66,7 @@ export async function POST(req: NextRequest) {
       orderNumber: 'ORD-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
     })
 
-    // Fire emails in background — don't block the response
-    sendOrderEmails({
+    await sendOrderEmails({
       orderNumber: order.orderNumber,
       customer: body.customer,
       items: body.items,
@@ -76,7 +75,7 @@ export async function POST(req: NextRequest) {
       total,
       paymentMethod: body.paymentMethod,
       screenshotUrl: body.screenshotUrl,
-    }).catch((err) => console.error('[email] sendOrderEmails error:', err))
+    })
 
     return NextResponse.json({ success: true, data: order }, { status: 201 })
   } catch (error) {
