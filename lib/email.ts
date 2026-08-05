@@ -1,12 +1,7 @@
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_FROM,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-})
+const resend = new Resend(process.env.RESEND_API_KEY)
+const FROM = `CARVE <${process.env.EMAIL_FROM}>`
 
 interface OrderItem {
   name: string
@@ -395,8 +390,8 @@ export async function sendStatusEmail(data: StatusEmailData) {
   if (!html) return
 
   try {
-    await transporter.sendMail({
-      from: `CARVE <${process.env.EMAIL_FROM}>`,
+    await resend.emails.send({
+      from: FROM,
       to: data.customerEmail,
       subject: `${copy.subject} · ${data.orderNumber} · CARVE`,
       html,
@@ -407,20 +402,19 @@ export async function sendStatusEmail(data: StatusEmailData) {
 }
 
 export async function sendOrderEmails(data: OrderEmailData) {
-  const from = `CARVE <${process.env.EMAIL_FROM}>`
-
   const [customerResult, adminResult] = await Promise.allSettled([
     // Confirmation to customer
-    transporter.sendMail({
-      from,
+    resend.emails.send({
+      from: FROM,
+      replyTo: process.env.ADMIN_NOTIFICATION_EMAIL!,
       to: data.customer.email,
-      subject: `Order Confirmed · ${data.orderNumber} · CARVE`,
+      subject: `Your CARVE order is confirmed — ${data.orderNumber}`,
       html: customerConfirmationHtml(data),
     }),
     // Notification to admin
-    transporter.sendMail({
-      from,
-      to: process.env.ADMIN_NOTIFICATION_EMAIL,
+    resend.emails.send({
+      from: FROM,
+      to: process.env.ADMIN_NOTIFICATION_EMAIL!,
       subject: `New Order · ${data.orderNumber} · ${formatPrice(data.total)}`,
       html: adminNotificationHtml(data),
     }),
