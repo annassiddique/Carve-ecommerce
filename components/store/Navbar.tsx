@@ -1,5 +1,6 @@
 'use client'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ShoppingBag, Menu, X, Search, ChevronDown } from 'lucide-react'
@@ -94,9 +95,20 @@ export default function Navbar() {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const { itemCount, openCart } = useCartStore()
+  const pathname = usePathname()
+  const isHome = pathname === '/'
+  const [scrolled, setScrolled] = useState(false)
 
-  // Always show capsule — avoids blending into light banner images
-  const hasBg = true
+  useEffect(() => {
+    if (!isHome) return
+    const onScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [isHome])
+
+  const hasBg = isHome ? scrolled : true
+  const textColor = hasBg ? 'text-carve-champagne' : 'text-carve-forest'
+  const textColorMuted = hasBg ? 'text-carve-champagne/80' : 'text-carve-forest/80'
 
   const handleMouseEnter = (label: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
@@ -157,7 +169,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="font-display text-2xl font-semibold tracking-[0.15em] text-carve-champagne hover:text-carve-gold transition-colors duration-300"
+            className={`font-display text-2xl font-semibold tracking-[0.15em] ${textColor} hover:text-carve-gold transition-colors duration-300`}
           >
             CARVE
           </Link>
@@ -174,13 +186,13 @@ export default function Navbar() {
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 font-body text-xs tracking-widest uppercase text-carve-champagne/80 hover:text-carve-gold transition-colors duration-200 py-1"
+                    className={`flex items-center gap-1 font-body text-xs tracking-widest uppercase ${textColorMuted} hover:text-carve-gold transition-colors duration-200 py-1`}
                   >
                     {item.label}
                     {item.dropdown && <ChevronDown size={11} className="opacity-60 mt-px" />}
                   </Link>
                 ) : (
-                  <button className="flex items-center gap-1 font-body text-xs tracking-widest uppercase text-carve-champagne/80 hover:text-carve-gold transition-colors duration-200 py-1">
+                  <button className={`flex items-center gap-1 font-body text-xs tracking-widest uppercase ${textColorMuted} hover:text-carve-gold transition-colors duration-200 py-1`}>
                     {item.label}
                     {item.dropdown && <ChevronDown size={11} className="opacity-60 mt-px" />}
                   </button>
@@ -199,14 +211,14 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setSearchOpen(true)}
-              className="text-carve-champagne/80 hover:text-carve-gold transition-colors duration-200"
+              className={`${textColorMuted} hover:text-carve-gold transition-colors duration-200`}
               aria-label="Search"
             >
               <Search size={18} />
             </button>
             <button
               onClick={openCart}
-              className="relative text-carve-champagne/80 hover:text-carve-gold transition-colors duration-200"
+              className={`relative ${textColorMuted} hover:text-carve-gold transition-colors duration-200`}
             >
               <ShoppingBag size={18} />
               {itemCount() > 0 && (
@@ -216,7 +228,7 @@ export default function Navbar() {
               )}
             </button>
             <button
-              className="md:hidden text-carve-champagne/80 hover:text-carve-gold transition-colors duration-200"
+              className={`md:hidden ${textColorMuted} hover:text-carve-gold transition-colors duration-200`}
               onClick={() => setMobileOpen(!mobileOpen)}
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}

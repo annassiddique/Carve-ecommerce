@@ -206,7 +206,9 @@ export default function ProductDetailClient({
                     transition={{ duration: 0.35 }}
                   >
                     <Image src={images[activeImg] || '/placeholder.jpg'} alt={product.name}
-                      fill className="object-cover" priority sizes="(max-width: 768px) 100vw, 50vw" />
+                      fill
+                      className={`object-cover ${product.subcategory === 'Necklaces' ? 'object-bottom' : 'object-center'}`}
+                      priority sizes="(max-width: 768px) 100vw, 50vw" />
                   </motion.div>
                 </AnimatePresence>
                 <div className="absolute top-3 right-3 bg-white/80 backdrop-blur-sm p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">

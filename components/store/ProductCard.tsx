@@ -38,7 +38,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
         transition={{ duration: 0.3 }}
       >
         {/* Image — fixed aspect ratio, never grows */}
-        <div className="relative aspect-[4/5] shrink-0 overflow-hidden bg-carve-smoke">
+        <div className="relative aspect-4/5 shrink-0 overflow-hidden bg-carve-smoke">
           <Image
             src={product.images[imgIdx] || product.images[0] || 'https://picsum.photos/seed/carve-card/400/500'}
             alt={product.name}
@@ -54,17 +54,15 @@ export default function ProductCard({ product }: { product: IProduct }) {
             {!product.inStock && <Badge variant="gray">Sold Out</Badge>}
           </div>
 
-          {/* Add to cart overlay */}
+          {/* Add to cart — always visible on mobile, hover-reveal on desktop */}
           <motion.button
             onClick={handleAddToCart}
-            className={`absolute bottom-3 right-3 flex items-center gap-2 px-4 py-2 text-xs font-body font-medium tracking-widest uppercase transition-colors duration-200 rounded-sm
+            className={`absolute bottom-3 right-3 flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 text-xs font-body font-medium tracking-widest uppercase transition-colors duration-200 rounded-sm
+              md:opacity-0 md:translate-y-1.5 md:group-hover:opacity-100 md:group-hover:translate-y-0 md:transition-all md:duration-200
               ${added
                 ? 'bg-carve-forest text-carve-ivory'
                 : 'bg-carve-ivory/90 text-carve-charcoal hover:bg-carve-forest hover:text-carve-ivory'
               }`}
-            initial={{ opacity: 0, y: 6 }}
-            whileHover={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.18 }}
           >
             {added ? <Check size={12} /> : <ShoppingBag size={12} />}
             {added ? 'Added' : 'Add'}

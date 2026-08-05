@@ -9,11 +9,11 @@ const SLIDE_INTERVAL = 5000
 
 const slides = [
   {
-    image: '/images/banner/without%20Text%20perfume%20and%20Jewelry%20Banner%20main.png',
+    image: '/images/banner/perfume-and-Jewelry-Banner-main-NEW.png',
     alt: 'CARVE — Scent. Shine. Presence.',
     objectPosition: 'center center',
     overlay: 'from-white/20 via-white/5 to-transparent',
-    eyebrow: 'C A R V E',
+    eyebrow: 'CARVE',
     heading: 'CARVE YOUR PRESENCE',
     italic: false,
     sub: 'Affordable luxury in scent and adornment.',
@@ -21,11 +21,11 @@ const slides = [
     cta: { label: 'SHOP NOW', href: '/shop' },
   },
   {
-    image: '/images/banner/Without%20text%20perfume%20category%20banner.png',
+    image: '/images/banner/perfume-Banner-main-NEW.png',
     alt: 'CARVE Perfumes — Timeless Scents',
     objectPosition: 'center center',
     overlay: 'from-white/20 via-white/5 to-transparent',
-    eyebrow: 'C A R V E',
+    eyebrow: 'CARVE',
     heading: 'Timeless Scents.\nUnforgettable Impressions.',
     italic: true,
     sub: 'A fragrance for every mood, every moment.',
@@ -33,11 +33,11 @@ const slides = [
     cta: { label: 'SHOP PERFUMES', href: '/shop/perfumes' },
   },
   {
-    image: '/images/banner/without%20text%20Jewelry%20category%20Banner.png',
+    image: '/images/banner/Jewelry-Banner-main-NEW.png',
     alt: 'CARVE Jewellery — Carve Your Presence',
     objectPosition: 'center 15%',
     overlay: 'from-white/15 via-transparent to-transparent',
-    eyebrow: 'C A R V E',
+    eyebrow: 'CARVE',
     heading: 'Carve Your\nPresence',
     italic: true,
     sub: 'Fine artificial jewellery. Adorned in gold.',
@@ -63,8 +63,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative w-full overflow-hidden"
-      style={{ height: '85dvh' }}
+      className="relative w-full overflow-hidden h-[75dvh] md:h-auto md:aspect-2078/757"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -103,12 +102,9 @@ export default function HeroSection() {
           transition={{ duration: 0.42, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 w-full">
-            <div className="w-full max-w-[90%] md:max-w-[38%]">
+            <div className="w-full max-w-[90%] md:max-w-[46%]">
 
-              <p
-                className="font-body uppercase text-carve-charcoal mb-3"
-                style={{ fontSize: 'clamp(8px, 1vw, 11px)', letterSpacing: '0.6em' }}
-              >
+              <p className="font-display text-2xl font-semibold tracking-[0.15em] text-carve-charcoal mb-3">
                 {slide.eyebrow}
               </p>
 

@@ -46,10 +46,10 @@ const features = [
 export default function MarqueeStrip() {
   return (
     <div className="bg-carve-ivory border-y border-carve-champagne">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-carve-champagne">
           {features.map((f) => (
-            <div key={f.title} className="flex items-start gap-3 px-6 py-6 first:pl-0 last:pr-0">
+            <div key={f.title} className="flex items-center justify-center gap-3 px-6 py-6">
               <span className="shrink-0 text-carve-forest mt-0.5">{f.icon}</span>
               <div>
                 <p className="font-body text-xs font-semibold tracking-wide text-carve-charcoal mb-0.5">

@@ -14,6 +14,7 @@ export default function ShopContent() {
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
+  const [totalCount, setTotalCount] = useState(0)
   const [filterOpen, setFilterOpen] = useState(false)
   const searchParams = useSearchParams()
   const pathname = usePathname()
@@ -55,13 +56,14 @@ export default function ShopContent() {
       if (sub) params.set('subcategory', sub)
 
       params.set('page', String(page))
-      params.set('limit', '12')
+      params.set('limit', '20')
 
       const res = await fetch(`/api/products?${params.toString()}`)
       const data = await res.json()
       if (data.success) {
         setProducts(data.data)
         setTotalPages(data.pagination.pages)
+        setTotalCount(data.pagination.total)
       }
     } finally {
       setLoading(false)
@@ -82,7 +84,7 @@ export default function ShopContent() {
     activeCategory === 'jewellery' ? 'Jewellery' :
     'All Products'
 
-  const productCount = loading ? '—' : `${products.length} product${products.length !== 1 ? 's' : ''}`
+  const productCount = loading ? '—' : `${totalCount} product${totalCount !== 1 ? 's' : ''}`
 
   return (
     <>
@@ -130,17 +132,40 @@ export default function ShopContent() {
             <ProductGrid products={products} loading={loading} />
 
             {totalPages > 1 && (
-              <div className="flex justify-center gap-2 mt-10">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                  <Button
-                    key={p}
-                    variant={p === page ? 'primary' : 'outline'}
-                    size="sm"
-                    onClick={() => setPage(p)}
-                  >
-                    {p}
-                  </Button>
-                ))}
+              <div className="flex items-center justify-center gap-3 mt-12">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => { setPage(p => p - 1); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }) }}
+                  disabled={page === 1}
+                >
+                  ← Prev
+                </Button>
+
+                <div className="flex gap-1.5">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                    <button
+                      key={p}
+                      onClick={() => { setPage(p); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }) }}
+                      className={`w-8 h-8 font-body text-xs rounded-sm transition-colors ${
+                        p === page
+                          ? 'bg-carve-forest text-carve-ivory'
+                          : 'border border-carve-champagne text-carve-mink hover:border-carve-forest hover:text-carve-charcoal'
+                      }`}
+                    >
+                      {p}
+                    </button>
+                  ))}
+                </div>
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => { setPage(p => p + 1); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }) }}
+                  disabled={page === totalPages}
+                >
+                  Next →
+                </Button>
               </div>
             )}
           </div>

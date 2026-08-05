@@ -1,118 +1,66 @@
 import Link from 'next/link'
-import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
-import { collections } from '@/data/collections'
-import { connectDB } from '@/lib/mongodb'
-import Product from '@/models/Product'
 
-async function getCollectionCounts(): Promise<Record<string, number>> {
-  try {
-    await connectDB()
-    const counts: Record<string, number> = {}
-    await Promise.all(
-      collections.map(async (col) => {
-        counts[col.slug] = await Product.countDocuments({ slug: { $in: col.productSlugs } })
-      })
-    )
-    return counts
-  } catch {
-    return {}
-  }
-}
-
-export default async function CollectionsPage() {
-  const counts = await getCollectionCounts()
-
+export default function CollectionsPage() {
   return (
-    <div className="min-h-screen bg-carve-ivory">
-      {/* Header */}
-      <div className="bg-carve-forest pt-28 pb-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <p className="font-body text-xs tracking-[0.4em] uppercase text-carve-gold mb-4">
-            Curated Edits
-          </p>
-          <h1 className="font-display text-6xl md:text-7xl font-light text-carve-champagne leading-none mb-4">
-            Collections
-          </h1>
-          <p className="font-body text-sm text-carve-champagne/50 max-w-md leading-relaxed">
-            Not just products — stories. Each collection is a mood, a moment, a reason to feel something.
-          </p>
-        </div>
+    <div className="min-h-screen bg-carve-forest flex flex-col items-center justify-center relative overflow-hidden px-6">
+
+      {/* Ambient glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-carve-gold/5 blur-[120px]" />
       </div>
 
-      {/* Gold rule */}
-      <div className="h-px bg-gradient-to-r from-transparent via-carve-gold/40 to-transparent" />
+      {/* Top gold rule */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-carve-gold/40 to-transparent" />
 
-      {/* Collections grid */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {collections.map((col, i) => {
-            const count = counts[col.slug] ?? 0
-            const isFeatured = i === 0 // first card spans full width on large screens
+      <div className="relative z-10 text-center max-w-2xl">
 
-            return (
-              <Link
-                key={col.slug}
-                href={`/collections/${col.slug}`}
-                className={`group block ${isFeatured ? 'md:col-span-2' : ''}`}
-              >
-                <div className={`relative overflow-hidden rounded-sm ${isFeatured ? 'aspect-[16/7]' : 'aspect-[4/3]'}`}>
-                  {col.video ? (
-                    <video
-                      src={col.video}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
-                    />
-                  ) : (
-                    <Image
-                      src={col.image}
-                      alt={col.name}
-                      fill
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
-                      sizes={isFeatured ? '100vw' : '(max-width: 768px) 100vw, 50vw'}
-                      priority={i === 0}
-                    />
-                  )}
+        {/* Eyebrow */}
+        <p className="font-body text-[10px] tracking-[0.55em] uppercase text-carve-gold mb-8">
+          C A R V E
+        </p>
 
-                  {/* Overlay — pointer-events-none so clicks reach the Link */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 pointer-events-none" />
-
-                  {/* Content — pointer-events-none so clicks reach the Link */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-10 pointer-events-none">
-                    {/* Gold line */}
-                    <div className="w-8 h-px bg-carve-gold/60 mb-5 transition-all duration-500 group-hover:w-16 group-hover:bg-carve-gold" />
-
-                    <div className={`flex ${isFeatured ? 'flex-col md:flex-row md:items-end md:justify-between' : 'flex-col'} gap-4`}>
-                      <div>
-                        <p className="font-body text-[10px] tracking-[0.4em] uppercase text-carve-gold/60 mb-2">
-                          {count} piece{count !== 1 ? 's' : ''}
-                        </p>
-                        <h2 className={`font-display font-light text-carve-champagne leading-none ${isFeatured ? 'text-4xl md:text-5xl' : 'text-3xl'}`}>
-                          {col.name}
-                        </h2>
-                        <p className="font-display italic text-carve-gold/70 text-sm mt-2">
-                          {col.tagline}
-                        </p>
-                      </div>
-
-                      {/* CTA */}
-                      <div className="flex items-center gap-2 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                        <span className="font-body text-[10px] tracking-[0.35em] uppercase text-carve-gold">
-                          Explore
-                        </span>
-                        <ArrowRight size={11} className="text-carve-gold transition-transform group-hover:translate-x-0.5" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            )
-          })}
+        {/* Decorative line */}
+        <div className="flex items-center justify-center gap-3 mb-10">
+          <div className="h-px w-12 bg-carve-gold/40" />
+          <span className="text-carve-gold/60 text-xs">◆</span>
+          <div className="h-px w-12 bg-carve-gold/40" />
         </div>
+
+        {/* Heading */}
+        <h1 className="font-display font-light text-carve-champagne leading-none mb-6"
+          style={{ fontSize: 'clamp(2.8rem, 7vw, 5.5rem)' }}>
+          Something Beautiful<br />
+          <span className="italic">Is Coming</span>
+        </h1>
+
+        {/* Divider */}
+        <div className="flex items-center justify-center gap-3 my-8">
+          <div className="h-px w-8 bg-carve-gold/30" />
+          <span className="text-carve-gold/40 text-[8px]">◆</span>
+          <div className="h-px w-8 bg-carve-gold/30" />
+        </div>
+
+        {/* Subtext */}
+        <p className="font-display italic text-carve-champagne/50 leading-relaxed mb-3"
+          style={{ fontSize: 'clamp(0.9rem, 2vw, 1.15rem)' }}>
+          Our curated gift collections are being crafted with care.
+        </p>
+        <p className="font-body text-xs tracking-wide text-carve-champagne/30 uppercase mb-14">
+          Gifting · Luxury · Presence
+        </p>
+
+        {/* CTA */}
+        <Link href="/shop">
+          <span className="inline-block border border-carve-gold/50 text-carve-gold font-body text-[10px] tracking-[0.35em] uppercase px-10 py-4 hover:bg-carve-gold hover:text-carve-forest transition-all duration-300 cursor-pointer">
+            Shop Now
+          </span>
+        </Link>
+
       </div>
+
+      {/* Bottom gold rule */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-carve-gold/40 to-transparent" />
+
     </div>
   )
 }

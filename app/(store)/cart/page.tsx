@@ -50,7 +50,7 @@ export default function CartPage() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
-                    <div className="relative w-24 h-28 rounded-sm overflow-hidden bg-carve-smoke flex-shrink-0">
+                    <div className="relative w-20 h-24 md:w-24 md:h-28 rounded-sm overflow-hidden bg-carve-smoke shrink-0">
                       <Image
                         src={item.image}
                         alt={item.name}
