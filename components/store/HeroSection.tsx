@@ -77,12 +77,22 @@ export default function HeroSection() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.75, ease: 'easeInOut' }}
         >
+          {/* Desktop image */}
           <Image
             src={slide.image}
             alt={slide.alt}
             fill
-            className="object-cover"
+            className="hidden md:block object-cover"
             style={{ objectPosition: slide.objectPosition }}
+            priority={current === 0}
+            sizes="100vw"
+          />
+          {/* Mobile image */}
+          <Image
+            src="/images/banner/banner-mobile-1.PNG"
+            alt={slide.alt}
+            fill
+            className="md:hidden object-cover object-center"
             priority={current === 0}
             sizes="100vw"
           />
@@ -94,22 +104,24 @@ export default function HeroSection() {
       <AnimatePresence mode="wait">
         <motion.div
           key={`content-${current}`}
-          className="absolute inset-0 z-10 flex items-center"
-          style={{ paddingTop: 'clamp(64px, 8vw, 96px)' }}
+          className="absolute inset-0 z-10 flex items-center md:items-start"
+          style={{ paddingTop: 'clamp(48px, 8vw, 96px)' }}
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.42, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 w-full">
-            <div className="w-full max-w-[90%] md:max-w-[46%]">
+            <div className="w-full max-w-[70%] md:max-w-[46%]">
 
-              <p className="font-display text-2xl font-semibold tracking-[0.15em] text-carve-charcoal mb-3">
+              {/* Eyebrow — hidden on mobile (already in navbar) */}
+              <p className="hidden md:block font-display text-xl font-semibold tracking-[0.15em] text-carve-charcoal mb-3">
                 {slide.eyebrow}
               </p>
 
+              {/* Decorative line — hidden on mobile */}
               <div
-                className="flex items-center mb-4"
+                className="hidden md:flex items-center mb-4"
                 style={{ gap: 'clamp(6px, 1vw, 10px)' }}
               >
                 <div className="h-px bg-carve-gold/70" style={{ width: 'clamp(24px, 3vw, 40px)' }} />
@@ -117,31 +129,25 @@ export default function HeroSection() {
                 <div className="h-px bg-carve-gold/70" style={{ width: 'clamp(24px, 3vw, 40px)' }} />
               </div>
 
-              {slide.italic ? (
-                <h1
-                  className="font-display italic font-light text-carve-charcoal leading-tight mb-3 md:mb-4 whitespace-pre-line"
-                  style={{ fontSize: 'clamp(1.5rem, 3.4vw, 3rem)' }}
-                >
-                  {slide.heading}
-                </h1>
-              ) : (
-                <h1
-                  className="font-body font-light tracking-[0.22em] uppercase text-carve-charcoal leading-tight mb-3 md:mb-4"
-                  style={{ fontSize: 'clamp(1.15rem, 2.6vw, 2.25rem)' }}
-                >
-                  {slide.heading}
-                </h1>
-              )}
+              <h1
+                className={`font-display font-light text-carve-charcoal leading-tight mb-2 md:mb-4 whitespace-pre-line ${
+                  slide.italic ? 'italic' : 'tracking-[0.15em] uppercase'
+                }`}
+                style={{ fontSize: 'clamp(1.1rem, 3.4vw, 2.4rem)' }}
+              >
+                {slide.heading}
+              </h1>
 
               <p
-                className="font-display italic text-carve-charcoal/65 mb-3 leading-relaxed"
-                style={{ fontSize: 'clamp(0.75rem, 1.3vw, 1rem)' }}
+                className="font-display italic text-carve-charcoal/65 mb-2 md:mb-3 leading-relaxed"
+                style={{ fontSize: 'clamp(0.65rem, 1.3vw, 0.875rem)' }}
               >
                 {slide.sub}
               </p>
 
+              {/* Tagline — hidden on mobile */}
               <p
-                className="font-body uppercase text-carve-charcoal/45 mb-6 md:mb-8"
+                className="hidden md:block font-body uppercase text-carve-charcoal/45 mb-6 md:mb-8"
                 style={{ fontSize: 'clamp(7px, 0.85vw, 10px)', letterSpacing: '0.32em' }}
               >
                 {slide.tagline}
@@ -149,8 +155,8 @@ export default function HeroSection() {
 
               <Link href={slide.cta.href}>
                 <span
-                  className="inline-block bg-carve-forest text-carve-ivory font-body uppercase tracking-[0.28em] hover:bg-carve-sage transition-colors duration-200 cursor-pointer"
-                  style={{ fontSize: 'clamp(8px, 0.9vw, 10px)', padding: 'clamp(10px, 1.2vw, 14px) clamp(20px, 3vw, 28px)' }}
+                  className="inline-block bg-carve-forest text-carve-ivory font-body uppercase tracking-[0.2em] md:tracking-[0.28em] hover:bg-carve-sage transition-colors duration-200 cursor-pointer"
+                  style={{ fontSize: 'clamp(8px, 0.9vw, 10px)', padding: 'clamp(9px, 1.2vw, 14px) clamp(16px, 3vw, 28px)' }}
                 >
                   {slide.cta.label}
                 </span>
@@ -165,20 +171,20 @@ export default function HeroSection() {
       <button
         onClick={prev}
         aria-label="Previous slide"
-        className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white/25 backdrop-blur-sm border border-white/40 text-carve-charcoal hover:bg-white/50 transition-all duration-200"
+        className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-sm border border-white/40 text-carve-charcoal hover:bg-white/50 transition-all duration-200"
       >
         <ChevronLeft size={16} />
       </button>
       <button
         onClick={next}
         aria-label="Next slide"
-        className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white/25 backdrop-blur-sm border border-white/40 text-carve-charcoal hover:bg-white/50 transition-all duration-200"
+        className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-sm border border-white/40 text-carve-charcoal hover:bg-white/50 transition-all duration-200"
       >
         <ChevronRight size={16} />
       </button>
 
       {/* Dot indicators */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5">
+      <div className="hidden md:flex absolute bottom-5 left-1/2 -translate-x-1/2 z-20 items-center gap-2.5">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -200,7 +206,7 @@ export default function HeroSection() {
       {!paused && (
         <motion.div
           key={`progress-${current}`}
-          className="absolute bottom-0 left-0 h-[2px] bg-carve-gold/50 z-20"
+          className="absolute bottom-0 left-0 h-0.5 bg-carve-gold/50 z-20"
           initial={{ width: '0%' }}
           animate={{ width: '100%' }}
           transition={{ duration: SLIDE_INTERVAL / 1000, ease: 'linear' }}
