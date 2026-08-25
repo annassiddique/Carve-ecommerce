@@ -20,7 +20,7 @@ export default function Footer() {
             </p>
             {/* Instagram */}
             <a
-              href="https://www.instagram.com/wecarveit"
+              href="https://www.instagram.com/thecarveworld"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-body text-xs tracking-widest uppercase text-carve-gold hover:text-carve-champagne transition-colors duration-200"
