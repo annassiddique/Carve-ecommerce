@@ -9,22 +9,26 @@ const SLIDE_INTERVAL = 5000
 
 const slides = [
   {
-    image: '/images/banner/perfume-and-Jewelry-Banner-main-NEW.png',
+    image: '/images/new-banners/Perfume%20Hero%20without%20text.png',
+    mobileImage: '/images/new-banners/Perfume%20Hero%20without%20text.png',
     alt: 'CARVE — Scent. Shine. Presence.',
-    objectPosition: 'center center',
-    overlay: 'from-white/20 via-white/5 to-transparent',
+    objectPosition: '60% center',
+    mobileObjectPosition: '38% center',
+    overlay: 'from-white/40 via-white/15 to-transparent',
     eyebrow: 'CARVE',
-    heading: 'CARVE YOUR PRESENCE',
-    italic: false,
+    heading: 'Scent. Shine.\nPresence.',
+    italic: true,
     sub: 'Affordable luxury in scent and adornment.',
     tagline: 'ELEGANT · REFINED · MEMORABLE',
-    cta: { label: 'SHOP NOW', href: '/shop' },
+    cta: { label: 'SHOP PERFUMES', href: '/shop/perfumes' },
   },
   {
-    image: '/images/banner/perfume-Banner-main-NEW.png',
+    image: '/images/new-banners/Men%20Perfume%20Desktop.png',
+    mobileImage: '/images/new-banners/Men%20Perfume%20Mobile.png',
     alt: 'CARVE Perfumes — Timeless Scents',
     objectPosition: 'center center',
-    overlay: 'from-white/20 via-white/5 to-transparent',
+    mobileObjectPosition: 'center center',
+    overlay: 'from-white/40 via-white/15 to-transparent',
     eyebrow: 'CARVE',
     heading: 'Timeless Scents.\nUnforgettable Impressions.',
     italic: true,
@@ -33,16 +37,18 @@ const slides = [
     cta: { label: 'SHOP PERFUMES', href: '/shop/perfumes' },
   },
   {
-    image: '/images/banner/Jewelry-Banner-main-NEW.png',
-    alt: 'CARVE Jewellery — Carve Your Presence',
-    objectPosition: 'center 15%',
-    overlay: 'from-white/15 via-transparent to-transparent',
+    image: '/images/new-banners/Jewelry%20Without%20text.png',
+    mobileImage: '/images/new-banners/Jewelry%20Phone.png',
+    alt: 'CARVE Jewellery — Adorned in Gold',
+    objectPosition: 'center center',
+    mobileObjectPosition: 'center center',
+    overlay: 'from-white/35 via-white/10 to-transparent',
     eyebrow: 'CARVE',
-    heading: 'Carve Your\nPresence',
-    italic: true,
+    heading: 'JEWELLERY',
+    italic: false,
     sub: 'Fine artificial jewellery. Adorned in gold.',
     tagline: 'ELEGANT · REFINED · LUXURIOUS',
-    cta: { label: 'SHOP JEWELLERY', href: '/shop/jewellery' },
+    cta: { label: 'EXPLORE JEWELLERY', href: '/shop/jewellery' },
   },
 ]
 
@@ -87,12 +93,13 @@ export default function HeroSection() {
             priority={current === 0}
             sizes="100vw"
           />
-          {/* Mobile image */}
+          {/* Mobile image — slide-specific portrait version */}
           <Image
-            src="/images/banner/banner-mobile-1.PNG"
+            src={slide.mobileImage}
             alt={slide.alt}
             fill
-            className="md:hidden object-cover object-center"
+            className="md:hidden object-cover"
+            style={{ objectPosition: slide.mobileObjectPosition }}
             priority={current === 0}
             sizes="100vw"
           />
@@ -100,21 +107,21 @@ export default function HeroSection() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Text content — sequential fade so text never overlaps */}
+      {/* Text content */}
       <AnimatePresence mode="wait">
         <motion.div
           key={`content-${current}`}
-          className="absolute inset-0 z-10 flex items-center md:items-start"
-          style={{ paddingTop: 'clamp(48px, 8vw, 96px)' }}
+          className="absolute inset-0 z-10 flex items-start"
+          style={{ paddingTop: 'clamp(72px, 10vw, 96px)' }}
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.42, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 w-full">
-            <div className="w-full max-w-[70%] md:max-w-[46%]">
+            <div className="w-full max-w-[72%] md:max-w-[46%]">
 
-              {/* Eyebrow — hidden on mobile (already in navbar) */}
+              {/* Eyebrow — hidden on mobile */}
               <p className="hidden md:block font-display text-xl font-semibold tracking-[0.15em] text-carve-charcoal mb-3">
                 {slide.eyebrow}
               </p>
@@ -133,14 +140,14 @@ export default function HeroSection() {
                 className={`font-display font-light text-carve-charcoal leading-tight mb-2 md:mb-4 whitespace-pre-line ${
                   slide.italic ? 'italic' : 'tracking-[0.15em] uppercase'
                 }`}
-                style={{ fontSize: 'clamp(1.1rem, 3.4vw, 2.4rem)' }}
+                style={{ fontSize: 'clamp(1.25rem, 3.4vw, 2.4rem)' }}
               >
                 {slide.heading}
               </h1>
 
               <p
-                className="font-display italic text-carve-charcoal/65 mb-2 md:mb-3 leading-relaxed"
-                style={{ fontSize: 'clamp(0.65rem, 1.3vw, 0.875rem)' }}
+                className="font-display italic text-carve-charcoal/65 mb-3 md:mb-3 leading-relaxed"
+                style={{ fontSize: 'clamp(0.7rem, 1.3vw, 0.875rem)' }}
               >
                 {slide.sub}
               </p>
@@ -152,6 +159,9 @@ export default function HeroSection() {
               >
                 {slide.tagline}
               </p>
+
+              {/* Mobile tagline spacing */}
+              <div className="md:hidden mb-5" />
 
               <Link href={slide.cta.href}>
                 <span
@@ -167,7 +177,7 @@ export default function HeroSection() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Prev / Next arrows */}
+      {/* Prev / Next arrows — desktop only */}
       <button
         onClick={prev}
         aria-label="Previous slide"
@@ -183,7 +193,7 @@ export default function HeroSection() {
         <ChevronRight size={16} />
       </button>
 
-      {/* Dot indicators */}
+      {/* Dot indicators — desktop only */}
       <div className="hidden md:flex absolute bottom-5 left-1/2 -translate-x-1/2 z-20 items-center gap-2.5">
         {slides.map((_, i) => (
           <button
@@ -196,6 +206,25 @@ export default function HeroSection() {
                 i === current
                   ? 'w-6 h-1.5 bg-carve-gold'
                   : 'w-1.5 h-1.5 bg-white/55 hover:bg-white/85'
+              }`}
+            />
+          </button>
+        ))}
+      </div>
+
+      {/* Mobile dot indicators */}
+      <div className="md:hidden absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            aria-label={`Go to slide ${i + 1}`}
+          >
+            <div
+              className={`rounded-full transition-all duration-300 ${
+                i === current
+                  ? 'w-5 h-1.5 bg-carve-gold'
+                  : 'w-1.5 h-1.5 bg-carve-charcoal/40'
               }`}
             />
           </button>
