@@ -59,10 +59,16 @@ export async function POST(req: NextRequest) {
     const total = body.total ?? subtotal
     const shippingFee = total - subtotal
 
+    const paymentStatus =
+      body.paymentMethod === 'easypaisa' && body.screenshotUrl
+        ? 'screenshot_submitted'
+        : 'pending'
+
     const order = await Order.create({
       ...body,
       subtotal,
       total,
+      paymentStatus,
       orderNumber: 'ORD-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
     })
 

@@ -30,10 +30,10 @@ export async function GET(req: NextRequest) {
     if (subcategory) filter.subcategory = subcategory
 
     const scentFamily = searchParams.get('scentFamily')
-    if (scentFamily) filter['attributes.scentFamily'] = scentFamily
+    if (scentFamily) filter['attributes.scentFamily'] = { $regex: scentFamily, $options: 'i' }
 
     const material = searchParams.get('material')
-    if (material) filter['attributes.material'] = material
+    if (material) filter['attributes.material'] = { $regex: material, $options: 'i' }
 
     const inStock = searchParams.get('inStock')
     if (inStock === 'true') filter.inStock = true

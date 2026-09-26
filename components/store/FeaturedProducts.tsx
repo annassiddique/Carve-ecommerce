@@ -9,7 +9,7 @@ async function getHomeProducts(): Promise<IProduct[]> {
     await connectDB()
     const featured = await Product.find({ featured: true, inStock: true })
       .sort({ createdAt: -1 })
-      .limit(8)
+      .limit(5)
       .lean()
     return JSON.parse(JSON.stringify(featured))
   } catch {
@@ -43,7 +43,7 @@ export default async function FeaturedProducts() {
         </div>
 
         {products.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
             {products.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}
