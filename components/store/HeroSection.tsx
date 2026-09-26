@@ -13,7 +13,7 @@ const slides = [
     mobileImage: '/images/new-banners/Perfume%20Hero%20without%20text.png',
     alt: 'CARVE — Scent. Shine. Presence.',
     objectPosition: '60% center',
-    mobileObjectPosition: '38% center',
+    mobileObjectPosition: 'right center',
     overlay: 'from-white/40 via-white/15 to-transparent',
     eyebrow: 'CARVE',
     heading: 'Scent. Shine.\nPresence.',
