@@ -4,6 +4,7 @@ import { authOptions } from '@/lib/auth'
 import { connectDB } from '@/lib/mongodb'
 import Order from '@/models/Order'
 import { sendOrderEmails } from '@/lib/email'
+import { sendWhatsAppNotification } from '@/lib/whatsapp'
 
 export async function GET(req: NextRequest) {
   try {
@@ -72,7 +73,8 @@ export async function POST(req: NextRequest) {
       orderNumber: 'ORD-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
     })
 
-    await sendOrderEmails({
+    await Promise.all([
+      sendOrderEmails({
       orderNumber: order.orderNumber,
       customer: body.customer,
       items: body.items,
@@ -81,7 +83,15 @@ export async function POST(req: NextRequest) {
       total,
       paymentMethod: body.paymentMethod,
       screenshotUrl: body.screenshotUrl,
-    })
+    }),
+      sendWhatsAppNotification({
+        orderNumber: order.orderNumber,
+        customerName: body.customer?.name ?? 'Unknown',
+        total,
+        paymentMethod: body.paymentMethod,
+        city: body.customer?.city ?? '',
+      }),
+    ])
 
     return NextResponse.json({ success: true, data: order }, { status: 201 })
   } catch (error) {

@@ -36,9 +36,9 @@ const channels = [
   {
     label: 'Instagram',
     eyebrow: 'Latest collections & updates',
-    detail: '@thecarveworld',
+    detail: '@wecarveit',
     cta: 'Follow us',
-    href: 'https://www.instagram.com/thecarveworld',
+    href: 'https://www.instagram.com/wecarveit',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>

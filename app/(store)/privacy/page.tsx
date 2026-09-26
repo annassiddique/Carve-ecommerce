@@ -269,7 +269,7 @@ export default function PrivacyPage() {
             <p className="font-display text-lg text-carve-charcoal">CARVE</p>
             <p>Email: <a href="mailto:info@shopcarvepk.com" className="text-carve-gold hover:underline">info@shopcarvepk.com</a></p>
             <p>Website: <span className="text-carve-charcoal/80">www.shopcarvepk.com</span></p>
-            <p>Instagram: <span className="text-carve-charcoal/80">@thecarveworld</span></p>
+            <p>Instagram: <span className="text-carve-charcoal/80">@wecarveit</span></p>
             <p>WhatsApp: <a href="https://wa.me/923002278377" className="text-carve-gold hover:underline">+923002278377</a></p>
           </div>
         </Section>
