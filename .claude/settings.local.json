@@ -7,7 +7,9 @@
       "Bash(curl -s -c /tmp/carve_cookies.txt -b /tmp/carve_cookies.txt -X POST http://localhost:3000/api/auth/callback/credentials -H 'Content-Type: application/x-www-form-urlencoded' -d 'email=admin%40carve.pk&password=admin123&csrfToken=&callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&json=true' -w '\\\\nHTTP STATUS: %{http_code}')",
       "Bash(curl *)",
       "Bash(node *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "mcp__playwright__browser_navigate",
+      "Bash(npx playwright *)"
     ]
   }
 }
