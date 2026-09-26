@@ -29,6 +29,12 @@ export async function GET(req: NextRequest) {
     const subcategory = searchParams.get('subcategory')
     if (subcategory) filter.subcategory = subcategory
 
+    const scentFamily = searchParams.get('scentFamily')
+    if (scentFamily) filter['attributes.scentFamily'] = scentFamily
+
+    const material = searchParams.get('material')
+    if (material) filter['attributes.material'] = material
+
     const inStock = searchParams.get('inStock')
     if (inStock === 'true') filter.inStock = true
 

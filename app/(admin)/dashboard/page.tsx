@@ -4,6 +4,8 @@ import Order from '@/models/Order'
 import { ShoppingCart, Package, AlertCircle, TrendingUp } from 'lucide-react'
 import StatsWidget from '@/components/admin/StatsWidget'
 import { formatPrice } from '@/lib/utils'
+import Link from 'next/link'
+import { IOrder } from '@/types'
 
 async function getStats() {
   try {
@@ -37,8 +39,27 @@ async function getStats() {
   }
 }
 
+async function getRecentOrders(): Promise<IOrder[]> {
+  try {
+    await connectDB()
+    const orders = await Order.find().sort({ createdAt: -1 }).limit(5).lean()
+    return JSON.parse(JSON.stringify(orders))
+  } catch {
+    return []
+  }
+}
+
+const statusColors: Record<string, string> = {
+  pending: 'text-yellow-600 bg-yellow-50',
+  confirmed: 'text-blue-600 bg-blue-50',
+  processing: 'text-purple-600 bg-purple-50',
+  shipped: 'text-indigo-600 bg-indigo-50',
+  delivered: 'text-green-700 bg-green-50',
+  cancelled: 'text-red-600 bg-red-50',
+}
+
 export default async function DashboardPage() {
-  const stats = await getStats()
+  const [stats, recentOrders] = await Promise.all([getStats(), getRecentOrders()])
 
   return (
     <div className="p-8">
@@ -75,6 +96,50 @@ export default async function DashboardPage() {
           icon={TrendingUp}
           variant="success"
         />
+      </div>
+
+      {/* Recent Orders */}
+      <div className="bg-carve-ivory border border-carve-champagne rounded-sm p-5 mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="font-display text-xl text-carve-charcoal">Recent Orders</h2>
+          <Link href="/dashboard/orders" className="font-body text-xs tracking-widest uppercase text-carve-mink hover:text-carve-gold transition-colors">
+            View All →
+          </Link>
+        </div>
+        {recentOrders.length === 0 ? (
+          <p className="font-body text-sm text-carve-mink">No orders yet.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full font-body text-sm">
+              <thead>
+                <tr className="border-b border-carve-champagne text-left">
+                  <th className="pb-2 text-xs tracking-widest uppercase text-carve-mink font-normal">Order</th>
+                  <th className="pb-2 text-xs tracking-widest uppercase text-carve-mink font-normal">Customer</th>
+                  <th className="pb-2 text-xs tracking-widest uppercase text-carve-mink font-normal">Total</th>
+                  <th className="pb-2 text-xs tracking-widest uppercase text-carve-mink font-normal">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recentOrders.map((order) => (
+                  <tr key={order._id} className="border-b border-carve-champagne/50 last:border-0">
+                    <td className="py-2.5">
+                      <Link href={`/dashboard/orders/${order._id}`} className="text-carve-forest hover:text-carve-gold transition-colors">
+                        #{order.orderNumber}
+                      </Link>
+                    </td>
+                    <td className="py-2.5 text-carve-charcoal">{order.customer.name}</td>
+                    <td className="py-2.5 text-carve-charcoal">{formatPrice(order.total)}</td>
+                    <td className="py-2.5">
+                      <span className={`px-2 py-0.5 rounded-sm text-xs font-medium ${statusColors[order.orderStatus] || 'text-carve-mink bg-carve-champagne/30'}`}>
+                        {order.orderStatus}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
 
       {/* Quick links */}

@@ -7,21 +7,11 @@ import Link from 'next/link'
 async function getHomeProducts(): Promise<IProduct[]> {
   try {
     await connectDB()
-    // Featured products first, then fill up to 5 with newest
     const featured = await Product.find({ featured: true, inStock: true })
       .sort({ createdAt: -1 })
-      .limit(5)
+      .limit(8)
       .lean()
-
-    if (featured.length >= 5) return JSON.parse(JSON.stringify(featured.slice(0, 5)))
-
-    const featuredIds = featured.map((p) => p._id)
-    const rest = await Product.find({ _id: { $nin: featuredIds }, inStock: true })
-      .sort({ createdAt: -1 })
-      .limit(5 - featured.length)
-      .lean()
-
-    return JSON.parse(JSON.stringify([...featured, ...rest]))
+    return JSON.parse(JSON.stringify(featured))
   } catch {
     return []
   }
@@ -53,7 +43,7 @@ export default async function FeaturedProducts() {
         </div>
 
         {products.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {products.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}

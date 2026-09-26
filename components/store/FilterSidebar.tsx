@@ -7,8 +7,8 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
 const scentFamilies = ['Floral', 'Woody', 'Oriental', 'Fresh', 'Gourmand', 'Citrus', 'Aquatic']
 const perfumeSubcategories = ['For Him', 'For Her', 'Unisex', 'Oud Collection']
-const jewellerySubcategories = ['Earrings', 'Necklaces', 'Rings', 'Bracelets', 'Sets']
-const finishOptions = ['Gold Tone', 'Silver Tone', 'Rose Gold Tone']
+const jewellerySubcategories = ['Earrings', 'Necklace', 'Ring', 'Bracelet', 'Anklet', 'Set']
+const finishOptions = ['Gold Plated', 'Silver', 'Rose Gold']
 
 const sortOptions = [
   { value: 'newest', label: 'Newest' },

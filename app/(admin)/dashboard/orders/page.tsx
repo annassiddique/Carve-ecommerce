@@ -5,10 +5,10 @@ import OrderCard from '@/components/admin/OrderCard'
 import Link from 'next/link'
 
 const tabs = [
-  { label: 'All', value: 'all' },
-  { label: 'Pending Approval', value: 'screenshot_submitted' },
-  { label: 'Confirmed', value: 'confirmed' },
-  { label: 'Shipped', value: 'shipped' },
+  { label: 'All', value: 'all', param: null },
+  { label: 'Pending Approval', value: 'screenshot_submitted', param: 'paymentStatus' },
+  { label: 'Confirmed', value: 'confirmed', param: 'orderStatus' },
+  { label: 'Shipped', value: 'shipped', param: 'orderStatus' },
 ]
 
 async function getOrders(paymentStatus?: string, orderStatus?: string): Promise<IOrder[]> {
@@ -46,9 +46,15 @@ export default async function OrdersPage({
         {tabs.map((tab) => (
           <Link
             key={tab.value}
-            href={tab.value === 'all' ? '/dashboard/orders' : `/dashboard/orders?paymentStatus=${tab.value}`}
+            href={
+              tab.param === null
+                ? '/dashboard/orders'
+                : `/dashboard/orders?${tab.param}=${tab.value}`
+            }
             className={`flex items-center gap-2 px-4 py-2 rounded-sm font-body text-xs tracking-widest uppercase border transition-all whitespace-nowrap ${
-              (tab.value === 'all' && !paymentStatus) || paymentStatus === tab.value
+              (tab.value === 'all' && !paymentStatus && !orderStatus) ||
+              (tab.param === 'paymentStatus' && paymentStatus === tab.value) ||
+              (tab.param === 'orderStatus' && orderStatus === tab.value)
                 ? 'bg-carve-forest text-carve-ivory border-carve-forest'
                 : 'border-carve-champagne text-carve-mink hover:border-carve-gold'
             }`}

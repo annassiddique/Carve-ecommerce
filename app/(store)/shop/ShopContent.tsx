@@ -51,6 +51,7 @@ export default function ShopContent() {
       if (filters.sort) params.set('sort', filters.sort)
       if (filters.search) params.set('search', filters.search)
       if (filters.scentFamily) params.set('scentFamily', filters.scentFamily)
+      if (filters.material) params.set('material', filters.material)
 
       const sub = searchParams.get('subcategory')
       if (sub) params.set('subcategory', sub)
@@ -68,12 +69,12 @@ export default function ShopContent() {
     } finally {
       setLoading(false)
     }
-  }, [activeCategory, filters.sort, filters.search, filters.scentFamily, page, searchParams])
+  }, [activeCategory, filters.sort, filters.search, filters.scentFamily, filters.material, page, searchParams])
 
   // Reset to page 1 whenever any filter axis changes
   useEffect(() => {
     setPage(1)
-  }, [activeCategory, filters.sort, filters.search, filters.scentFamily, searchParams])
+  }, [activeCategory, filters.sort, filters.search, filters.scentFamily, filters.material, searchParams])
 
   useEffect(() => {
     fetchProducts()
