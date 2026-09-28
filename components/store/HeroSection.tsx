@@ -36,20 +36,6 @@ const slides = [
     tagline: 'SCENT · SHINE · PRESENCE',
     cta: { label: 'SHOP PERFUMES', href: '/shop/perfumes' },
   },
-  {
-    image: '/images/new-banners/Resize%203.png',
-    mobileImage: '/images/new-banners/Jewelry%20Phone.png',
-    alt: 'CARVE Jewellery — Adorned in Gold',
-    objectPosition: 'center center',
-    mobileObjectPosition: 'center center',
-    overlay: 'from-white/35 via-white/10 to-transparent',
-    eyebrow: 'CARVE',
-    heading: 'JEWELLERY',
-    italic: false,
-    sub: 'Fine artificial jewellery. Adorned in gold.',
-    tagline: 'ELEGANT · REFINED · LUXURIOUS',
-    cta: { label: 'EXPLORE JEWELLERY', href: '/shop/jewellery' },
-  },
 ]
 
 export default function HeroSection() {
