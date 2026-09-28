@@ -9,8 +9,8 @@ const SLIDE_INTERVAL = 5000
 
 const slides = [
   {
-    image: '/images/new-banners/Perfume%20Hero%20without%20text.png',
-    mobileImage: '/images/new-banners/Perfume%20Hero%20without%20text.png',
+    image: '/images/new-banners/Resize%201.png',
+    mobileImage: '/images/new-banners/Mobile%20new%20size%20final.png',
     alt: 'CARVE — Scent. Shine. Presence.',
     objectPosition: '60% center',
     mobileObjectPosition: 'center center',
@@ -23,7 +23,7 @@ const slides = [
     cta: { label: 'SHOP PERFUMES', href: '/shop/perfumes' },
   },
   {
-    image: '/images/new-banners/Men%20Perfume%20Desktop.png',
+    image: '/images/new-banners/Resize%202.png',
     mobileImage: '/images/new-banners/Men%20Perfume%20Mobile.png',
     alt: 'CARVE Perfumes — Timeless Scents',
     objectPosition: 'center center',
@@ -37,7 +37,7 @@ const slides = [
     cta: { label: 'SHOP PERFUMES', href: '/shop/perfumes' },
   },
   {
-    image: '/images/new-banners/Jewelry%20Without%20text.png',
+    image: '/images/new-banners/Resize%203.png',
     mobileImage: '/images/new-banners/Jewelry%20Phone.png',
     alt: 'CARVE Jewellery — Adorned in Gold',
     objectPosition: 'center center',

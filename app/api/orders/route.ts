@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { connectDB } from '@/lib/mongodb'
-import Order from '@/models/Order'
+import Order, { IOrderItem } from '@/models/Order'
 import Product from '@/models/Product'
 import { sendOrderEmails } from '@/lib/email'
 import { sendWhatsAppNotification } from '@/lib/whatsapp'
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
 
     await Promise.all([
       Product.bulkWrite(
-        order.items.map((item) => ({
+        order.items.map((item: IOrderItem) => ({
           updateOne: {
             filter: { _id: item.productId },
             update: [

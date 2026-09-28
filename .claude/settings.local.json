@@ -10,7 +10,8 @@
       "Bash(npx tsc *)",
       "mcp__playwright__browser_navigate",
       "Bash(npx playwright *)",
-      "Bash(dir \"D:\\\\Project 101\\\\Projects\\\\carve\" /b)"
+      "Bash(dir \"D:\\\\Project 101\\\\Projects\\\\carve\" /b)",
+      "Bash(grep -Ei \"\\\\.\\(png|jpg|jpeg|webp|avif\\)$\")"
     ]
   }
 }
