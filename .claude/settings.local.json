@@ -9,7 +9,8 @@
       "Bash(node *)",
       "Bash(npx tsc *)",
       "mcp__playwright__browser_navigate",
-      "Bash(npx playwright *)"
+      "Bash(npx playwright *)",
+      "Bash(dir \"D:\\\\Project 101\\\\Projects\\\\carve\" /b)"
     ]
   }
 }

@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { connectDB } from '@/lib/mongodb'
 import Order from '@/models/Order'
+import Product from '@/models/Product'
 import { sendOrderEmails } from '@/lib/email'
 import { sendWhatsAppNotification } from '@/lib/whatsapp'
 
@@ -74,16 +75,27 @@ export async function POST(req: NextRequest) {
     })
 
     await Promise.all([
+      Product.bulkWrite(
+        order.items.map((item) => ({
+          updateOne: {
+            filter: { _id: item.productId },
+            update: [
+              { $set: { stock: { $max: [0, { $subtract: ['$stock', item.quantity] }] } } },
+              { $set: { inStock: { $gt: ['$stock', 0] } } },
+            ],
+          },
+        }))
+      ),
       sendOrderEmails({
-      orderNumber: order.orderNumber,
-      customer: body.customer,
-      items: body.items,
-      subtotal,
-      shippingFee,
-      total,
-      paymentMethod: body.paymentMethod,
-      screenshotUrl: body.screenshotUrl,
-    }),
+        orderNumber: order.orderNumber,
+        customer: body.customer,
+        items: body.items,
+        subtotal,
+        shippingFee,
+        total,
+        paymentMethod: body.paymentMethod,
+        screenshotUrl: body.screenshotUrl,
+      }),
       sendWhatsAppNotification({
         orderNumber: order.orderNumber,
         customerName: body.customer?.name ?? 'Unknown',
