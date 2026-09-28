@@ -5,6 +5,7 @@ import { connectDB } from '@/lib/mongodb'
 import Order from '@/models/Order'
 import { IOrder } from '@/types'
 import OrderCard from '@/components/admin/OrderCard'
+import ExportOrdersButton from '@/components/admin/ExportOrdersButton'
 import Link from 'next/link'
 
 const tabs = [
@@ -39,9 +40,12 @@ export default async function OrdersPage({
 
   return (
     <div className="p-8">
-      <div className="mb-8">
-        <h1 className="font-display text-3xl text-carve-charcoal">Orders</h1>
-        <p className="font-body text-sm text-carve-mink mt-1">{orders.length} orders</p>
+      <div className="mb-8 flex items-start justify-between gap-4">
+        <div>
+          <h1 className="font-display text-3xl text-carve-charcoal">Orders</h1>
+          <p className="font-body text-sm text-carve-mink mt-1">{orders.length} orders</p>
+        </div>
+        <ExportOrdersButton />
       </div>
 
       {/* Filter tabs */}

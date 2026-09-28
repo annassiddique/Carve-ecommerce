@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "cloudinary": "^2.10.0",
+    "exceljs": "^4.4.0",
     "framer-motion": "^12.40.0",
     "lucide-react": "^1.17.0",
     "mongoose": "^9.7.0",

@@ -11,7 +11,11 @@
       "mcp__playwright__browser_navigate",
       "Bash(npx playwright *)",
       "Bash(dir \"D:\\\\Project 101\\\\Projects\\\\carve\" /b)",
-      "Bash(grep -Ei \"\\\\.\\(png|jpg|jpeg|webp|avif\\)$\")"
+      "Bash(grep -Ei \"\\\\.\\(png|jpg|jpeg|webp|avif\\)$\")",
+      "Bash(npm uninstall *)",
+      "Bash(New-Item -ItemType Directory -Force \"D:\\\\Project 101\\\\Projects\\\\carve\\\\app\\\\api\\\\orders\\\\export\")",
+      "Bash(Write-Host \"done\")",
+      "PowerShell(New-Item *)"
     ]
   }
 }
