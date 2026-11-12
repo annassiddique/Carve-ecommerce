@@ -1,0 +1,136 @@
+- generic [active] [ref=f32e1]:
+  - link "Free delivery on orders over PKR 2,000!" [ref=f32e3] [cursor=pointer]:
+    - /url: /shop
+  - banner:
+    - navigation [ref=f32e4]:
+      - link "CARVE" [ref=f32e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f32e6]:
+        - link "Perfumes" [ref=f32e8] [cursor=pointer]:
+          - /url: /shop/perfumes
+        - link "Jewellery" [ref=f32e12] [cursor=pointer]:
+          - /url: /shop/jewellery
+        - link "Gift Sets" [ref=f32e16] [cursor=pointer]:
+          - /url: /collections
+        - link "New Arrivals" [ref=f32e18] [cursor=pointer]:
+          - /url: /shop?sort=newest
+        - button "About" [ref=f32e22]
+        - link "Contact" [ref=f32e26] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f32e27]:
+        - button "Search" [ref=f32e28]
+        - button [ref=f32e32]
+  - main [ref=f32e36]:
+    - generic [ref=f32e37]:
+      - img "TEST HEADING Slide One" [ref=f32e39]
+      - generic [ref=f32e43]:
+        - paragraph [ref=f32e44]: CARVE
+        - generic [ref=f32e45]: ◆
+        - heading "TEST HEADING Slide One" [level=1] [ref=f32e49]
+        - paragraph [ref=f32e50]: Test sub text here
+        - paragraph [ref=f32e51]: TEST · SLIDE · ONE
+        - link "BUY NOW" [ref=f32e52] [cursor=pointer]:
+          - /url: /shop/perfumes
+      - button "Previous slide" [ref=f32e54]
+      - button "Next slide" [ref=f32e57]
+      - generic [ref=f32e60]:
+        - button "Go to slide 1" [ref=f32e61]
+        - button "Go to slide 2" [ref=f32e63]
+    - generic [ref=f32e67]:
+      - generic [ref=f32e73]:
+        - paragraph [ref=f32e74]: Refined & Long Lasting
+        - paragraph [ref=f32e75]: Crafted for those who stay.
+      - generic [ref=f32e80]:
+        - paragraph [ref=f32e81]: Fine Metals
+        - paragraph [ref=f32e82]: High-grade gold & silver tones.
+      - generic [ref=f32e88]:
+        - paragraph [ref=f32e89]: Premium Finishes
+        - paragraph [ref=f32e90]: Polished to perfection.
+      - generic [ref=f32e98]:
+        - paragraph [ref=f32e99]: Gift Ready
+        - paragraph [ref=f32e100]: Beautiful packaging, always.
+    - generic [ref=f32e102]:
+      - generic [ref=f32e103]:
+        - paragraph [ref=f32e104]: Explore
+        - heading "Shop by Category" [level=2] [ref=f32e105]
+      - generic [ref=f32e106]:
+        - link "Perfumes Scents that linger in memory Perfumes Shop Now" [ref=f32e108] [cursor=pointer]:
+          - /url: /shop/perfumes
+          - img "Perfumes" [ref=f32e110]
+          - generic [ref=f32e113]:
+            - paragraph [ref=f32e114]: Scents that linger in memory
+            - heading "Perfumes" [level=3] [ref=f32e115]
+            - generic [ref=f32e116]: Shop Now
+        - link "Jewellery Adorn yourself in gold Jewellery Shop Now" [ref=f32e120] [cursor=pointer]:
+          - /url: /shop/jewellery
+          - img "Jewellery" [ref=f32e122]
+          - generic [ref=f32e125]:
+            - paragraph [ref=f32e126]: Adorn yourself in gold
+            - heading "Jewellery" [level=3] [ref=f32e127]
+            - generic [ref=f32e128]: Shop Now
+        - link "Gift Sets Give something unforgettable Gift Sets Shop Now" [ref=f32e132] [cursor=pointer]:
+          - /url: /collections
+          - img "Gift Sets" [ref=f32e134]
+          - generic [ref=f32e137]:
+            - paragraph [ref=f32e138]: Give something unforgettable
+            - heading "Gift Sets" [level=3] [ref=f32e139]
+            - generic [ref=f32e140]: Shop Now
+  - contentinfo [ref=f32e144]:
+    - generic [ref=f32e145]:
+      - generic [ref=f32e146]:
+        - generic [ref=f32e147]:
+          - heading "CARVE" [level=2] [ref=f32e148]
+          - paragraph [ref=f32e149]: Scent. Shine. Presence.
+          - paragraph [ref=f32e150]: Affordable luxury for those who choose to leave a mark. Perfumes and jewellery designed for the modern Pakistani woman and man.
+          - link "The Carve World" [ref=f32e151] [cursor=pointer]:
+            - /url: https://www.instagram.com/wecarveit
+        - generic [ref=f32e156]:
+          - heading "Shop" [level=3] [ref=f32e157]
+          - list [ref=f32e158]:
+            - listitem [ref=f32e159]:
+              - link "All Products" [ref=f32e160] [cursor=pointer]:
+                - /url: /shop
+            - listitem [ref=f32e161]:
+              - link "Perfumes" [ref=f32e162] [cursor=pointer]:
+                - /url: /shop/perfumes
+            - listitem [ref=f32e163]:
+              - link "Jewellery" [ref=f32e164] [cursor=pointer]:
+                - /url: /shop/jewellery
+            - listitem [ref=f32e165]:
+              - link "Gift Sets" [ref=f32e166] [cursor=pointer]:
+                - /url: /collections
+            - listitem [ref=f32e167]:
+              - link "New Arrivals" [ref=f32e168] [cursor=pointer]:
+                - /url: /shop?sort=newest
+        - generic [ref=f32e169]:
+          - heading "About" [level=3] [ref=f32e170]
+          - list [ref=f32e171]:
+            - listitem [ref=f32e172]:
+              - link "Our Story" [ref=f32e173] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f32e174]:
+              - link "CARVE Promise" [ref=f32e175] [cursor=pointer]:
+                - /url: /about#promise
+            - listitem [ref=f32e176]:
+              - link "Jewellery Care Guide" [ref=f32e177] [cursor=pointer]:
+                - /url: /jewellery-care
+        - generic [ref=f32e178]:
+          - heading "Customer Care" [level=3] [ref=f32e179]
+          - list [ref=f32e180]:
+            - listitem [ref=f32e181]:
+              - link "Contact Us" [ref=f32e182] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f32e183]:
+              - link "FAQs" [ref=f32e184] [cursor=pointer]:
+                - /url: /faqs
+            - listitem [ref=f32e185]:
+              - link "Shipping & Returns" [ref=f32e186] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=f32e187]:
+              - link "Privacy Policy" [ref=f32e188] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=f32e189]:
+              - link "Terms & Conditions" [ref=f32e190] [cursor=pointer]:
+                - /url: /terms
+      - paragraph [ref=f32e192]: © 2026 CARVE. All rights reserved. Pakistan.
+  - button "Open Next.js Dev Tools" [ref=f32e198] [cursor=pointer]

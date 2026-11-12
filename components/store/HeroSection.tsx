@@ -4,41 +4,33 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useCallback } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { IHeroSlide } from '@/types'
 
 const SLIDE_INTERVAL = 5000
 
-const slides = [
+const DEFAULT_SLIDES: IHeroSlide[] = [
   {
-    image: '/images/new-banners/Resize%201.png',
+    desktopImage: '/images/new-banners/Resize%201.png',
     mobileImage: '/images/new-banners/Mobile%20new%20size%20final.png',
-    alt: 'CARVE — Scent. Shine. Presence.',
-    objectPosition: '60% center',
-    mobileObjectPosition: 'center center',
-    overlay: 'from-white/40 via-white/15 to-transparent',
-    eyebrow: 'CARVE',
     heading: 'Scent. Shine.\nPresence.',
-    italic: true,
     sub: 'Affordable luxury in scent and adornment.',
     tagline: 'ELEGANT · REFINED · MEMORABLE',
-    cta: { label: 'SHOP PERFUMES', href: '/shop/perfumes' },
+    ctaLabel: 'SHOP PERFUMES',
+    ctaHref: '/shop/perfumes',
   },
   {
-    image: '/images/new-banners/Resize%202.png',
+    desktopImage: '/images/new-banners/Resize%202.png',
     mobileImage: '/images/new-banners/Men%20Perfume%20Mobile.png',
-    alt: 'CARVE Perfumes — Timeless Scents',
-    objectPosition: 'center center',
-    mobileObjectPosition: 'center center',
-    overlay: 'from-white/40 via-white/15 to-transparent',
-    eyebrow: 'CARVE',
     heading: 'Timeless Scents.\nUnforgettable Impressions.',
-    italic: true,
     sub: 'A fragrance for every mood, every moment.',
     tagline: 'SCENT · SHINE · PRESENCE',
-    cta: { label: 'SHOP PERFUMES', href: '/shop/perfumes' },
+    ctaLabel: 'SHOP PERFUMES',
+    ctaHref: '/shop/perfumes',
   },
 ]
 
-export default function HeroSection() {
+export default function HeroSection({ slides: slidesProp }: { slides?: IHeroSlide[] }) {
+  const slides = slidesProp && slidesProp.length > 0 ? slidesProp : DEFAULT_SLIDES
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
 
@@ -70,26 +62,30 @@ export default function HeroSection() {
           transition={{ duration: 0.75, ease: 'easeInOut' }}
         >
           {/* Desktop image */}
-          <Image
-            src={slide.image}
-            alt={slide.alt}
-            fill
-            className="hidden md:block object-cover"
-            style={{ objectPosition: slide.objectPosition }}
-            priority={current === 0}
-            sizes="100vw"
-          />
-          {/* Mobile image — slide-specific portrait version */}
-          <Image
-            src={slide.mobileImage}
-            alt={slide.alt}
-            fill
-            className="md:hidden object-cover"
-            style={{ objectPosition: slide.mobileObjectPosition }}
-            priority={current === 0}
-            sizes="100vw"
-          />
-          <div className={`absolute inset-0 bg-linear-to-r ${slide.overlay}`} />
+          {slide.desktopImage && (
+            <Image
+              src={slide.desktopImage}
+              alt={slide.heading.replace(/\n/g, ' ')}
+              fill
+              className="hidden md:block object-cover"
+              style={{ objectPosition: 'center center' }}
+              priority={current === 0}
+              sizes="100vw"
+            />
+          )}
+          {/* Mobile image */}
+          {slide.mobileImage && (
+            <Image
+              src={slide.mobileImage}
+              alt={slide.heading.replace(/\n/g, ' ')}
+              fill
+              className="md:hidden object-cover"
+              style={{ objectPosition: 'center center' }}
+              priority={current === 0}
+              sizes="100vw"
+            />
+          )}
+          <div className="absolute inset-0 bg-linear-to-r from-white/40 via-white/15 to-transparent" />
         </motion.div>
       </AnimatePresence>
 
@@ -109,7 +105,7 @@ export default function HeroSection() {
 
               {/* Eyebrow — hidden on mobile */}
               <p className="hidden md:block font-display text-xl font-semibold tracking-[0.15em] text-carve-charcoal mb-3">
-                {slide.eyebrow}
+                CARVE
               </p>
 
               {/* Decorative line — hidden on mobile */}
@@ -123,9 +119,7 @@ export default function HeroSection() {
               </div>
 
               <h1
-                className={`font-display font-light text-carve-charcoal leading-tight mb-2 md:mb-4 whitespace-pre-line ${
-                  slide.italic ? 'italic' : 'tracking-[0.15em] uppercase'
-                }`}
+                className="font-display font-light italic text-carve-charcoal leading-tight mb-2 md:mb-4 whitespace-pre-line"
                 style={{ fontSize: 'clamp(1.25rem, 3.4vw, 2.4rem)' }}
               >
                 {slide.heading}
@@ -139,22 +133,24 @@ export default function HeroSection() {
               </p>
 
               {/* Tagline — hidden on mobile */}
-              <p
-                className="hidden md:block font-body uppercase text-carve-charcoal/45 mb-6 md:mb-8"
-                style={{ fontSize: 'clamp(7px, 0.85vw, 10px)', letterSpacing: '0.32em' }}
-              >
-                {slide.tagline}
-              </p>
+              {slide.tagline && (
+                <p
+                  className="hidden md:block font-body uppercase text-carve-charcoal/45 mb-6 md:mb-8"
+                  style={{ fontSize: 'clamp(7px, 0.85vw, 10px)', letterSpacing: '0.32em' }}
+                >
+                  {slide.tagline}
+                </p>
+              )}
 
               {/* Mobile tagline spacing */}
               <div className="md:hidden mb-5" />
 
-              <Link href={slide.cta.href}>
+              <Link href={slide.ctaHref || '/shop'}>
                 <span
                   className="inline-block bg-carve-forest text-carve-ivory font-body uppercase tracking-[0.2em] md:tracking-[0.28em] hover:bg-carve-sage transition-colors duration-200 cursor-pointer"
                   style={{ fontSize: 'clamp(8px, 0.9vw, 10px)', padding: 'clamp(9px, 1.2vw, 14px) clamp(16px, 3vw, 28px)' }}
                 >
-                  {slide.cta.label}
+                  {slide.ctaLabel || 'SHOP NOW'}
                 </span>
               </Link>
 

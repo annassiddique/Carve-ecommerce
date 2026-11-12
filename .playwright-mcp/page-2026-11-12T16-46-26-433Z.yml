@@ -1,0 +1,136 @@
+- generic [active] [ref=f20e1]:
+  - generic [ref=f20e2]:
+    - complementary [ref=f20e3]:
+      - generic [ref=f20e4]:
+        - heading "CARVE" [level=1] [ref=f20e5]
+        - paragraph [ref=f20e6]: Admin
+      - navigation [ref=f20e7]:
+        - link "Dashboard" [ref=f20e8] [cursor=pointer]:
+          - /url: /dashboard
+        - link "Products" [ref=f20e14] [cursor=pointer]:
+          - /url: /dashboard/products
+        - link "Add Product" [ref=f20e19] [cursor=pointer]:
+          - /url: /dashboard/products/new
+        - link "Orders" [ref=f20e22] [cursor=pointer]:
+          - /url: /dashboard/orders
+        - link "Site Control" [ref=f20e27] [cursor=pointer]:
+          - /url: /dashboard/site-control
+      - button "Sign Out" [ref=f20e32]
+    - main [ref=f20e36]:
+      - generic [ref=f20e37]:
+        - generic [ref=f20e38]:
+          - heading "Site Control" [level=1] [ref=f20e39]
+          - paragraph [ref=f20e40]: Manage all content, banners, and settings visible on the storefront.
+        - generic [ref=f20e41]:
+          - link "Announcement" [ref=f20e42] [cursor=pointer]:
+            - /url: /dashboard/site-control/announcement
+          - link "Homepage" [ref=f20e46] [cursor=pointer]:
+            - /url: /dashboard/site-control/homepage
+          - link "Contact" [ref=f20e51] [cursor=pointer]:
+            - /url: /dashboard/site-control/contact
+          - link "About" [ref=f20e54] [cursor=pointer]:
+            - /url: /dashboard/site-control/about
+          - link "Payment" [ref=f20e57] [cursor=pointer]:
+            - /url: /dashboard/site-control/payment
+        - generic [ref=f20e60]:
+          - generic [ref=f20e61]:
+            - heading "Homepage Banners" [level=2] [ref=f20e62]
+            - paragraph [ref=f20e63]: Edit the two hero slides shown in the homepage carousel. You can change the text, buttons, and upload new images for both desktop and mobile.
+          - generic [ref=f20e64]:
+            - paragraph [ref=f20e65]: Edit the two hero slides shown on the homepage carousel. Changes apply to both desktop and mobile.
+            - generic [ref=f20e66]:
+              - paragraph [ref=f20e68]: Slide 1
+              - generic [ref=f20e69]:
+                - generic [ref=f20e70]:
+                  - paragraph [ref=f20e71]: Heading
+                  - paragraph [ref=f20e72]: Main headline. Use \\n for a line break.
+                - textbox "Timeless Scents.\\nUnforgettable Impressions." [ref=f20e74]: Scent. Shine. Presence.
+              - generic [ref=f20e75]:
+                - generic [ref=f20e76]:
+                  - paragraph [ref=f20e77]: Subtext
+                  - paragraph [ref=f20e78]: Short supporting line below the headline
+                - textbox "A fragrance for every mood, every moment." [ref=f20e80]: Affordable luxury in scent and adornment.
+              - generic [ref=f20e81]:
+                - generic [ref=f20e82]:
+                  - paragraph [ref=f20e83]: Tagline
+                  - paragraph [ref=f20e84]: Small uppercase text — dots between words e.g. SCENT · SHINE · PRESENCE
+                - textbox "SCENT · SHINE · PRESENCE" [ref=f20e86]: ELEGANT · REFINED · MEMORABLE
+              - generic [ref=f20e87]:
+                - generic [ref=f20e88]:
+                  - paragraph [ref=f20e89]: Button Label
+                  - paragraph [ref=f20e90]: Text on the CTA button
+                - textbox "SHOP PERFUMES" [ref=f20e92]
+              - generic [ref=f20e93]:
+                - generic [ref=f20e94]:
+                  - paragraph [ref=f20e95]: Button Link
+                  - paragraph [ref=f20e96]: Where the button takes the customer
+                - textbox "/shop/perfumes" [ref=f20e98]
+              - generic [ref=f20e99]:
+                - generic [ref=f20e100]:
+                  - paragraph [ref=f20e101]: Desktop Image
+                  - paragraph [ref=f20e102]: "Recommended: landscape, wide. Ideal size 2078×757px"
+                - generic [ref=f20e104]:
+                  - img "Desktop banner" [ref=f20e106]
+                  - generic [ref=f20e107] [cursor=pointer]: Replace Desktop Image
+                  - generic [ref=f20e108]:
+                    - paragraph [ref=f20e109]: "Or paste URL:"
+                    - textbox "https://..." [ref=f20e110]: /images/new-banners/Resize%201.png
+              - generic [ref=f20e111]:
+                - generic [ref=f20e112]:
+                  - paragraph [ref=f20e113]: Mobile Image
+                  - paragraph [ref=f20e114]: "Recommended: portrait, tall. Ideal size 750×1000px"
+                - generic [ref=f20e116]:
+                  - img "Mobile banner" [ref=f20e118]
+                  - generic [ref=f20e119] [cursor=pointer]: Replace Mobile Image
+                  - generic [ref=f20e120]:
+                    - paragraph [ref=f20e121]: "Or paste URL:"
+                    - textbox "https://..." [ref=f20e122]: /images/new-banners/Mobile%20new%20size%20final.png
+            - generic [ref=f20e123]:
+              - paragraph [ref=f20e125]: Slide 2
+              - generic [ref=f20e126]:
+                - generic [ref=f20e127]:
+                  - paragraph [ref=f20e128]: Heading
+                  - paragraph [ref=f20e129]: Main headline. Use \\n for a line break.
+                - textbox "Timeless Scents.\\nUnforgettable Impressions." [ref=f20e131]: Timeless Scents. Unforgettable Impressions.
+              - generic [ref=f20e132]:
+                - generic [ref=f20e133]:
+                  - paragraph [ref=f20e134]: Subtext
+                  - paragraph [ref=f20e135]: Short supporting line below the headline
+                - textbox "A fragrance for every mood, every moment." [ref=f20e137]
+              - generic [ref=f20e138]:
+                - generic [ref=f20e139]:
+                  - paragraph [ref=f20e140]: Tagline
+                  - paragraph [ref=f20e141]: Small uppercase text — dots between words e.g. SCENT · SHINE · PRESENCE
+                - textbox "SCENT · SHINE · PRESENCE" [ref=f20e143]
+              - generic [ref=f20e144]:
+                - generic [ref=f20e145]:
+                  - paragraph [ref=f20e146]: Button Label
+                  - paragraph [ref=f20e147]: Text on the CTA button
+                - textbox "SHOP PERFUMES" [ref=f20e149]
+              - generic [ref=f20e150]:
+                - generic [ref=f20e151]:
+                  - paragraph [ref=f20e152]: Button Link
+                  - paragraph [ref=f20e153]: Where the button takes the customer
+                - textbox "/shop/perfumes" [ref=f20e155]
+              - generic [ref=f20e156]:
+                - generic [ref=f20e157]:
+                  - paragraph [ref=f20e158]: Desktop Image
+                  - paragraph [ref=f20e159]: "Recommended: landscape, wide. Ideal size 2078×757px"
+                - generic [ref=f20e161]:
+                  - img "Desktop banner" [ref=f20e163]
+                  - generic [ref=f20e164] [cursor=pointer]: Replace Desktop Image
+                  - generic [ref=f20e165]:
+                    - paragraph [ref=f20e166]: "Or paste URL:"
+                    - textbox "https://..." [ref=f20e167]: /images/new-banners/Resize%202.png
+              - generic [ref=f20e168]:
+                - generic [ref=f20e169]:
+                  - paragraph [ref=f20e170]: Mobile Image
+                  - paragraph [ref=f20e171]: "Recommended: portrait, tall. Ideal size 750×1000px"
+                - generic [ref=f20e173]:
+                  - img "Mobile banner" [ref=f20e175]
+                  - generic [ref=f20e176] [cursor=pointer]: Replace Mobile Image
+                  - generic [ref=f20e177]:
+                    - paragraph [ref=f20e178]: "Or paste URL:"
+                    - textbox "https://..." [ref=f20e179]: /images/new-banners/Men%20Perfume%20Mobile.png
+            - button "Save Changes" [ref=f20e181]
+  - button "Open Next.js Dev Tools" [ref=f20e187] [cursor=pointer]

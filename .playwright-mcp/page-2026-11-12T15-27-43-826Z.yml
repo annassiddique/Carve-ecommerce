@@ -1,0 +1,120 @@
+- generic [active] [ref=f10e1]:
+  - banner:
+    - navigation [ref=f10e2]:
+      - link "CARVE" [ref=f10e3] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f10e4]:
+        - link "Perfumes" [ref=f10e6] [cursor=pointer]:
+          - /url: /shop/perfumes
+        - link "Jewellery" [ref=f10e10] [cursor=pointer]:
+          - /url: /shop/jewellery
+        - link "Gift Sets" [ref=f10e14] [cursor=pointer]:
+          - /url: /collections
+        - link "New Arrivals" [ref=f10e16] [cursor=pointer]:
+          - /url: /shop?sort=newest
+        - button "About" [ref=f10e20]
+        - link "Contact" [ref=f10e24] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f10e25]:
+        - button "Search" [ref=f10e26]
+        - button [ref=f10e30]
+  - main [ref=f10e34]:
+    - main [ref=f10e35]:
+      - generic [ref=f10e37]:
+        - paragraph [ref=f10e38]: Get in Touch
+        - heading "Contact Us" [level=1] [ref=f10e39]
+        - paragraph [ref=f10e41]: We're here to help with product enquiries, fragrance recommendations, order updates and after-sales support.
+      - generic [ref=f10e42]:
+        - generic [ref=f10e43]:
+          - generic [ref=f10e44]:
+            - paragraph [ref=f10e48]: Quickest response
+            - heading "WhatsApp" [level=2] [ref=f10e49]
+            - paragraph [ref=f10e50]: "+923002278377"
+            - link "Message us" [ref=f10e51] [cursor=pointer]:
+              - /url: https://wa.me/923002278377
+          - generic [ref=f10e52]:
+            - paragraph [ref=f10e57]: General enquiries & support
+            - heading "Email" [level=2] [ref=f10e58]
+            - paragraph [ref=f10e59]: info@shopcarvepk.com
+            - link "Send an email" [ref=f10e60] [cursor=pointer]:
+              - /url: mailto:info@shopcarvepk.com
+          - generic [ref=f10e61]:
+            - paragraph [ref=f10e67]: Latest collections & updates
+            - heading "Instagram" [level=2] [ref=f10e68]
+            - paragraph [ref=f10e69]: "@wecarveit"
+            - link "Follow us" [ref=f10e70] [cursor=pointer]:
+              - /url: https://www.instagram.com/wecarveit
+        - generic [ref=f10e71]:
+          - heading "Order Support" [level=2] [ref=f10e72]
+          - paragraph [ref=f10e74]: "For questions about an order, please share:"
+          - list [ref=f10e75]:
+            - listitem [ref=f10e76]: Your full name
+            - listitem [ref=f10e78]: Order number
+            - listitem [ref=f10e80]: Phone number used at checkout
+            - listitem [ref=f10e82]: A brief description of your concern
+          - paragraph [ref=f10e84]:
+            - text: For damaged, defective or incorrect orders, please also provide clear photographs and the complete unboxing video in accordance with our
+            - link "Shipping & Returns Policy" [ref=f10e85] [cursor=pointer]:
+              - /url: /shipping
+            - text: .
+        - paragraph [ref=f10e86]: "Website: www.shopcarvepk.com"
+        - paragraph [ref=f10e88]: Scent. Shine. Presence.
+  - contentinfo [ref=f10e89]:
+    - generic [ref=f10e90]:
+      - generic [ref=f10e91]:
+        - generic [ref=f10e92]:
+          - heading "CARVE" [level=2] [ref=f10e93]
+          - paragraph [ref=f10e94]: Scent. Shine. Presence.
+          - paragraph [ref=f10e95]: Affordable luxury for those who choose to leave a mark. Perfumes and jewellery designed for the modern Pakistani woman and man.
+          - link "The Carve World" [ref=f10e96] [cursor=pointer]:
+            - /url: https://www.instagram.com/wecarveit
+        - generic [ref=f10e101]:
+          - heading "Shop" [level=3] [ref=f10e102]
+          - list [ref=f10e103]:
+            - listitem [ref=f10e104]:
+              - link "All Products" [ref=f10e105] [cursor=pointer]:
+                - /url: /shop
+            - listitem [ref=f10e106]:
+              - link "Perfumes" [ref=f10e107] [cursor=pointer]:
+                - /url: /shop/perfumes
+            - listitem [ref=f10e108]:
+              - link "Jewellery" [ref=f10e109] [cursor=pointer]:
+                - /url: /shop/jewellery
+            - listitem [ref=f10e110]:
+              - link "Gift Sets" [ref=f10e111] [cursor=pointer]:
+                - /url: /collections
+            - listitem [ref=f10e112]:
+              - link "New Arrivals" [ref=f10e113] [cursor=pointer]:
+                - /url: /shop?sort=newest
+        - generic [ref=f10e114]:
+          - heading "About" [level=3] [ref=f10e115]
+          - list [ref=f10e116]:
+            - listitem [ref=f10e117]:
+              - link "Our Story" [ref=f10e118] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f10e119]:
+              - link "CARVE Promise" [ref=f10e120] [cursor=pointer]:
+                - /url: /about#promise
+            - listitem [ref=f10e121]:
+              - link "Jewellery Care Guide" [ref=f10e122] [cursor=pointer]:
+                - /url: /jewellery-care
+        - generic [ref=f10e123]:
+          - heading "Customer Care" [level=3] [ref=f10e124]
+          - list [ref=f10e125]:
+            - listitem [ref=f10e126]:
+              - link "Contact Us" [ref=f10e127] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f10e128]:
+              - link "FAQs" [ref=f10e129] [cursor=pointer]:
+                - /url: /faqs
+            - listitem [ref=f10e130]:
+              - link "Shipping & Returns" [ref=f10e131] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=f10e132]:
+              - link "Privacy Policy" [ref=f10e133] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=f10e134]:
+              - link "Terms & Conditions" [ref=f10e135] [cursor=pointer]:
+                - /url: /terms
+      - paragraph [ref=f10e137]: © 2026 CARVE. All rights reserved. Pakistan.
+  - button "Open Next.js Dev Tools" [ref=f10e143] [cursor=pointer]

@@ -1,0 +1,87 @@
+- generic [active] [ref=f31e1]:
+  - link "Free delivery on orders over PKR 2,000!" [ref=f31e3] [cursor=pointer]:
+    - /url: /shop
+  - banner:
+    - navigation [ref=f31e4]:
+      - link "CARVE" [ref=f31e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f31e6]:
+        - link "Perfumes" [ref=f31e8] [cursor=pointer]:
+          - /url: /shop/perfumes
+        - link "Jewellery" [ref=f31e12] [cursor=pointer]:
+          - /url: /shop/jewellery
+        - link "Gift Sets" [ref=f31e16] [cursor=pointer]:
+          - /url: /collections
+        - link "New Arrivals" [ref=f31e18] [cursor=pointer]:
+          - /url: /shop?sort=newest
+        - button "About" [ref=f31e22]
+        - link "Contact" [ref=f31e26] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f31e27]:
+        - button "Search" [ref=f31e28]
+        - button [ref=f31e32]
+  - main [ref=f31e36]:
+    - generic [ref=f31e38]:
+      - paragraph [ref=f31e39]: Your cart is empty
+      - link [ref=f31e40] [cursor=pointer]:
+        - /url: /shop
+        - button "Shop Now" [ref=f31e41]
+  - contentinfo [ref=f31e42]:
+    - generic [ref=f31e43]:
+      - generic [ref=f31e44]:
+        - generic [ref=f31e45]:
+          - heading "CARVE" [level=2] [ref=f31e46]
+          - paragraph [ref=f31e47]: Scent. Shine. Presence.
+          - paragraph [ref=f31e48]: Affordable luxury for those who choose to leave a mark. Perfumes and jewellery designed for the modern Pakistani woman and man.
+          - link "The Carve World" [ref=f31e49] [cursor=pointer]:
+            - /url: https://www.instagram.com/wecarveit
+        - generic [ref=f31e54]:
+          - heading "Shop" [level=3] [ref=f31e55]
+          - list [ref=f31e56]:
+            - listitem [ref=f31e57]:
+              - link "All Products" [ref=f31e58] [cursor=pointer]:
+                - /url: /shop
+            - listitem [ref=f31e59]:
+              - link "Perfumes" [ref=f31e60] [cursor=pointer]:
+                - /url: /shop/perfumes
+            - listitem [ref=f31e61]:
+              - link "Jewellery" [ref=f31e62] [cursor=pointer]:
+                - /url: /shop/jewellery
+            - listitem [ref=f31e63]:
+              - link "Gift Sets" [ref=f31e64] [cursor=pointer]:
+                - /url: /collections
+            - listitem [ref=f31e65]:
+              - link "New Arrivals" [ref=f31e66] [cursor=pointer]:
+                - /url: /shop?sort=newest
+        - generic [ref=f31e67]:
+          - heading "About" [level=3] [ref=f31e68]
+          - list [ref=f31e69]:
+            - listitem [ref=f31e70]:
+              - link "Our Story" [ref=f31e71] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f31e72]:
+              - link "CARVE Promise" [ref=f31e73] [cursor=pointer]:
+                - /url: /about#promise
+            - listitem [ref=f31e74]:
+              - link "Jewellery Care Guide" [ref=f31e75] [cursor=pointer]:
+                - /url: /jewellery-care
+        - generic [ref=f31e76]:
+          - heading "Customer Care" [level=3] [ref=f31e77]
+          - list [ref=f31e78]:
+            - listitem [ref=f31e79]:
+              - link "Contact Us" [ref=f31e80] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f31e81]:
+              - link "FAQs" [ref=f31e82] [cursor=pointer]:
+                - /url: /faqs
+            - listitem [ref=f31e83]:
+              - link "Shipping & Returns" [ref=f31e84] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=f31e85]:
+              - link "Privacy Policy" [ref=f31e86] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=f31e87]:
+              - link "Terms & Conditions" [ref=f31e88] [cursor=pointer]:
+                - /url: /terms
+      - paragraph [ref=f31e90]: © 2026 CARVE. All rights reserved. Pakistan.
+  - button "Open Next.js Dev Tools" [ref=f31e96] [cursor=pointer]

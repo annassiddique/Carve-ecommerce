@@ -1,0 +1,113 @@
+- generic [active] [ref=f46e1]:
+  - generic [ref=f46e6] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=f46e7]
+    - generic [ref=f46e11]:
+      - button "Open issues overlay" [ref=f46e12]:
+        - generic [ref=f46e13]:
+          - generic [aria-hidden] [ref=f46e14]: "0"
+          - generic [ref=f46e15]: "1"
+        - generic [ref=f46e16]: Issue
+      - button "Collapse issues badge" [ref=f46e17]
+  - banner:
+    - navigation [ref=f46e20]:
+      - link "CARVE" [ref=f46e21] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f46e22]:
+        - link "Perfumes" [ref=f46e24] [cursor=pointer]:
+          - /url: /shop/perfumes
+        - link "Jewellery" [ref=f46e28] [cursor=pointer]:
+          - /url: /shop/jewellery
+        - link "Gift Sets" [ref=f46e32] [cursor=pointer]:
+          - /url: /collections
+        - link "New Arrivals" [ref=f46e34] [cursor=pointer]:
+          - /url: /shop?sort=newest
+        - button "About" [ref=f46e38]
+        - link "Contact" [ref=f46e42] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f46e43]:
+        - button "Search" [ref=f46e44]
+        - button "1" [ref=f46e48]
+  - main [ref=f46e53]:
+    - main [ref=f46e54]:
+      - generic [ref=f46e56]:
+        - paragraph [ref=f46e57]: Our Story
+        - paragraph [ref=f46e58]: "CARVE was created around a simple idea: the fragrance you wear and the jewellery you choose become part of how you express yourself and how you are remembered."
+        - paragraph [ref=f46e59]: By bringing scent and adornment together in one refined space, CARVE makes everyday luxury feel more personal, intentional and within reach.
+        - paragraph [ref=f46e60]: Carve your presence.
+      - generic [ref=f46e61]:
+        - generic [ref=f46e62]:
+          - paragraph [ref=f46e63]: The CARVE Promise
+          - heading "Luxury, Chosen With Intention" [level=2] [ref=f46e64]
+          - paragraph [ref=f46e66]: At CARVE, we believe luxury should feel personal, polished and within reach. Every fragrance, jewellery piece and gift is curated with attention to quality, appearance and the experience it creates.
+        - generic [ref=f46e67]:
+          - generic [ref=f46e68]:
+            - heading "Quality You Can Trust" [level=3] [ref=f46e72]
+            - paragraph [ref=f46e73]: We source our fragrances and jewellery with care, selecting pieces that offer a genuine sense of quality and longevity at an accessible price point.
+          - generic [ref=f46e74]:
+            - heading "Premium Presentation" [level=3] [ref=f46e79]
+            - paragraph [ref=f46e80]: Each CARVE order is carefully prepared in premium, gift-ready packaging, making it just as special to receive as it is to wear.
+          - generic [ref=f46e81]:
+            - heading "Attentive Service" [level=3] [ref=f46e85]
+            - paragraph [ref=f46e86]: We are committed to clear product information, responsive support and a customer experience that feels simple, personal and dependable.
+        - generic [ref=f46e87]:
+          - paragraph [ref=f46e88]: Thoughtful selection. Dependable quality. Premium presentation. That is the CARVE Promise.
+          - paragraph [ref=f46e89]: CARVE fragrances are independent fragrance impressions inspired by popular scent profiles. CARVE is not affiliated with or endorsed by the original designer brands.
+  - contentinfo [ref=f46e90]:
+    - generic [ref=f46e91]:
+      - generic [ref=f46e92]:
+        - generic [ref=f46e93]:
+          - heading "CARVE" [level=2] [ref=f46e94]
+          - paragraph [ref=f46e95]: Scent. Shine. Presence.
+          - paragraph [ref=f46e96]: Affordable luxury for those who choose to leave a mark. Perfumes and jewellery designed for the modern Pakistani woman and man.
+          - link "The Carve World" [ref=f46e97] [cursor=pointer]:
+            - /url: https://www.instagram.com/wecarveit
+        - generic [ref=f46e102]:
+          - heading "Shop" [level=3] [ref=f46e103]
+          - list [ref=f46e104]:
+            - listitem [ref=f46e105]:
+              - link "All Products" [ref=f46e106] [cursor=pointer]:
+                - /url: /shop
+            - listitem [ref=f46e107]:
+              - link "Perfumes" [ref=f46e108] [cursor=pointer]:
+                - /url: /shop/perfumes
+            - listitem [ref=f46e109]:
+              - link "Jewellery" [ref=f46e110] [cursor=pointer]:
+                - /url: /shop/jewellery
+            - listitem [ref=f46e111]:
+              - link "Gift Sets" [ref=f46e112] [cursor=pointer]:
+                - /url: /collections
+            - listitem [ref=f46e113]:
+              - link "New Arrivals" [ref=f46e114] [cursor=pointer]:
+                - /url: /shop?sort=newest
+        - generic [ref=f46e115]:
+          - heading "About" [level=3] [ref=f46e116]
+          - list [ref=f46e117]:
+            - listitem [ref=f46e118]:
+              - link "Our Story" [ref=f46e119] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f46e120]:
+              - link "CARVE Promise" [ref=f46e121] [cursor=pointer]:
+                - /url: /about#promise
+            - listitem [ref=f46e122]:
+              - link "Jewellery Care Guide" [ref=f46e123] [cursor=pointer]:
+                - /url: /jewellery-care
+        - generic [ref=f46e124]:
+          - heading "Customer Care" [level=3] [ref=f46e125]
+          - list [ref=f46e126]:
+            - listitem [ref=f46e127]:
+              - link "Contact Us" [ref=f46e128] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f46e129]:
+              - link "FAQs" [ref=f46e130] [cursor=pointer]:
+                - /url: /faqs
+            - listitem [ref=f46e131]:
+              - link "Shipping & Returns" [ref=f46e132] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=f46e133]:
+              - link "Privacy Policy" [ref=f46e134] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=f46e135]:
+              - link "Terms & Conditions" [ref=f46e136] [cursor=pointer]:
+                - /url: /terms
+      - paragraph [ref=f46e138]: © 2026 CARVE. All rights reserved. Pakistan.
+  - alert [ref=f46e139]

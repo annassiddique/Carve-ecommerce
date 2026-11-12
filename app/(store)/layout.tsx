@@ -1,11 +1,16 @@
 import { Toaster } from 'react-hot-toast'
 import Navbar from '@/components/store/Navbar'
 import Footer from '@/components/store/Footer'
+import AnnouncementBar from '@/components/store/AnnouncementBar'
+import { getSiteSettings } from '@/lib/siteSettings'
 
-export default function StoreLayout({ children }: { children: React.ReactNode }) {
+export default async function StoreLayout({ children }: { children: React.ReactNode }) {
+  const settings = await getSiteSettings()
+
   return (
     <>
-      <Navbar />
+      <AnnouncementBar settings={settings} />
+      <Navbar announcementVisible={settings.announcement.enabled && !!settings.announcement.text} />
       <main>{children}</main>
       <Footer />
       <Toaster

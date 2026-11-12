@@ -15,7 +15,20 @@
       "Bash(npm uninstall *)",
       "Bash(New-Item -ItemType Directory -Force \"D:\\\\Project 101\\\\Projects\\\\carve\\\\app\\\\api\\\\orders\\\\export\")",
       "Bash(Write-Host \"done\")",
-      "PowerShell(New-Item *)"
+      "PowerShell(New-Item *)",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_snapshot",
+      "Bash(Copy-Item *)",
+      "Bash(taskkill /PID 20476 /F)",
+      "PowerShell(Stop-Process *)",
+      "mcp__playwright__browser_fill_form",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_evaluate",
+      "Bash(python -m json.tool)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :3000)",
+      "Bash(findstr LISTENING)",
+      "Bash(Stop-Process *)"
     ]
   }
 }

@@ -1,0 +1,231 @@
+- generic [active] [ref=f52e1]:
+  - generic [ref=f52e6] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=f52e7]
+    - generic [ref=f52e11]:
+      - button "Open issues overlay" [ref=f52e12]:
+        - generic [ref=f52e13]:
+          - generic [aria-hidden] [ref=f52e14]: "0"
+          - generic [ref=f52e15]: "1"
+        - generic [ref=f52e16]: Issue
+      - button "Collapse issues badge" [ref=f52e17]
+  - banner:
+    - navigation [ref=f52e20]:
+      - link "CARVE" [ref=f52e21] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f52e22]:
+        - link "Perfumes" [ref=f52e24] [cursor=pointer]:
+          - /url: /shop/perfumes
+        - link "Jewellery" [ref=f52e28] [cursor=pointer]:
+          - /url: /shop/jewellery
+        - link "Gift Sets" [ref=f52e32] [cursor=pointer]:
+          - /url: /collections
+        - link "New Arrivals" [ref=f52e34] [cursor=pointer]:
+          - /url: /shop?sort=newest
+        - button "About" [ref=f52e38]
+        - link "Contact" [ref=f52e42] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f52e43]:
+        - button "Search" [ref=f52e44]
+        - button "1" [ref=f52e48]
+  - main [ref=f52e53]:
+    - generic [ref=f52e54]:
+      - img "Scent. Shine. Presence." [ref=f52e56]
+      - generic [ref=f52e60]:
+        - paragraph [ref=f52e61]: CARVE
+        - generic [ref=f52e62]: ◆
+        - heading "Scent. Shine. Presence." [level=1] [ref=f52e66]
+        - paragraph [ref=f52e67]: Affordable luxury in scent and adornment.
+        - paragraph [ref=f52e68]: ELEGANT · REFINED · MEMORABLE
+        - link "SHOP PERFUMES" [ref=f52e69] [cursor=pointer]:
+          - /url: /shop/perfumes
+      - button "Previous slide" [ref=f52e71]
+      - button "Next slide" [ref=f52e74]
+      - generic [ref=f52e77]:
+        - button "Go to slide 1" [ref=f52e78]
+        - button "Go to slide 2" [ref=f52e80]
+    - generic [ref=f52e85]:
+      - generic [ref=f52e91]:
+        - paragraph [ref=f52e92]: Refined & Long Lasting
+        - paragraph [ref=f52e93]: Crafted for those who stay.
+      - generic [ref=f52e98]:
+        - paragraph [ref=f52e99]: Fine Metals
+        - paragraph [ref=f52e100]: High-grade gold & silver tones.
+      - generic [ref=f52e106]:
+        - paragraph [ref=f52e107]: Premium Finishes
+        - paragraph [ref=f52e108]: Polished to perfection.
+      - generic [ref=f52e116]:
+        - paragraph [ref=f52e117]: Gift Ready
+        - paragraph [ref=f52e118]: Beautiful packaging, always.
+    - generic [ref=f52e120]:
+      - generic [ref=f52e121]:
+        - paragraph [ref=f52e122]: Explore
+        - heading "Shop by Category" [level=2] [ref=f52e123]
+      - generic [ref=f52e124]:
+        - link "Perfumes Scents that linger in memory Perfumes Shop Now" [ref=f52e126] [cursor=pointer]:
+          - /url: /shop/perfumes
+          - img "Perfumes" [ref=f52e128]
+          - generic [ref=f52e131]:
+            - paragraph [ref=f52e132]: Scents that linger in memory
+            - heading "Perfumes" [level=3] [ref=f52e133]
+            - generic [ref=f52e134]: Shop Now
+        - link "Jewellery Adorn yourself in gold Jewellery Shop Now" [ref=f52e138] [cursor=pointer]:
+          - /url: /shop/jewellery
+          - img "Jewellery" [ref=f52e140]
+          - generic [ref=f52e143]:
+            - paragraph [ref=f52e144]: Adorn yourself in gold
+            - heading "Jewellery" [level=3] [ref=f52e145]
+            - generic [ref=f52e146]: Shop Now
+        - link "Gift Sets Give something unforgettable Gift Sets Shop Now" [ref=f52e150] [cursor=pointer]:
+          - /url: /collections
+          - img "Gift Sets" [ref=f52e152]
+          - generic [ref=f52e155]:
+            - paragraph [ref=f52e156]: Give something unforgettable
+            - heading "Gift Sets" [level=3] [ref=f52e157]
+            - generic [ref=f52e158]: Shop Now
+    - generic [ref=f52e162]:
+      - generic [ref=f52e163]:
+        - generic [ref=f52e164]:
+          - paragraph [ref=f52e165]: Handpicked for you
+          - heading "OUR FAVOURITES" [level=2] [ref=f52e166]
+        - link "View All →" [ref=f52e167] [cursor=pointer]:
+          - /url: /shop
+      - generic [ref=f52e168]:
+        - link "Creed Aventus Signature Sale Add For Him Creed Aventus A bold, sophisticated fragrance blending fresh citrus and juicy pineapple with smoky birch, warm woods, and musk. PKR 2,999 PKR 4,200" [ref=f52e169] [cursor=pointer]:
+          - /url: /product/creed-aventus
+          - generic [ref=f52e170]:
+            - generic [ref=f52e171]:
+              - img "Creed Aventus" [ref=f52e172]
+              - generic [ref=f52e173]:
+                - generic [ref=f52e174]: Signature
+                - generic [ref=f52e175]: Sale
+              - button "Add" [ref=f52e176]
+            - generic [ref=f52e180]:
+              - paragraph [ref=f52e181]: For Him
+              - heading "Creed Aventus" [level=3] [ref=f52e182]
+              - paragraph [ref=f52e183]: A bold, sophisticated fragrance blending fresh citrus and juicy pineapple with smoky birch, warm woods, and musk.
+              - generic [ref=f52e184]:
+                - generic [ref=f52e185]: PKR 2,999
+                - generic [ref=f52e186]: PKR 4,200
+        - link "Tulip Slider Bracelet - Blush Pink Signature Sale Add Bracelet Tulip Slider Bracelet - Blush Pink A graceful vine-inspired bracelet with luminous stones and an adjustable slider closure. PKR 1,799 PKR 2,200" [ref=f52e187] [cursor=pointer]:
+          - /url: /product/tulip-slider-bracelet-pink
+          - generic [ref=f52e188]:
+            - generic [ref=f52e189]:
+              - img "Tulip Slider Bracelet - Blush Pink" [ref=f52e190]
+              - generic [ref=f52e191]:
+                - generic [ref=f52e192]: Signature
+                - generic [ref=f52e193]: Sale
+              - button "Add" [ref=f52e194]
+            - generic [ref=f52e198]:
+              - paragraph [ref=f52e199]: Bracelet
+              - heading "Tulip Slider Bracelet - Blush Pink" [level=3] [ref=f52e200]
+              - paragraph [ref=f52e201]: A graceful vine-inspired bracelet with luminous stones and an adjustable slider closure.
+              - generic [ref=f52e202]:
+                - generic [ref=f52e203]: PKR 1,799
+                - generic [ref=f52e204]: PKR 2,200
+        - link "Coco Mademoiselle Signature Sale Add For Her Coco Mademoiselle Fresh citrus and rose with a sensual patchouli and vetiver dry-down. PKR 2,999 PKR 3,500" [ref=f52e205] [cursor=pointer]:
+          - /url: /product/coco-mademoiselle
+          - generic [ref=f52e206]:
+            - generic [ref=f52e207]:
+              - img "Coco Mademoiselle" [ref=f52e208]
+              - generic [ref=f52e209]:
+                - generic [ref=f52e210]: Signature
+                - generic [ref=f52e211]: Sale
+              - button "Add" [ref=f52e212]
+            - generic [ref=f52e216]:
+              - paragraph [ref=f52e217]: For Her
+              - heading "Coco Mademoiselle" [level=3] [ref=f52e218]
+              - paragraph [ref=f52e219]: Fresh citrus and rose with a sensual patchouli and vetiver dry-down.
+              - generic [ref=f52e220]:
+                - generic [ref=f52e221]: PKR 2,999
+                - generic [ref=f52e222]: PKR 3,500
+        - link "Valera V Necklace Signature Sale Add Necklace Valera V Necklace Sculptural gold V-pendant with asymmetrical clear-stone detailing. PKR 1,999 PKR 2,400" [ref=f52e223] [cursor=pointer]:
+          - /url: /product/valera-v-necklace
+          - generic [ref=f52e224]:
+            - generic [ref=f52e225]:
+              - img "Valera V Necklace" [ref=f52e226]
+              - generic [ref=f52e227]:
+                - generic [ref=f52e228]: Signature
+                - generic [ref=f52e229]: Sale
+              - button "Add" [ref=f52e230]
+            - generic [ref=f52e234]:
+              - paragraph [ref=f52e235]: Necklace
+              - heading "Valera V Necklace" [level=3] [ref=f52e236]
+              - paragraph [ref=f52e237]: Sculptural gold V-pendant with asymmetrical clear-stone detailing.
+              - generic [ref=f52e238]:
+                - generic [ref=f52e239]: PKR 1,999
+                - generic [ref=f52e240]: PKR 2,400
+        - link "Blooming Heart Pendant Signature Sale Add Necklace Blooming Heart Pendant Romantic heart pendant with a sparkling floral crystal centre. PKR 1,999 PKR 2,400" [ref=f52e241] [cursor=pointer]:
+          - /url: /product/blooming-heart-pendant
+          - generic [ref=f52e242]:
+            - generic [ref=f52e243]:
+              - img "Blooming Heart Pendant" [ref=f52e244]
+              - generic [ref=f52e245]:
+                - generic [ref=f52e246]: Signature
+                - generic [ref=f52e247]: Sale
+              - button "Add" [ref=f52e248]
+            - generic [ref=f52e252]:
+              - paragraph [ref=f52e253]: Necklace
+              - heading "Blooming Heart Pendant" [level=3] [ref=f52e254]
+              - paragraph [ref=f52e255]: Romantic heart pendant with a sparkling floral crystal centre.
+              - generic [ref=f52e256]:
+                - generic [ref=f52e257]: PKR 1,999
+                - generic [ref=f52e258]: PKR 2,400
+  - contentinfo [ref=f52e259]:
+    - generic [ref=f52e260]:
+      - generic [ref=f52e261]:
+        - generic [ref=f52e262]:
+          - heading "CARVE" [level=2] [ref=f52e263]
+          - paragraph [ref=f52e264]: Scent. Shine. Presence.
+          - paragraph [ref=f52e265]: Affordable luxury for those who choose to leave a mark. Perfumes and jewellery designed for the modern Pakistani woman and man.
+          - link "The Carve World" [ref=f52e266] [cursor=pointer]:
+            - /url: https://www.instagram.com/wecarveit
+        - generic [ref=f52e271]:
+          - heading "Shop" [level=3] [ref=f52e272]
+          - list [ref=f52e273]:
+            - listitem [ref=f52e274]:
+              - link "All Products" [ref=f52e275] [cursor=pointer]:
+                - /url: /shop
+            - listitem [ref=f52e276]:
+              - link "Perfumes" [ref=f52e277] [cursor=pointer]:
+                - /url: /shop/perfumes
+            - listitem [ref=f52e278]:
+              - link "Jewellery" [ref=f52e279] [cursor=pointer]:
+                - /url: /shop/jewellery
+            - listitem [ref=f52e280]:
+              - link "Gift Sets" [ref=f52e281] [cursor=pointer]:
+                - /url: /collections
+            - listitem [ref=f52e282]:
+              - link "New Arrivals" [ref=f52e283] [cursor=pointer]:
+                - /url: /shop?sort=newest
+        - generic [ref=f52e284]:
+          - heading "About" [level=3] [ref=f52e285]
+          - list [ref=f52e286]:
+            - listitem [ref=f52e287]:
+              - link "Our Story" [ref=f52e288] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f52e289]:
+              - link "CARVE Promise" [ref=f52e290] [cursor=pointer]:
+                - /url: /about#promise
+            - listitem [ref=f52e291]:
+              - link "Jewellery Care Guide" [ref=f52e292] [cursor=pointer]:
+                - /url: /jewellery-care
+        - generic [ref=f52e293]:
+          - heading "Customer Care" [level=3] [ref=f52e294]
+          - list [ref=f52e295]:
+            - listitem [ref=f52e296]:
+              - link "Contact Us" [ref=f52e297] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f52e298]:
+              - link "FAQs" [ref=f52e299] [cursor=pointer]:
+                - /url: /faqs
+            - listitem [ref=f52e300]:
+              - link "Shipping & Returns" [ref=f52e301] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=f52e302]:
+              - link "Privacy Policy" [ref=f52e303] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=f52e304]:
+              - link "Terms & Conditions" [ref=f52e305] [cursor=pointer]:
+                - /url: /terms
+      - paragraph [ref=f52e307]: © 2026 CARVE. All rights reserved. Pakistan.
+  - alert [ref=f52e308]

@@ -1,0 +1,135 @@
+- generic [active] [ref=f25e1]:
+  - link "Free delivery on orders over PKR 2,000!" [ref=f25e3] [cursor=pointer]:
+    - /url: /shop
+  - banner:
+    - navigation [ref=f25e4]:
+      - link "CARVE" [ref=f25e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f25e6]:
+        - link "Perfumes" [ref=f25e8] [cursor=pointer]:
+          - /url: /shop/perfumes
+        - link "Jewellery" [ref=f25e12] [cursor=pointer]:
+          - /url: /shop/jewellery
+        - link "Gift Sets" [ref=f25e16] [cursor=pointer]:
+          - /url: /collections
+        - link "New Arrivals" [ref=f25e18] [cursor=pointer]:
+          - /url: /shop?sort=newest
+        - button "About" [ref=f25e22]
+        - link "Contact" [ref=f25e26] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f25e27]:
+        - button "Search" [ref=f25e28]
+        - button [ref=f25e32]
+  - main [ref=f25e36]:
+    - generic [ref=f25e39]:
+      - paragraph [ref=f25e40]: Explore
+      - heading "All Products" [level=1] [ref=f25e41]
+    - generic [ref=f25e43]:
+      - generic [ref=f25e46]:
+        - heading "Filters" [level=3] [ref=f25e48]
+        - generic [ref=f25e49]:
+          - generic [ref=f25e50]:
+            - heading "Category" [level=4] [ref=f25e51]
+            - button "All Products—" [ref=f25e52]
+            - button "Perfume" [ref=f25e53]
+            - button "Jewellery" [ref=f25e54]
+          - generic [ref=f25e55]:
+            - heading "Perfume Type" [level=4] [ref=f25e56]
+            - generic [ref=f25e57]:
+              - button "For Him" [ref=f25e58]
+              - button "For Her" [ref=f25e59]
+              - button "Unisex" [ref=f25e60]
+              - button "Oud Collection" [ref=f25e61]
+          - generic [ref=f25e62]:
+            - heading "Jewellery Type" [level=4] [ref=f25e63]
+            - generic [ref=f25e64]:
+              - button "Earrings" [ref=f25e65]
+              - button "Necklace" [ref=f25e66]
+              - button "Ring" [ref=f25e67]
+              - button "Bracelet" [ref=f25e68]
+              - button "Anklet" [ref=f25e69]
+              - button "Set" [ref=f25e70]
+          - generic [ref=f25e71]:
+            - heading "Sort By" [level=4] [ref=f25e72]
+            - combobox [ref=f25e73]:
+              - option "Newest" [selected]
+              - 'option "Price: Low to High"'
+              - 'option "Price: High to Low"'
+              - option "Featured"
+          - generic [ref=f25e74]:
+            - heading "Scent Family" [level=4] [ref=f25e75]
+            - generic [ref=f25e76]:
+              - button "Floral" [ref=f25e77]
+              - button "Woody" [ref=f25e78]
+              - button "Oriental" [ref=f25e79]
+              - button "Fresh" [ref=f25e80]
+              - button "Gourmand" [ref=f25e81]
+              - button "Citrus" [ref=f25e82]
+              - button "Aquatic" [ref=f25e83]
+          - generic [ref=f25e84]:
+            - heading "Finish" [level=4] [ref=f25e85]
+            - generic [ref=f25e86]:
+              - button "Gold Plated" [ref=f25e87]
+              - button "Silver" [ref=f25e88]
+              - button "Rose Gold" [ref=f25e89]
+        - button "Clear Filters" [ref=f25e91]
+      - paragraph [ref=f25e94]: —
+  - contentinfo [ref=f25e160]:
+    - generic [ref=f25e161]:
+      - generic [ref=f25e162]:
+        - generic [ref=f25e163]:
+          - heading "CARVE" [level=2] [ref=f25e164]
+          - paragraph [ref=f25e165]: Scent. Shine. Presence.
+          - paragraph [ref=f25e166]: Affordable luxury for those who choose to leave a mark. Perfumes and jewellery designed for the modern Pakistani woman and man.
+          - link "The Carve World" [ref=f25e167] [cursor=pointer]:
+            - /url: https://www.instagram.com/wecarveit
+        - generic [ref=f25e172]:
+          - heading "Shop" [level=3] [ref=f25e173]
+          - list [ref=f25e174]:
+            - listitem [ref=f25e175]:
+              - link "All Products" [ref=f25e176] [cursor=pointer]:
+                - /url: /shop
+            - listitem [ref=f25e177]:
+              - link "Perfumes" [ref=f25e178] [cursor=pointer]:
+                - /url: /shop/perfumes
+            - listitem [ref=f25e179]:
+              - link "Jewellery" [ref=f25e180] [cursor=pointer]:
+                - /url: /shop/jewellery
+            - listitem [ref=f25e181]:
+              - link "Gift Sets" [ref=f25e182] [cursor=pointer]:
+                - /url: /collections
+            - listitem [ref=f25e183]:
+              - link "New Arrivals" [ref=f25e184] [cursor=pointer]:
+                - /url: /shop?sort=newest
+        - generic [ref=f25e185]:
+          - heading "About" [level=3] [ref=f25e186]
+          - list [ref=f25e187]:
+            - listitem [ref=f25e188]:
+              - link "Our Story" [ref=f25e189] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f25e190]:
+              - link "CARVE Promise" [ref=f25e191] [cursor=pointer]:
+                - /url: /about#promise
+            - listitem [ref=f25e192]:
+              - link "Jewellery Care Guide" [ref=f25e193] [cursor=pointer]:
+                - /url: /jewellery-care
+        - generic [ref=f25e194]:
+          - heading "Customer Care" [level=3] [ref=f25e195]
+          - list [ref=f25e196]:
+            - listitem [ref=f25e197]:
+              - link "Contact Us" [ref=f25e198] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f25e199]:
+              - link "FAQs" [ref=f25e200] [cursor=pointer]:
+                - /url: /faqs
+            - listitem [ref=f25e201]:
+              - link "Shipping & Returns" [ref=f25e202] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=f25e203]:
+              - link "Privacy Policy" [ref=f25e204] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=f25e205]:
+              - link "Terms & Conditions" [ref=f25e206] [cursor=pointer]:
+                - /url: /terms
+      - paragraph [ref=f25e208]: © 2026 CARVE. All rights reserved. Pakistan.
+  - button "Open Next.js Dev Tools" [ref=f25e214] [cursor=pointer]

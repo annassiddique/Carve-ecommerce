@@ -88,3 +88,53 @@ export interface BundleDiscount {
 export type ScentFamily = 'Floral' | 'Woody' | 'Oriental' | 'Fresh' | 'Gourmand' | 'Citrus' | 'Aquatic'
 export type Material = 'Gold Plated' | 'Silver' | 'Rose Gold'
 export type JewelleryFinish = 'Matte' | 'Shiny' | 'Textured'
+
+export interface IHeroSlide {
+  heading: string
+  sub: string
+  tagline: string
+  ctaLabel: string
+  ctaHref: string
+  desktopImage: string
+  mobileImage: string
+}
+
+export interface ISiteSettingsData {
+  announcement: {
+    enabled: boolean
+    text: string
+    bgColor: string
+    textColor: string
+    link: string
+  }
+  homepage: {
+    slides: IHeroSlide[]
+  }
+  contact: {
+    whatsappNumber: string
+    whatsappDisplay: string
+    email: string
+    instagramHandle: string
+    instagramUrl: string
+    supportText: string
+  }
+  about: {
+    storyParagraph1: string
+    storyParagraph2: string
+    closingTagline: string
+    promiseHeadline: string
+    promiseIntro: string
+    closingStatement: string
+    pillar1Title: string
+    pillar1Description: string
+    pillar2Title: string
+    pillar2Description: string
+    pillar3Title: string
+    pillar3Description: string
+  }
+  payment: {
+    easypaisaNumber: string
+    easypaisaName: string
+    freeShippingThreshold: number
+  }
+}

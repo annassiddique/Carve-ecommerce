@@ -1,0 +1,89 @@
+- generic [active] [ref=f8e1]:
+  - banner:
+    - navigation [ref=f8e2]:
+      - link "CARVE" [ref=f8e3] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f8e4]:
+        - link "Perfumes" [ref=f8e6] [cursor=pointer]:
+          - /url: /shop/perfumes
+        - link "Jewellery" [ref=f8e10] [cursor=pointer]:
+          - /url: /shop/jewellery
+        - link "Gift Sets" [ref=f8e14] [cursor=pointer]:
+          - /url: /collections
+        - link "New Arrivals" [ref=f8e16] [cursor=pointer]:
+          - /url: /shop?sort=newest
+        - button "About" [ref=f8e20]
+        - link "Contact" [ref=f8e24] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f8e25]:
+        - button "Search" [ref=f8e26]
+        - button [ref=f8e30]
+  - main [ref=f8e34]:
+    - generic [ref=f8e37]:
+      - paragraph [ref=f8e38]: C A R V E
+      - generic [ref=f8e39]: ◆
+      - heading "Something Beautiful Is Coming" [level=1] [ref=f8e43]: Something BeautifulIs Coming
+      - generic [ref=f8e44]: ◆
+      - paragraph [ref=f8e48]: Our curated gift collections are being crafted with care.
+      - paragraph [ref=f8e49]: Gifting · Luxury · Presence
+      - link "Shop Now" [ref=f8e50] [cursor=pointer]:
+        - /url: /shop
+  - contentinfo [ref=f8e53]:
+    - generic [ref=f8e54]:
+      - generic [ref=f8e55]:
+        - generic [ref=f8e56]:
+          - heading "CARVE" [level=2] [ref=f8e57]
+          - paragraph [ref=f8e58]: Scent. Shine. Presence.
+          - paragraph [ref=f8e59]: Affordable luxury for those who choose to leave a mark. Perfumes and jewellery designed for the modern Pakistani woman and man.
+          - link "The Carve World" [ref=f8e60] [cursor=pointer]:
+            - /url: https://www.instagram.com/wecarveit
+        - generic [ref=f8e65]:
+          - heading "Shop" [level=3] [ref=f8e66]
+          - list [ref=f8e67]:
+            - listitem [ref=f8e68]:
+              - link "All Products" [ref=f8e69] [cursor=pointer]:
+                - /url: /shop
+            - listitem [ref=f8e70]:
+              - link "Perfumes" [ref=f8e71] [cursor=pointer]:
+                - /url: /shop/perfumes
+            - listitem [ref=f8e72]:
+              - link "Jewellery" [ref=f8e73] [cursor=pointer]:
+                - /url: /shop/jewellery
+            - listitem [ref=f8e74]:
+              - link "Gift Sets" [ref=f8e75] [cursor=pointer]:
+                - /url: /collections
+            - listitem [ref=f8e76]:
+              - link "New Arrivals" [ref=f8e77] [cursor=pointer]:
+                - /url: /shop?sort=newest
+        - generic [ref=f8e78]:
+          - heading "About" [level=3] [ref=f8e79]
+          - list [ref=f8e80]:
+            - listitem [ref=f8e81]:
+              - link "Our Story" [ref=f8e82] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f8e83]:
+              - link "CARVE Promise" [ref=f8e84] [cursor=pointer]:
+                - /url: /about#promise
+            - listitem [ref=f8e85]:
+              - link "Jewellery Care Guide" [ref=f8e86] [cursor=pointer]:
+                - /url: /jewellery-care
+        - generic [ref=f8e87]:
+          - heading "Customer Care" [level=3] [ref=f8e88]
+          - list [ref=f8e89]:
+            - listitem [ref=f8e90]:
+              - link "Contact Us" [ref=f8e91] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f8e92]:
+              - link "FAQs" [ref=f8e93] [cursor=pointer]:
+                - /url: /faqs
+            - listitem [ref=f8e94]:
+              - link "Shipping & Returns" [ref=f8e95] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=f8e96]:
+              - link "Privacy Policy" [ref=f8e97] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=f8e98]:
+              - link "Terms & Conditions" [ref=f8e99] [cursor=pointer]:
+                - /url: /terms
+      - paragraph [ref=f8e101]: © 2026 CARVE. All rights reserved. Pakistan.
+  - button "Open Next.js Dev Tools" [ref=f8e107] [cursor=pointer]

@@ -1,0 +1,31 @@
+- generic [active] [ref=f16e1]:
+  - generic [ref=f16e2]:
+    - generic [ref=f16e3]: Proptely
+    - heading "Welcome back" [level=1] [ref=f16e9]
+    - paragraph [ref=f16e10]: Sign in to your account to continue
+    - generic [ref=f16e11]:
+      - heading "Login to your account" [level=2] [ref=f16e12]
+      - paragraph [ref=f16e13]: Enter your email and password below to login
+      - generic [ref=f16e14]:
+        - generic [ref=f16e15]:
+          - generic [ref=f16e16]: Email
+          - textbox "Email" [ref=f16e17]:
+            - /placeholder: admin@company.com
+        - generic [ref=f16e18]:
+          - generic [ref=f16e19]: Password
+          - generic [ref=f16e20]:
+            - textbox "Password" [ref=f16e21]:
+              - /placeholder: ••••••••
+            - button [ref=f16e22]
+        - button "Login" [ref=f16e26]
+      - generic [ref=f16e27]:
+        - link "Create an account" [ref=f16e28] [cursor=pointer]:
+          - /url: /register
+        - generic [ref=f16e29]:
+          - link "Help" [ref=f16e30] [cursor=pointer]:
+            - /url: "#"
+          - link "Privacy" [ref=f16e31] [cursor=pointer]:
+            - /url: "#"
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f16e37] [cursor=pointer]
+  - alert [ref=f16e41]

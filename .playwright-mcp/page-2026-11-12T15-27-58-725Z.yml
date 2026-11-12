@@ -1,0 +1,155 @@
+- generic [active] [ref=f12e1]:
+  - banner:
+    - navigation [ref=f12e2]:
+      - link "CARVE" [ref=f12e3] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f12e4]:
+        - link "Perfumes" [ref=f12e6] [cursor=pointer]:
+          - /url: /shop/perfumes
+        - link "Jewellery" [ref=f12e10] [cursor=pointer]:
+          - /url: /shop/jewellery
+        - link "Gift Sets" [ref=f12e14] [cursor=pointer]:
+          - /url: /collections
+        - link "New Arrivals" [ref=f12e16] [cursor=pointer]:
+          - /url: /shop?sort=newest
+        - button "About" [ref=f12e20]
+        - link "Contact" [ref=f12e24] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f12e25]:
+        - button "Search" [ref=f12e26]
+        - button [ref=f12e30]
+  - main [ref=f12e34]:
+    - generic [ref=f12e35]:
+      - generic [ref=f12e36]:
+        - navigation [ref=f12e37]:
+          - link "Home" [ref=f12e38] [cursor=pointer]:
+            - /url: /
+          - generic [ref=f12e39]: /
+          - link "Perfumes" [ref=f12e40] [cursor=pointer]:
+            - /url: /shop/perfumes
+          - generic [ref=f12e41]: /
+          - generic [ref=f12e42]: Creed Aventus
+        - generic [ref=f12e43]:
+          - generic [ref=f12e44]:
+            - generic [ref=f12e45]:
+              - img "Creed Aventus" [ref=f12e47]
+              - generic [ref=f12e48]: Sale
+            - generic [ref=f12e49]:
+              - button [disabled] [ref=f12e50]
+              - generic [ref=f12e53]:
+                - button [ref=f12e54]:
+                  - img "Creed Aventus 1" [ref=f12e55]
+                - button [ref=f12e56]:
+                  - img "Creed Aventus 2" [ref=f12e57]
+                - button [ref=f12e58]:
+                  - img "Creed Aventus 3" [ref=f12e59]
+                - button [ref=f12e60]:
+                  - img "Creed Aventus 4" [ref=f12e61]
+                - button [ref=f12e62]:
+                  - img "Creed Aventus 5" [ref=f12e63]
+              - button [ref=f12e64]
+          - generic [ref=f12e67]:
+            - heading "Creed Aventus" [level=1] [ref=f12e68]
+            - paragraph [ref=f12e69]: Scent. Shine. Presence.
+            - generic [ref=f12e70]: (0)
+            - generic [ref=f12e83]:
+              - generic [ref=f12e84]: PKR 2,999
+              - generic [ref=f12e85]: PKR 4,200
+            - paragraph [ref=f12e86]: Inclusive of all taxes
+            - paragraph [ref=f12e87]: "Available: 23 items"
+            - generic [ref=f12e88]: 50ml
+            - paragraph [ref=f12e90]: A bold, sophisticated fragrance blending fresh citrus and juicy pineapple with smoky birch, warm woods, and musk.
+            - generic [ref=f12e91]:
+              - generic [ref=f12e92]: Elegant
+              - generic [ref=f12e98]: Refined
+              - generic [ref=f12e104]: Memorable
+            - generic [ref=f12e111]:
+              - paragraph [ref=f12e112]: Quantity
+              - generic [ref=f12e113]:
+                - button [ref=f12e114]
+                - generic [ref=f12e116]: "1"
+                - button [ref=f12e117]
+            - button "Add to Cart" [ref=f12e119]
+            - button "Buy Now" [ref=f12e120]
+            - link "Request a Product Video" [ref=f12e121] [cursor=pointer]:
+              - /url: https://wa.me/+923002278377?text=Hi%20CARVE!%20I'd%20love%20to%20see%20a%20video%20of%20*Creed%20Aventus*.%20Could%20you%20share%20one%3F%20%F0%9F%99%8F
+            - generic [ref=f12e124]:
+              - generic [ref=f12e125]: Secure Payment
+              - generic [ref=f12e132]: Easy Returns
+              - generic [ref=f12e139]: 100% Authentic
+      - generic [ref=f12e146]:
+        - heading "The Details" [level=2] [ref=f12e147]
+        - generic [ref=f12e149]:
+          - paragraph [ref=f12e150]: Creed Aventus is a bold, refined fragrance built around freshness, fruit, woods, and smoke. It opens with bright bergamot, lemon, and blackcurrant, followed by a distinctive heart of juicy pineapple, pink pepper, and jasmine. As it settles, birch, patchouli, and musk add depth, warmth, and a smooth smoky character. Confident and sophisticated, Aventus works especially well for evenings, events, dinners, and occasions where you want a strong, polished scent with noticeable presence.
+          - generic [ref=f12e151]:
+            - paragraph [ref=f12e152]: "Scent Family: Fresh"
+            - paragraph [ref=f12e153]: "Top Notes: Bergamot, Lemon, Blackcurrant"
+            - paragraph [ref=f12e154]: "Heart Notes: Pink Pepper, Pineapple, Jasmine"
+            - paragraph [ref=f12e155]: "Base Notes: Patchouli, Musk, Birch"
+          - generic [ref=f12e156]:
+            - generic [ref=f12e157]: Signature Scent
+            - generic [ref=f12e158]: Luxury Fragrance
+            - generic [ref=f12e159]: Creed Aventus
+            - generic [ref=f12e160]: Fresh
+            - generic [ref=f12e161]: citrus
+            - generic [ref=f12e162]: woody
+  - contentinfo [ref=f12e163]:
+    - generic [ref=f12e164]:
+      - generic [ref=f12e165]:
+        - generic [ref=f12e166]:
+          - heading "CARVE" [level=2] [ref=f12e167]
+          - paragraph [ref=f12e168]: Scent. Shine. Presence.
+          - paragraph [ref=f12e169]: Affordable luxury for those who choose to leave a mark. Perfumes and jewellery designed for the modern Pakistani woman and man.
+          - link "The Carve World" [ref=f12e170] [cursor=pointer]:
+            - /url: https://www.instagram.com/wecarveit
+        - generic [ref=f12e175]:
+          - heading "Shop" [level=3] [ref=f12e176]
+          - list [ref=f12e177]:
+            - listitem [ref=f12e178]:
+              - link "All Products" [ref=f12e179] [cursor=pointer]:
+                - /url: /shop
+            - listitem [ref=f12e180]:
+              - link "Perfumes" [ref=f12e181] [cursor=pointer]:
+                - /url: /shop/perfumes
+            - listitem [ref=f12e182]:
+              - link "Jewellery" [ref=f12e183] [cursor=pointer]:
+                - /url: /shop/jewellery
+            - listitem [ref=f12e184]:
+              - link "Gift Sets" [ref=f12e185] [cursor=pointer]:
+                - /url: /collections
+            - listitem [ref=f12e186]:
+              - link "New Arrivals" [ref=f12e187] [cursor=pointer]:
+                - /url: /shop?sort=newest
+        - generic [ref=f12e188]:
+          - heading "About" [level=3] [ref=f12e189]
+          - list [ref=f12e190]:
+            - listitem [ref=f12e191]:
+              - link "Our Story" [ref=f12e192] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f12e193]:
+              - link "CARVE Promise" [ref=f12e194] [cursor=pointer]:
+                - /url: /about#promise
+            - listitem [ref=f12e195]:
+              - link "Jewellery Care Guide" [ref=f12e196] [cursor=pointer]:
+                - /url: /jewellery-care
+        - generic [ref=f12e197]:
+          - heading "Customer Care" [level=3] [ref=f12e198]
+          - list [ref=f12e199]:
+            - listitem [ref=f12e200]:
+              - link "Contact Us" [ref=f12e201] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f12e202]:
+              - link "FAQs" [ref=f12e203] [cursor=pointer]:
+                - /url: /faqs
+            - listitem [ref=f12e204]:
+              - link "Shipping & Returns" [ref=f12e205] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=f12e206]:
+              - link "Privacy Policy" [ref=f12e207] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=f12e208]:
+              - link "Terms & Conditions" [ref=f12e209] [cursor=pointer]:
+                - /url: /terms
+      - paragraph [ref=f12e211]: © 2026 CARVE. All rights reserved. Pakistan.
+  - button "Open Next.js Dev Tools" [ref=f12e217] [cursor=pointer]
+  - alert [ref=f12e221]

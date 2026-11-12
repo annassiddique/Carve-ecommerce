@@ -1,0 +1,113 @@
+- generic [active] [ref=f3e1]:
+  - banner:
+    - navigation [ref=f3e2]:
+      - link "CARVE" [ref=f3e3] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f3e4]:
+        - link "Perfumes" [ref=f3e6] [cursor=pointer]:
+          - /url: /shop/perfumes
+        - link "Jewellery" [ref=f3e10] [cursor=pointer]:
+          - /url: /shop/jewellery
+        - link "Gift Sets" [ref=f3e14] [cursor=pointer]:
+          - /url: /collections
+        - link "New Arrivals" [ref=f3e16] [cursor=pointer]:
+          - /url: /shop?sort=newest
+        - button "About" [ref=f3e20]
+        - link "Contact" [ref=f3e24] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f3e25]:
+        - button "Search" [ref=f3e26]
+        - button [ref=f3e30]
+  - main [ref=f3e34]:
+    - generic [ref=f3e37]:
+      - paragraph [ref=f3e38]: Collection
+      - heading "Perfumes" [level=1] [ref=f3e39]
+    - generic [ref=f3e41]:
+      - generic [ref=f3e44]:
+        - heading "Filters" [level=3] [ref=f3e46]
+        - generic [ref=f3e47]:
+          - generic [ref=f3e48]:
+            - heading "Category" [level=4] [ref=f3e49]
+            - generic [ref=f3e50]:
+              - button "For Him" [ref=f3e51]
+              - button "For Her" [ref=f3e52]
+              - button "Unisex" [ref=f3e53]
+              - button "Oud Collection" [ref=f3e54]
+          - generic [ref=f3e55]:
+            - heading "Sort By" [level=4] [ref=f3e56]
+            - combobox [ref=f3e57]:
+              - option "Newest" [selected]
+              - 'option "Price: Low to High"'
+              - 'option "Price: High to Low"'
+              - option "Featured"
+          - generic [ref=f3e58]:
+            - heading "Scent Family" [level=4] [ref=f3e59]
+            - generic [ref=f3e60]:
+              - button "Floral" [ref=f3e61]
+              - button "Woody" [ref=f3e62]
+              - button "Oriental" [ref=f3e63]
+              - button "Fresh" [ref=f3e64]
+              - button "Gourmand" [ref=f3e65]
+              - button "Citrus" [ref=f3e66]
+              - button "Aquatic" [ref=f3e67]
+        - button "Clear Filters" [ref=f3e69]
+      - paragraph [ref=f3e72]: —
+  - contentinfo [ref=f3e138]:
+    - generic [ref=f3e139]:
+      - generic [ref=f3e140]:
+        - generic [ref=f3e141]:
+          - heading "CARVE" [level=2] [ref=f3e142]
+          - paragraph [ref=f3e143]: Scent. Shine. Presence.
+          - paragraph [ref=f3e144]: Affordable luxury for those who choose to leave a mark. Perfumes and jewellery designed for the modern Pakistani woman and man.
+          - link "The Carve World" [ref=f3e145] [cursor=pointer]:
+            - /url: https://www.instagram.com/wecarveit
+        - generic [ref=f3e150]:
+          - heading "Shop" [level=3] [ref=f3e151]
+          - list [ref=f3e152]:
+            - listitem [ref=f3e153]:
+              - link "All Products" [ref=f3e154] [cursor=pointer]:
+                - /url: /shop
+            - listitem [ref=f3e155]:
+              - link "Perfumes" [ref=f3e156] [cursor=pointer]:
+                - /url: /shop/perfumes
+            - listitem [ref=f3e157]:
+              - link "Jewellery" [ref=f3e158] [cursor=pointer]:
+                - /url: /shop/jewellery
+            - listitem [ref=f3e159]:
+              - link "Gift Sets" [ref=f3e160] [cursor=pointer]:
+                - /url: /collections
+            - listitem [ref=f3e161]:
+              - link "New Arrivals" [ref=f3e162] [cursor=pointer]:
+                - /url: /shop?sort=newest
+        - generic [ref=f3e163]:
+          - heading "About" [level=3] [ref=f3e164]
+          - list [ref=f3e165]:
+            - listitem [ref=f3e166]:
+              - link "Our Story" [ref=f3e167] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f3e168]:
+              - link "CARVE Promise" [ref=f3e169] [cursor=pointer]:
+                - /url: /about#promise
+            - listitem [ref=f3e170]:
+              - link "Jewellery Care Guide" [ref=f3e171] [cursor=pointer]:
+                - /url: /jewellery-care
+        - generic [ref=f3e172]:
+          - heading "Customer Care" [level=3] [ref=f3e173]
+          - list [ref=f3e174]:
+            - listitem [ref=f3e175]:
+              - link "Contact Us" [ref=f3e176] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f3e177]:
+              - link "FAQs" [ref=f3e178] [cursor=pointer]:
+                - /url: /faqs
+            - listitem [ref=f3e179]:
+              - link "Shipping & Returns" [ref=f3e180] [cursor=pointer]:
+                - /url: /shipping
+            - listitem [ref=f3e181]:
+              - link "Privacy Policy" [ref=f3e182] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=f3e183]:
+              - link "Terms & Conditions" [ref=f3e184] [cursor=pointer]:
+                - /url: /terms
+      - paragraph [ref=f3e186]: © 2026 CARVE. All rights reserved. Pakistan.
+  - button "Open Next.js Dev Tools" [ref=f3e192] [cursor=pointer]

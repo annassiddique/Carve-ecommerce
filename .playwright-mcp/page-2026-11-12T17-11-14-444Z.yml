@@ -1,0 +1,115 @@
+- generic [active] [ref=f45e1]:
+  - generic [ref=f45e2]:
+    - complementary [ref=f45e3]:
+      - generic [ref=f45e4]:
+        - heading "CARVE" [level=1] [ref=f45e5]
+        - paragraph [ref=f45e6]: Admin
+      - navigation [ref=f45e7]:
+        - link "Dashboard" [ref=f45e8] [cursor=pointer]:
+          - /url: /dashboard
+        - link "Products" [ref=f45e14] [cursor=pointer]:
+          - /url: /dashboard/products
+        - link "Add Product" [ref=f45e19] [cursor=pointer]:
+          - /url: /dashboard/products/new
+        - link "Orders" [ref=f45e22] [cursor=pointer]:
+          - /url: /dashboard/orders
+        - link "Site Control" [ref=f45e27] [cursor=pointer]:
+          - /url: /dashboard/site-control
+      - button "Sign Out" [ref=f45e32]
+    - main [ref=f45e36]:
+      - generic [ref=f45e37]:
+        - generic [ref=f45e38]:
+          - heading "Site Control" [level=1] [ref=f45e39]
+          - paragraph [ref=f45e40]: Manage all content, banners, and settings visible on the storefront.
+        - generic [ref=f45e41]:
+          - link "Announcement" [ref=f45e42] [cursor=pointer]:
+            - /url: /dashboard/site-control/announcement
+          - link "Homepage" [ref=f45e46] [cursor=pointer]:
+            - /url: /dashboard/site-control/homepage
+          - link "Contact" [ref=f45e51] [cursor=pointer]:
+            - /url: /dashboard/site-control/contact
+          - link "About" [ref=f45e54] [cursor=pointer]:
+            - /url: /dashboard/site-control/about
+          - link "Payment" [ref=f45e57] [cursor=pointer]:
+            - /url: /dashboard/site-control/payment
+        - generic [ref=f45e60]:
+          - generic [ref=f45e61]:
+            - heading "About Page" [level=2] [ref=f45e62]
+            - paragraph [ref=f45e63]: Edit the brand story, the CARVE Promise headline and the three promise pillars shown on the About page.
+          - generic [ref=f45e64]:
+            - generic [ref=f45e65]:
+              - generic [ref=f45e66]:
+                - paragraph [ref=f45e67]: Our Story
+                - paragraph [ref=f45e68]: The dark green hero section at the top of the About page
+              - generic [ref=f45e69]:
+                - generic [ref=f45e70]:
+                  - paragraph [ref=f45e71]: Paragraph 1
+                  - paragraph [ref=f45e72]: First paragraph of the brand story
+                - textbox [ref=f45e74]: "CARVE was created around a simple idea: the fragrance you wear and the jewellery you choose become part of how you express yourself and how you are remembered."
+              - generic [ref=f45e75]:
+                - generic [ref=f45e76]:
+                  - paragraph [ref=f45e77]: Paragraph 2
+                  - paragraph [ref=f45e78]: Second paragraph of the brand story
+                - textbox [ref=f45e80]: By bringing scent and adornment together in one refined space, CARVE makes everyday luxury feel more personal, intentional and within reach.
+              - generic [ref=f45e81]:
+                - generic [ref=f45e82]:
+                  - paragraph [ref=f45e83]: Closing Tagline
+                  - paragraph [ref=f45e84]: The italic gold line at the bottom of the story section
+                - textbox "Carve your presence." [ref=f45e86]
+            - generic [ref=f45e87]:
+              - generic [ref=f45e88]:
+                - paragraph [ref=f45e89]: The CARVE Promise
+                - paragraph [ref=f45e90]: The white section below Our Story
+              - generic [ref=f45e91]:
+                - generic [ref=f45e92]:
+                  - paragraph [ref=f45e93]: Section Headline
+                  - paragraph [ref=f45e94]: Large heading above the 3 promise pillars
+                - textbox "Luxury, Chosen With Intention" [ref=f45e96]
+              - generic [ref=f45e97]:
+                - generic [ref=f45e98]:
+                  - paragraph [ref=f45e99]: Section Intro
+                  - paragraph [ref=f45e100]: Paragraph below the headline, above the 3 cards
+                - textbox [ref=f45e102]: At CARVE, we believe luxury should feel personal, polished and within reach. Every fragrance, jewellery piece and gift is curated with attention to quality, appearance and the experience it creates.
+              - generic [ref=f45e103]:
+                - generic [ref=f45e104]:
+                  - paragraph [ref=f45e105]: Closing Statement
+                  - paragraph [ref=f45e106]: Italic text at the very bottom. Press Enter for a line break.
+                - textbox [ref=f45e108]: Thoughtful selection. Dependable quality. Premium presentation. That is the CARVE Promise.
+            - generic [ref=f45e109]:
+              - paragraph [ref=f45e111]: Promise Card 1
+              - generic [ref=f45e112]:
+                - generic [ref=f45e113]:
+                  - paragraph [ref=f45e114]: Title
+                  - paragraph [ref=f45e115]: Heading for card 1
+                - textbox [ref=f45e117]: Quality You Can Trust
+              - generic [ref=f45e118]:
+                - generic [ref=f45e119]:
+                  - paragraph [ref=f45e120]: Description
+                  - paragraph [ref=f45e121]: Body text inside the card
+                - textbox [ref=f45e123]: We source our fragrances and jewellery with care, selecting pieces that offer a genuine sense of quality and longevity at an accessible price point.
+            - generic [ref=f45e124]:
+              - paragraph [ref=f45e126]: Promise Card 2
+              - generic [ref=f45e127]:
+                - generic [ref=f45e128]:
+                  - paragraph [ref=f45e129]: Title
+                  - paragraph [ref=f45e130]: Heading for card 2
+                - textbox [ref=f45e132]: Premium Presentation
+              - generic [ref=f45e133]:
+                - generic [ref=f45e134]:
+                  - paragraph [ref=f45e135]: Description
+                  - paragraph [ref=f45e136]: Body text inside the card
+                - textbox [ref=f45e138]: Each CARVE order is carefully prepared in premium, gift-ready packaging, making it just as special to receive as it is to wear.
+            - generic [ref=f45e139]:
+              - paragraph [ref=f45e141]: Promise Card 3
+              - generic [ref=f45e142]:
+                - generic [ref=f45e143]:
+                  - paragraph [ref=f45e144]: Title
+                  - paragraph [ref=f45e145]: Heading for card 3
+                - textbox [ref=f45e147]: Attentive Service
+              - generic [ref=f45e148]:
+                - generic [ref=f45e149]:
+                  - paragraph [ref=f45e150]: Description
+                  - paragraph [ref=f45e151]: Body text inside the card
+                - textbox [ref=f45e153]: We are committed to clear product information, responsive support and a customer experience that feels simple, personal and dependable.
+            - button "Save Changes" [ref=f45e155]
+  - button "Open Next.js Dev Tools" [ref=f45e161] [cursor=pointer]

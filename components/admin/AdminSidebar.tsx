@@ -8,6 +8,7 @@ import {
   ShoppingCart,
   LogOut,
   PlusCircle,
+  Settings2,
 } from 'lucide-react'
 
 const navItems = [
@@ -15,6 +16,7 @@ const navItems = [
   { label: 'Products', href: '/dashboard/products', icon: Package },
   { label: 'Add Product', href: '/dashboard/products/new', icon: PlusCircle },
   { label: 'Orders', href: '/dashboard/orders', icon: ShoppingCart },
+  { label: 'Site Control', href: '/dashboard/site-control', icon: Settings2 },
 ]
 
 export default function AdminSidebar() {

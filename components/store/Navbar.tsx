@@ -90,7 +90,8 @@ function DropdownMenu({ items }: { items: DropdownItem[] }) {
   )
 }
 
-export default function Navbar() {
+export default function Navbar({ announcementVisible = false }: { announcementVisible?: boolean }) {
+  const announcementOffset = announcementVisible ? 38 : 0
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
@@ -128,7 +129,8 @@ export default function Navbar() {
   return (
     <>
       <motion.header
-        className="fixed top-0 left-0 right-0 z-40 pointer-events-none"
+        className="fixed left-0 right-0 z-40 pointer-events-none"
+        style={{ top: announcementOffset }}
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
